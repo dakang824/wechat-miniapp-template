@@ -1,0 +1,11 @@
+/* components/my-component/index.wxss */
+.btn{
+    width: auto;
+    height: 100rpx;
+    background: black;
+    color: #fff;
+    margin: 20rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

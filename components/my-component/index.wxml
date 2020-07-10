@@ -1,0 +1,7 @@
+<!--components/my-component/index.wxml-->
+<view>
+    <view style="margin-bottom: 20rpx">store展示</view>
+    <view style="margin-bottom: 50rpx">全局绑定登录状态-isLogin：{{isLogin}}</view>
+    <view class="btn" bindtap="needLoginComp">组件内需要登录的方法</view>
+    <view class="btn" bindtap="needToLoginComp">组件内需要跳转到登录的方法</view>
+</view>
