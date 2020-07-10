@@ -37,6 +37,7 @@ const Router = (pageObj, share = true) => {
     }
 
     //转发-默认打开，判断转发触发主体
+    //全局转发监听，因需求不同，需个人定义
     if (share) {
         pageObj.onShareAppMessage = function (res) {
         }
@@ -44,9 +45,8 @@ const Router = (pageObj, share = true) => {
         pageObj.onShareAppMessage = function (res) {
             //判断是否通过点击按钮分享
             if (res.from === 'button') {
-                let dataSet = res.target.dataset;
-                console.log(formatShare(dataSet))
-                return formatShare(dataSet);
+                //返回分享对象
+                return {};
             } else return initShare;
             _page.call(this)
         }
