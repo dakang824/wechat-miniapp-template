@@ -1,5 +1,4 @@
 const app = getApp()
-import {formatShare, initShare} from '../utils/util';
 import {bindLoginBeforeFunc, bindDataFunc, bindToLoginBeforeFunc} from './page.utils'
 
 /**
