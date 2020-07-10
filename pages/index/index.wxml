@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view>
+    <navigator url="/pages/logs/logs" class="btn">查看说明</navigator>
+    <view style="margin-bottom: 20rpx">store展示</view>
+    <view style="margin-bottom: 50rpx" wx:if="{{!isLogin}}">全局绑定登录状态-isLogin：{{isLogin}}</view>
+    <view style="margin-bottom: 50rpx; color: red" wx:else>已经登录，你一定去登录页面点击登录了</view>
+    <view>自定义绑定-token:{{token}}</view>
+    <view>token默认为空</view>
+</view>
+
+<view class="btn" bindtap="change">token赋值(观察控制台打印)</view>
+<view class="btn" bindtap="clear">清空token(观察控制台打印)</view>
+<view class="btn" bindtap="need" wx:if="{{!isLogin}}">需要登录的方法</view>
+<view class="btn" bindtap="needToLoginPage" wx:if="{{!isLogin}}">需要跳转到登录页的方法</view>
+<view class="btn" wx:else>已经登录了，想再次尝试请清空本地缓存</view>
+<view class="btn" bindtap="noNeed">不需要登录的方法(观察控制台打印)</view>
+
+<view>
+    组件
+</view>
+<my-component></my-component>

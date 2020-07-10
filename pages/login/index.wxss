@@ -1,0 +1,11 @@
+/* pages/login/index.wxss */
+.btn{
+    width: auto;
+    height: 100rpx;
+    background: black;
+    color: #fff;
+    margin: 50rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
