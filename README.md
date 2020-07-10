@@ -30,6 +30,10 @@
     5.请求封装
     增加了请求拦截器，请求统一改为promise，在目录api下进行设置和编写，返回值是一个promise
 
+#### 参考贡献
+
+api模块设计参考wx-axios-promise，感谢
+
 #### 开发者
 
 wyfer_2015@sina.com，有任何问题请发邮件
