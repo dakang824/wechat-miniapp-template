@@ -1,0 +1,4 @@
+/**app.wxss**/
+view{
+    margin: 10rpx;
+}
