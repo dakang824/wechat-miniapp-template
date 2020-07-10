@@ -2,36 +2,34 @@
 
 #### 介绍
 微信小程序原生代码模版
-
-#### 软件架构
-软件架构说明
-
+全局声明对象，通过修改声明的属性做到全局响应
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+直接下载或者git clone即可
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.app.js调用init方法同时传递需要的全局加载的store数据对象
+    该方法是一个promise，调用后返回一个对象绑定到全局上
 
-#### 参与贡献
+    2.app全局绑定了router,进行跳转的拦截和传参，主要为了避免卡顿或延迟导致的页面打开n次
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+    3.封装了page方法进行页面的初始化
 
+    a.额外增加了三个参数
+        needLogin: 如果方法需要登录后才能使用的
+        needToLogin: 进行登录判断，如果没有登录跳转到登录
+        bindData: 绑定全局store对象中的某个参数到页面的data中（需要注意的是目前只支持一级属性）
 
-#### 码云特技
+    b.page方法封装时默认绑定了isLogin作为全局参数，不用在bindData里再进行声明
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+    4.再来说说组件，基本上跟page大同小异
+    需要注意的是组件的方法需要写在methods中
+
+    5.请求封装
+    增加了请求拦截器，请求统一改为promise，在目录api下进行设置和编写，返回值是一个promise
+
+#### 开发者
+
+wyfer_2015@sina.com，有任何问题请发邮件
