@@ -1,0 +1,7 @@
+{
+  "desc": "关于本内容的更多信息，请联系wyfer_2015@sina.com",
+  "rules": [{
+  "action": "allow",
+  "page": "*"
+  }]
+}
