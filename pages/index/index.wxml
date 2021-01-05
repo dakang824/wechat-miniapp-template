@@ -7,7 +7,6 @@
     <view>自定义绑定-token:{{token}}</view>
     <view>token默认为空</view>
 </view>
-
 <view class="btn" bindtap="change">token赋值(观察控制台打印)</view>
 <view class="btn" bindtap="clear">清空token(观察控制台打印)</view>
 <view class="btn" bindtap="need" wx:if="{{!isLogin}}">需要登录的方法</view>
