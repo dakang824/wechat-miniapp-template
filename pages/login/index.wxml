@@ -1,4 +1,3 @@
-<!--pages/login/index.wxml-->
 <text class="btn" bindtap="login">点我模拟登录</text>
 <text>
     点击登录后会触发全局定义的路由事件进行返回跳转
