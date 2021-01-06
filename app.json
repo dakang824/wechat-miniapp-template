@@ -1,17 +1,33 @@
 {
   "pages": [
+    "pages/login/index",
+    "pages/tabbar/home/index",
+    "pages/tabbar/course-ware/index",
+    "pages/tabbar/answer/index",
+    "pages/tabbar/profile/index",
+
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/login/index"
+    "pages/logs/logs"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/home",
+      "pages": ["index/index"]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "学习平台",
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "container": "/components/container"
   },
   "sitemapLocation": "sitemap.json"
 }

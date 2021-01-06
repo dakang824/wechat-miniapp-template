@@ -1,8 +1,14 @@
-<text class="btn" bindtap="login">点我模拟登录</text>
-<text>
-    点击登录后会触发全局定义的路由事件进行返回跳转
-    app.$router.back();
-    具体请查看根config目录下的router.js
-
-    跳转页面进行记录，不会跳转到相同的页面两次
-</text>
+<container>
+  <view class="login">
+    <view class="login__title">需要提供以下信息绑定账户：</view>
+    <view class="login__form">
+      <van-cell-group>
+        <van-field model:value="{{ account }}" placeholder="请输入姓名" clearable left-icon='manager' />
+        <van-field model:value="{{ pwd }}" password='{{password}}' placeholder="请输入工号" clearable left-icon='lock' right-icon='{{password?"closed-eye":"eye-o"}}' bind:click-icon='handleIcon'/>
+      </van-cell-group>
+      <view class="login__btn">
+        <van-button type="primary" bindtap="login" block>绑定</van-button>
+      </view>
+    </view>
+  </view>
+</container>

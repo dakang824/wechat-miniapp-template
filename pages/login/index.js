@@ -1,37 +1,29 @@
-import {Router, app} from '../page';
-
-Router({
+import { Router, app } from "../page";
+Router(
+  {
     data: {
-
+      account: "",
+      pwd: "",
+      password: true,
     },
-    onLoad: function (options) {
-
+    onLoad(options) {},
+    onReady() {},
+    handleIcon() {
+      this.setData({
+        password: !this.data.password,
+      });
     },
-    onReady: function () {
-
-    },
-    onShow: function () {
-
-    },
-
     login() {
-        app.$store.isLogin = true
-        app.$router.back();
+      const { account, pwd } = this.data;
+      app.$store.isLogin = true;
+      app.$router.back();
     },
-    onHide: function () {
+    onHide: function () {},
+    onUnload: function () {},
+    onPullDownRefresh: function () {},
+    onReachBottom: function () {},
 
-    },
-    onUnload: function () {
-
-    },
-    onPullDownRefresh: function () {
-
-    },
-    onReachBottom: function () {
-
-    },
-
-    onPageScroll: function (e) {
-
-    }
-},false)
+    onPageScroll: function (e) {},
+  },
+  false
+);

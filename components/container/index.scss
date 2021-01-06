@@ -1,0 +1,30 @@
+.container {
+  min-height: 100vh;
+  padding: 30rpx;
+  --button-primary-background-color: #1cbc9a;
+  --button-primary-border-color: #1cbc9a;
+
+  &--gap {
+    padding-top: 20rpx;
+  }
+
+  &--gray {
+    background-color: #f8f8f8;
+  }
+
+  &::before {
+    content: " ";
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    transform-origin: 0 0;
+    width: 199.8%;
+    height: 199.7%;
+    transform: scale(0.5, 0.5);
+    border: 0 solid #e4e7ed;
+    z-index: 2;
+    border-top-width: 1px;
+  }
+}

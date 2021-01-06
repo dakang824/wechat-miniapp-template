@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@vant/weapp": "^1.6.4"
+    "@vant/weapp": "^1.6.4",
+    "wx-promise-pro": "^3.2.2"
   }
 }
