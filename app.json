@@ -4,10 +4,7 @@
     "pages/tabbar/course-ware/index",
     "pages/tabbar/answer/index",
     "pages/tabbar/profile/index",
-    "pages/login/index",
-
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/login/index"
   ],
   "subpackages": [
     {
