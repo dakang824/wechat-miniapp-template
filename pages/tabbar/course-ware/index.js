@@ -1,66 +1,90 @@
-// pages/tabbar/course-ware/index.js
-Page({
-
-  /**
-   * 页面的初始数据
-   */
+/*
+ * @Author: yukang 1172248038@qq.com
+ * @Description:课件
+ * @Date: 2021-01-05 22:39:26
+ * @LastEditTime: 2021-01-06 17:18:51
+ */
+import { Router, app } from "../../page";
+Router({
   data: {
-
+    active: 0,
+    navs: [],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  async onLoad() {
+    await this.getMyProfession();
+    await this.fetchData();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  async getMyProfession() {
+    const {
+      data: { profs },
+    } = await app.$api.getMyProfession({ group_id: 1 });
+    return this.setData({
+      navs: profs.map((item) => {
+        item.list = [];
+        item.requesting = false;
+        item.queryData = {
+          ope_id: 1,
+          prof_id: "",
+          nav_id: "",
+          cate1: 1,
+          page_no: 1,
+          page_size: 10,
+        };
+        return item;
+      }),
+    });
   },
+  async fetchData() {
+    const { navs, active } = this.data,
+      { queryData, list: currentList } = navs[active];
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    this.setData({
+      [`navs[${active}].requesting`]: true,
+    });
 
+    queryData.nav_id = navs[active].id;
+
+    const {
+        data: {
+          articles: { list },
+        },
+      } = await app.$api.findArticle(queryData),
+      end = list.lenth === queryData.page_size;
+
+    this.setData({
+      [`navs[${active}].list`]: [...currentList, ...list],
+      [`navs[${active}].requesting`]: false,
+      [`navs[${active}].end`]: !end,
+      [`navs[${active}].queryData.page_no`]: end
+        ? queryData.page_no + 1
+        : queryData.page_no,
+    });
   },
+  handleChange(e) {
+    const { index } = e.detail;
+    const { navs, active } = this.data;
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    this.setData({
+      active: index,
+      "queryData.nav_id": this.data.navs[index].id,
+    });
 
+    if (navs[active].list.length === 0) {
+      this.fetchData();
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  handleRefresh() {
+    const { active } = this.data;
+    this.setData(
+      {
+        [`navs[${active}].list`]: [],
+        [`navs[${active}].requesting`]: false,
+        [`navs[${active}].end`]: false,
+        [`navs[${active}].queryData.page_no`]: 1,
+      },
+      () => {
+        this.fetchData();
+      }
+    );
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+});

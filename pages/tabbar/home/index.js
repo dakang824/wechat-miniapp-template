@@ -1,8 +1,5 @@
-const app = getApp();
-
-let pageStart = 1;
-
-Page({
+import { Router, app } from "../../page";
+Router({
   data: {
     active: 0,
     navs: [],
