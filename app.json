@@ -1,16 +1,19 @@
 {
   "pages": [
-    "pages/teacher/student-list/index",
-    "pages/login/index",
     "pages/tabbar/home/index",
     "pages/tabbar/course-ware/index",
     "pages/tabbar/answer/index",
-    "pages/tabbar/profile/index"
+    "pages/tabbar/profile/index",
+    "pages/login/index"
   ],
   "subpackages": [
     {
       "root": "pages/home",
       "pages": ["index/index"]
+    },
+    {
+      "root": "pages/teacher",
+      "pages": ["student-list/index"]
     }
   ],
   "window": {

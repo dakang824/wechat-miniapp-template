@@ -1,3 +1,9 @@
+/*
+ * @Author: yukang 1172248038@qq.com
+ * @Description:
+ * @Date: 2021-01-05 21:27:27
+ * @LastEditTime: 2021-01-06 19:37:54
+ */
 import Api from "../config/axios/request";
 import { globalData } from "../store/globalData";
 let api = Api();
@@ -14,7 +20,7 @@ let request = api.create({
 request.interceptors.request.use(
   function (config) {
     //返回的是和wx.request相关的参数
-    console.log(config);
+    // console.log(config);
     wx.showNavigationBarLoading();
     wx.showLoading({
       title: "加载内容",
@@ -30,7 +36,7 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   function (config) {
-    console.log(config);
+    // console.log(config);
     wx.hideLoading();
     wx.hideNavigationBarLoading();
     return config.data || config;
