@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/teacher/student-list/index",
     "pages/login/index",
     "pages/tabbar/home/index",
     "pages/tabbar/course-ware/index",
@@ -61,6 +62,8 @@
     "van-toast": "@vant/weapp/toast/index",
     "van-notify": "@vant/weapp/notify/index",
     "van-empty": "@vant/weapp/empty/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-icon": "@vant/weapp/icon/index",
     "container": "/components/container"
   },
   "sitemapLocation": "sitemap.json"

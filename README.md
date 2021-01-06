@@ -1,12 +1,13 @@
 # wechat-miniapp-template
 
 #### 介绍
+
 微信小程序原生代码模版
 全局声明对象，通过修改声明的属性做到全局响应
 
 #### 安装教程
 
-直接下载或者git clone即可
+直接下载或者 git clone 即可
 
 #### 使用说明
 
@@ -32,8 +33,4 @@
 
 #### 参考贡献
 
-api模块设计参考wx-axios-promise，感谢
-
-#### 开发者
-
-wyfer_2015@sina.com，有任何问题请发邮件
+api 模块设计参考 wx-axios-promise，感谢
