@@ -4,7 +4,10 @@ import {
   bindDataFunc,
   bindToLoginBeforeFunc,
 } from "./page.utils";
-
+import $utils from "../utils/index";
+import * as $api from "../api/index";
+app.$utils = $utils;
+app.$api = $api;
 /**
  * 路由拦截器
  */

@@ -1,8 +1,8 @@
 .container {
   min-height: 100vh;
-  padding: 30rpx;
-  --button-primary-background-color: #1cbc9a;
-  --button-primary-border-color: #1cbc9a;
+  background-color: #f3f4f6;
+  --button-primary-background-color: $theme-color;
+  --button-primary-border-color: $theme-color;
 }
 
 .container--gap {

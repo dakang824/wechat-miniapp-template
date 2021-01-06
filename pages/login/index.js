@@ -5,6 +5,7 @@ Router(
       account: "",
       pwd: "",
       password: true,
+      loading: false,
     },
     onLoad(options) {},
     onReady() {},
@@ -13,17 +14,38 @@ Router(
         password: !this.data.password,
       });
     },
-    login() {
+    _checkData() {
       const { account, pwd } = this.data;
-      app.$store.isLogin = true;
-      app.$router.back();
+      if (account === "") {
+        app.$utils.Notify({ type: "danger", message: "请输入姓名" });
+        return false;
+      } else if (pwd === "") {
+        app.$utils.Notify({ type: "danger", message: "请输入工号" });
+        return false;
+      }
+      return true;
     },
-    onHide: function () {},
-    onUnload: function () {},
-    onPullDownRefresh: function () {},
-    onReachBottom: function () {},
-
-    onPageScroll: function (e) {},
+    async handleLogin() {
+      if (this._checkData()) {
+        this.setData({
+          loading: true,
+        });
+        const { code } = await wx.pro.login();
+        // const res = await wx.$api.wxLogin({ code });
+        const r = await wx.$api.bindAccount({ account, pwd });
+        console.log(r);
+        // app.$store.isLogin = true;
+        // app.$router.back();
+        this.setData({
+          loading: false,
+        });
+      }
+    },
+    onHide() {},
+    onUnload() {},
+    onPullDownRefresh() {},
+    onReachBottom() {},
+    onPageScroll(e) {},
   },
   false
 );

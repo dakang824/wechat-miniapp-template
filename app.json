@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/login/index",
     "pages/tabbar/home/index",
     "pages/tabbar/course-ware/index",
     "pages/tabbar/answer/index",
     "pages/tabbar/profile/index",
+    "pages/login/index",
 
     "pages/index/index",
     "pages/logs/logs"
@@ -21,12 +21,49 @@
     "navigationBarTitleText": "学习平台",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1CBC9A",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/tabbar/home/index",
+        "iconPath": "/assets/image/tabbar/index.png",
+        "selectedIconPath": "/assets/image/tabbar/index-select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabbar/course-ware/index",
+        "iconPath": "/assets/image/tabbar/course-ware.png",
+        "selectedIconPath": "/assets/image/tabbar/course-ware-select.png",
+        "text": "课件"
+      },
+      {
+        "pagePath": "pages/tabbar/answer/index",
+        "iconPath": "/assets/image/tabbar/answer.png",
+        "selectedIconPath": "/assets/image/tabbar/answer-select.png",
+        "text": "答题"
+      },
+      {
+        "pagePath": "pages/tabbar/profile/index",
+        "iconPath": "/assets/image/tabbar/my.png",
+        "selectedIconPath": "/assets/image/tabbar/my-select.png",
+        "text": "我的"
+      }
+    ]
+  },
   "usingComponents": {
     "van-popup": "@vant/weapp/popup/index",
     "van-button": "@vant/weapp/button/index",
     "van-image": "@vant/weapp/image/index",
     "van-dialog": "@vant/weapp/dialog/index",
     "van-field": "@vant/weapp/field/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-empty": "@vant/weapp/empty/index",
     "container": "/components/container"
   },
   "sitemapLocation": "sitemap.json"

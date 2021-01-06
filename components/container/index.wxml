@@ -1,5 +1,3 @@
-<view
-  class="container [ isGray ? 'container--gray' : '', isGap ? 'container--gap' : '' ]"
->
+<view class="container {{ isGray ? 'container--gray' : '' }} {{isGap ? 'container--gap' : ''}}">
   <slot></slot>
 </view>

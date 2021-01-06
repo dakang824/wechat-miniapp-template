@@ -1,0 +1,31 @@
+.list-item {
+  padding: 30rpx;
+  background: #fff;
+}
+
+.list-item__left {
+  color: #999;
+  font-size: 22rpx;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 150rpx;
+  margin-right: 25rpx;
+}
+
+.list-item__left__title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #222;
+}
+
+.list-item__right {
+  min-width: 226rpx;
+}

@@ -1,0 +1,45 @@
+// 颜色
+$text-normal: #222;
+$text-light: #666;
+$text-lighter: #999;
+$text-lightest: #c2c2c2;
+
+// 主题颜色
+$theme-color: #1cbc9a;
+$theme-color--active: rgba($theme-color, 0.7);
+$theme-color-dark: #15a788;
+$theme-color-disabled: #98bcf2;
+$theme-color-light: #e7fffb;
+
+// 边框
+$o-border-color: #e4e7ed;
+
+// 加粗
+$font-weight-bold: 600;
+
+// 圆角
+$border-radius-sm: 4rpx;
+$border-radius-xs: 8rpx;
+$border-radius-md: 10rpx;
+$border-radius-lg: 16rpx;
+$border-radius-big: 49rpx;
+$border-radius-circle: 50%;
+$border-radius-max: 999rpx;
+
+// 文字大小
+$font-size-biggest: 40rpx;
+$font-size-bigger: 36rpx;
+$font-size-big: 32rpx;
+$font-size-normal: 28rpx;
+$font-size-small: 26rpx;
+$font-size-smaller: 24rpx;
+$font-size-smallest: 22rpx;
+
+// 内边距
+$padding-xs: 25rpx;
+$padding-md: 30rpx;
+
+// 背景
+$bg-color: #f3f4f6;
+
+$shadow: 0 0 20rpx -5rpx rgba(0, 0, 0, 0.1);

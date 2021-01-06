@@ -8,7 +8,7 @@ Comp({
   properties: {
     isGray: {
       type: Boolean,
-      value: true,
+      value: false,
     },
     isGap: {
       type: Boolean,
@@ -18,6 +18,11 @@ Comp({
   needLogin: ["needLoginComp"],
   needToLogin: ["needToLoginComp"],
   data: {},
+  lifetimes: {
+    attached: () => {},
+    moved: () => {},
+    detached: () => {},
+  },
   methods: {
     needLoginComp() {
       console.log("登陆后我才执行-我是组件里面的");
