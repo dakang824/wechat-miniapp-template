@@ -1,2 +1,10 @@
-<!--pages/tabbar/answer/index.wxml-->
-<text>pages/tabbar/answer/index.wxml</text>
+<container>
+  <view class="u-flex">
+    <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+      <van-sidebar-item title="标签名 1" />
+      <van-sidebar-item title="标签名 2" />
+      <van-sidebar-item title="标签名 3" />
+    </van-sidebar>
+    <view class=""></view>
+  </view>
+</container>

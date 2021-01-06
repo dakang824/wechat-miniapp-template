@@ -62,8 +62,8 @@ $loading-color: #a5a5a5;
   font-size: 24rpx;
   text-align: center;
   opacity: 0;
-	transform: scale(0);
-	color: $theme-color;
+  transform: scale(0);
+  color: $theme-color;
 
   &:after {
     content: " ";
@@ -91,7 +91,7 @@ $loading-color: #a5a5a5;
 
   &--show {
     opacity: 1;
-		transform: scale(1);
+    transform: scale(1);
 
     &:after {
       transform: scaleX(1);
@@ -100,11 +100,10 @@ $loading-color: #a5a5a5;
 
   &--tran {
     opacity: 0;
-		transform: translateY(-100%);
+    transform: translateY(-100%);
     transition: opacity 0.35s linear, transform 0.35s linear;
   }
 }
-
 
 .empty {
   padding: 30rpx;
@@ -278,7 +277,9 @@ $loading-color: #a5a5a5;
   }
 
   @keyframes fadeDelay {
-    0%, 39%, 100% {
+    0%,
+    39%,
+    100% {
       opacity: 0.2;
     }
     40% {
@@ -287,7 +288,9 @@ $loading-color: #a5a5a5;
   }
 
   @-webkit-keyframes fadeDelay {
-    0%, 39%, 100% {
+    0%,
+    39%,
+    100% {
       opacity: 0.2;
     }
     40% {
@@ -295,6 +298,3 @@ $loading-color: #a5a5a5;
     }
   }
 }
-
-
-

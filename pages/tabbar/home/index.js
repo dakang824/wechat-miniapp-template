@@ -1,8 +1,37 @@
+/*
+ * @Author: yukang 1172248038@qq.com
+ * @Description:
+ * @Date: 2021-01-05 22:43:08
+ * @LastEditTime: 2021-01-07 00:12:50
+ */
 import { Router, app } from "../../page";
 Router({
   data: {
     active: 0,
     navs: [],
+
+    scroll: {
+      empty: {
+        img: "http://coolui.coolwl.cn/assets/mescroll-empty.png",
+      },
+      refresh: {
+        type: "default",
+        style: "black",
+        background: "#000",
+      },
+      loadmore: {
+        type: "default",
+        icon:
+          "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
+        background: "#f2f2f2",
+        title: {
+          show: true,
+          text: "加载中",
+          color: "#999",
+          shadow: 5,
+        },
+      },
+    },
   },
   async onLoad() {
     await this.fetchDataNavs();
@@ -17,18 +46,21 @@ Router({
         item.list = [];
         item.requesting = false;
         item.queryData = {
-          ope_id: 1,
-          prof_id: "",
+          prof_id: app.$store.user.userInfo.prof_group_id,
           nav_id: "",
           cate1: 1,
           page_no: 1,
           page_size: 10,
         };
+        item.scroll = {
+          pagination: {},
+          ...this.data.scroll,
+        };
         return item;
       }),
     });
   },
-  async fetchData() {
+  async fetchData(e) {
     const { navs, active } = this.data,
       { queryData, list: currentList } = navs[active];
 
@@ -40,19 +72,27 @@ Router({
 
     const {
         data: {
-          articles: { list },
+          articles: { list, total: length },
         },
       } = await app.$api.findArticle(queryData),
-      end = list.lenth === queryData.page_size;
+      limit = list.length,
+      end = limit === queryData.page_size;
 
     this.setData({
       [`navs[${active}].list`]: [...currentList, ...list],
-      [`navs[${active}].requesting`]: false,
-      [`navs[${active}].end`]: !end,
-      [`navs[${active}].queryData.page_no`]: end
-        ? queryData.page_no + 1
-        : queryData.page_no,
+      [`navs[${active}].queryData.page_no`]: queryData.page_no + 1,
+      [`navs[${active}].scroll.pagination`]: {
+        page: queryData.page_no + 1,
+        totalPage: length / queryData.page_size,
+        limit,
+        length,
+      },
     });
+
+    if (e && end) {
+      const select = `.scroll_${e.currentTarget.dataset.ind}`;
+      this.selectComponent(select).loadEnd();
+    }
   },
   handleChange(e) {
     const { index } = e.detail;
@@ -72,8 +112,6 @@ Router({
     this.setData(
       {
         [`navs[${active}].list`]: [],
-        [`navs[${active}].requesting`]: false,
-        [`navs[${active}].end`]: false,
         [`navs[${active}].queryData.page_no`]: 1,
       },
       () => {

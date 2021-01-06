@@ -1,9 +1,13 @@
 <container>
   <van-tabs sticky bind:change='handleChange' active='{{active}}' color='#1cbc9a' title-active-color='#1cbc9a' border wx:if='{{navs.length}}' swipeable animated>
-    <van-tab title="{{item.title}}" wx:for='{{navs}}' wx:key="index">
-      <scroll requesting="{{item.requesting}}" end="{{item.end}}" empty-show="{{!item.list.length}}" list-count="{{item.list.length}}" has-top bind:refresh="handleRefresh" bind:more="fetchData">
-        <list-item wx:for='{{item.list}}' wx:for-item="itList" wx:key="index"></list-item>
-      </scroll>
+    <van-tab title="{{item.title}}" wx:for='{{navs}}' wx:key="{{item.id}}">
+      <view class="scroll">
+        <coolui-scroll scrollOption="{{item.scroll}}" bindrefresh="handleRefresh" bindloadMore="fetchData" background="#fff" class='{{"scroll_"+index}}' data-ind='{{index}}'>
+          <view class="list-inner" slot="inner">
+            <list-item wx:for="{{item.list}}"></list-item>
+          </view>
+        </coolui-scroll>
+      </view>
     </van-tab>
   </van-tabs>
 </container>

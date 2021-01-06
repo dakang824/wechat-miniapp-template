@@ -29,12 +29,6 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/tabbar/home/index",
-        "iconPath": "/assets/image/tabbar/index.png",
-        "selectedIconPath": "/assets/image/tabbar/index-select.png",
-        "text": "首页"
-      },
-      {
         "pagePath": "pages/tabbar/course-ware/index",
         "iconPath": "/assets/image/tabbar/course-ware.png",
         "selectedIconPath": "/assets/image/tabbar/course-ware-select.png",
@@ -67,6 +61,9 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-search": "@vant/weapp/search/index",
     "van-icon": "@vant/weapp/icon/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "coolui-scroll": "coolui-scroller/index",
     "container": "/components/container"
   },
   "sitemapLocation": "sitemap.json"

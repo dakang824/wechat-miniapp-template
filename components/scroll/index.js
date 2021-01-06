@@ -34,7 +34,7 @@ Component({
     // 下拉刷新的高度
     refreshSize: {
       type: Number,
-      value: 90,
+      value: 80,
       observer: "refreshChange",
     },
     // 顶部高度
@@ -149,6 +149,7 @@ Component({
     requestingEnd(newVal, oldVal) {
       if (this.data.mode === "more") return;
 
+      console.log(newVal, oldVal);
       if (oldVal === true && newVal === false) {
         setTimeout(() => {
           this.setData({

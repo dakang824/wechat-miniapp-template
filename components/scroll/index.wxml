@@ -6,6 +6,7 @@
     <movable-view class="scroll" style="height: calc(100vh + 40rpx + {{refreshSize}}rpx)" bind:change="change" bind:touchend="touchend" direction="vertical" disabled="{{refreshStatus >= 3}}" y='{{move}}'>
       <scroll-view class="scroll__view" style="padding-bottom: {{bottomSize}}rpx;padding-top: {{topSize}}rpx;" scroll-y="{{refreshStatus == 1}}" bindscroll="scroll" scroll-top="{{scrollTop}}" enable-back-to-top="{{enableBackToTop}}" lower-threshold="{{80}}rpx" bindscrolltolower="more">
         <view id="refresh" class="scroll__refresh {{successShow ? 'scroll__refresh--hidden' : ''}}" style="height: {{refreshSize}}rpx;padding: 20rpx 0;">
+          {{refreshStatus}}
           <view class="scroll__loading">
             <view wx:if="{{refreshStatus == 1 || refreshStatus == 2}}" class="{{refreshStatus == 2 ? 'rotate' : ''}} arrow"></view>
             <view wx:if="{{refreshStatus == 3}}" class="loading">

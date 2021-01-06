@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@vant/weapp": "^1.6.4",
+    "coolui-scroller": "^2.0.1",
     "wx-promise-pro": "^3.2.2"
   }
 }

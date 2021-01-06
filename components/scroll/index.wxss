@@ -316,7 +316,9 @@
 }
 
 @keyframes fadeDelay {
-  0%, 39%, 100% {
+  0%,
+  39%,
+  100% {
     opacity: 0.2;
   }
   40% {
@@ -325,7 +327,9 @@
 }
 
 @-webkit-keyframes fadeDelay {
-  0%, 39%, 100% {
+  0%,
+  39%,
+  100% {
     opacity: 0.2;
   }
   40% {
