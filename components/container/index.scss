@@ -1,16 +1,15 @@
 @import "../../assets/css/variables";
 .container {
   min-height: 100vh;
-  background-color: $bg-color;
-  --button-primary-background-color: $theme-color;
-  --button-primary-border-color: $theme-color;
+  --button-primary-background-color: #1cbc9a;
+  --button-primary-border-color: #1cbc9a;
 
   &--gap {
     padding-top: 20rpx;
   }
 
   &--gray {
-    background-color: #f8f8f8;
+    background-color: $bg-color;
   }
 
   &::before {

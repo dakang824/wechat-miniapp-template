@@ -1,18 +1,18 @@
-
-<van-notify id="van-notify" />
-<van-toast id="van-toast" />
-<van-dialog id="van-dialog" />
 <container>
-  
+  <van-notify id="van-notify" />
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
   <view class="login">
     <view class="login__title">需要提供以下信息绑定账户：</view>
     <view class="login__form">
       <van-cell-group>
         <van-field model:value="{{ account }}" placeholder="请输入姓名" clearable left-icon='manager' />
-        <van-field model:value="{{ pwd }}" password='{{password}}' placeholder="请输入工号" clearable left-icon='lock' right-icon='{{password?"closed-eye":"eye-o"}}' bind:click-icon='handleIcon'/>
+        <van-field model:value="{{ pwd }}" password='{{password}}' placeholder="请输入工号" clearable left-icon='lock' right-icon='{{password?"closed-eye":"eye-o"}}' bind:click-icon='handleIcon' />
       </van-cell-group>
       <view class="login__btn">
-        <van-button type="primary" bind:click="handleLogin" block loading='{{loading}}' disabled='{{loading}}'>绑定</van-button>
+        <van-button type="primary" bind:click="handleLogin" block loading='{{loading}}' disabled='{{loading}}'>
+          绑定
+        </van-button>
       </view>
     </view>
   </view>

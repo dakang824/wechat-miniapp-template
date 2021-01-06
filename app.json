@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/login/index",
     "pages/tabbar/home/index",
     "pages/tabbar/course-ware/index",
     "pages/tabbar/answer/index",
-    "pages/tabbar/profile/index",
-    "pages/login/index"
+    "pages/tabbar/profile/index"
   ],
   "subpackages": [
     {

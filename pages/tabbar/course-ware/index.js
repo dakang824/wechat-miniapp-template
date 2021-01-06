@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:课件
  * @Date: 2021-01-05 22:39:26
- * @LastEditTime: 2021-01-06 17:18:51
+ * @LastEditTime: 2021-01-06 17:40:24
  */
 import { Router, app } from "../../page";
 Router({
@@ -18,7 +18,7 @@ Router({
     const {
       data: { profs },
     } = await app.$api.getMyProfession({ group_id: 1 });
-    return this.setData({
+    this.setData({
       navs: profs.map((item) => {
         item.list = [];
         item.requesting = false;

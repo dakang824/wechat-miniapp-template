@@ -7,8 +7,6 @@ Router(
       password: true,
       loading: false,
     },
-    onLoad(options) {},
-    onReady() {},
     handleIcon() {
       this.setData({
         password: !this.data.password,
@@ -30,10 +28,11 @@ Router(
         this.setData({
           loading: true,
         });
-        const { code } = await wx.pro.login();
-        // const res = await wx.$api.wxLogin({ code });
-        const r = await wx.$api.bindAccount({ account, pwd });
+        const { code } = await app.pro.login();
+        // const res = await app.$api.wxLogin({ code });
+        const r = await app.$api.bindAccount({ account, pwd });
         console.log(r);
+
         // app.$store.isLogin = true;
         // app.$router.back();
         this.setData({
@@ -41,11 +40,6 @@ Router(
         });
       }
     },
-    onHide() {},
-    onUnload() {},
-    onPullDownRefresh() {},
-    onReachBottom() {},
-    onPageScroll(e) {},
   },
   false
 );

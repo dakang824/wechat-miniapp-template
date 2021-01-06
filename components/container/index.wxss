@@ -1,8 +1,7 @@
 .container {
   min-height: 100vh;
-  background-color: #f3f4f6;
-  --button-primary-background-color: $theme-color;
-  --button-primary-border-color: $theme-color;
+  --button-primary-background-color: #1cbc9a;
+  --button-primary-border-color: #1cbc9a;
 }
 
 .container--gap {
@@ -10,7 +9,7 @@
 }
 
 .container--gray {
-  background-color: #f8f8f8;
+  background-color: #f3f4f6;
 }
 
 .container::before {
