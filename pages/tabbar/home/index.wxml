@@ -1,12 +1,56 @@
-<container>
-  <van-tabs sticky bind:change='handleChange' active='{{active}}' color='#1cbc9a' title-active-color='#1cbc9a' border wx:if='{{navs.length}}' swipeable animated>
-    <van-tab title="{{item.title}}" wx:for='{{navs}}' wx:key="{{item.id}}">
-      <view class="scroll">
-        <coolui-scroll scrollOption="{{item.scroll}}" bindrefresh="handleRefresh" bindloadMore="fetchData" background="#fff" class='{{"scroll_"+index}}' data-ind='{{index}}'>
-          <view class="list-inner" slot="inner">
-            <list-item wx:for="{{item.list}}"></list-item>
-          </view>
-        </coolui-scroll>
+<!-- * @Author: yukang 1172248038@qq.com
+ * @Description: 首页
+ * @Date: 2021-01-05 22:43:08
+* @LastEditTime: 2021-01-07 22:25:38-->
+<container class="home">
+  <van-tabs
+    sticky
+    bind:change="handleChange"
+    active="{{ active }}"
+    color="#1cbc9a"
+    title-active-color="#1cbc9a"
+    border
+    wx:if="{{ navs.length }}"
+    swipeable
+    animated
+    tab-active-class="home__tab__active"
+  >
+    <van-tab
+      title="{{ item.title }}"
+      wx:for="{{ navs }}"
+      wx:key="id"
+      tab-active-class="home__tab__active"
+    >
+      <view class="home__box">
+        <van-tabs
+          wx:if="{{ item.open_prof&&profs.length }}"
+          color="#1cbc9a"
+          title-active-color="#1cbc9a"
+          ellipsis="{{ false }}"
+          border="{{ false }}"
+          line-height="0"
+          bind:change="handleChangeProfs"
+        >
+          <van-tab title="{{ item.name }}" wx:for="{{ profs }}" wx:key="id"></van-tab>
+          <!-- <view slot="nav-right" wx:if="{{ profs.length > 4 }}" class="home__more u-flex">
+            <image src="/assets/image/more.png" />
+          </view>-->
+        </van-tabs>
+
+        <view class="home__scroll">
+          <scroll
+            scrollOption="{{ item.scroll }}"
+            bindrefresh="handleRefresh"
+            bindloadMore="fetchData"
+            background="#fff"
+            class="{{ 'scroll_' + index }}"
+            data-ind="{{ index }}"
+          >
+            <view class="list-inner" slot="inner">
+              <list-item wx:for="{{ item.list }}" wx:key="index" mode></list-item>
+            </view>
+          </scroll>
+        </view>
       </view>
     </van-tab>
   </van-tabs>

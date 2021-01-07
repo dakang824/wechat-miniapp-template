@@ -1,3 +1,17 @@
-.scroll {
+.home__scroll {
   height: calc(100vh - 88rpx);
+}
+
+.home__tab__active {
+  font-size: 28rpx !important;
+  font-weight: bold !important;
+}
+
+.home__box .van-tabs__wrap {
+  margin-right: 25rpx;
+}
+
+.home__more image {
+  width: 34rpx;
+  height: 34rpx;
 }

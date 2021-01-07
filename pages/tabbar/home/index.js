@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-01-07 00:12:50
+ * @LastEditTime: 2021-01-07 23:14:50
  */
 import { Router, app } from "../../page";
 Router({
@@ -12,7 +12,7 @@ Router({
 
     scroll: {
       empty: {
-        img: "http://coolui.coolwl.cn/assets/mescroll-empty.png",
+        img: "/assets/image/empty/empty_data.png",
       },
       refresh: {
         type: "default",
@@ -34,8 +34,16 @@ Router({
     },
   },
   async onLoad() {
+    await this.getMyProfession();
     await this.fetchDataNavs();
     await this.fetchData();
+  },
+  async getMyProfession() {
+    const { prof_group_id: group_id } = app.$store.user.userInfo;
+    const {
+      data: { profs },
+    } = await app.$api.getMyProfession({ group_id });
+    this.setData({ profs, group_id });
   },
   async fetchDataNavs() {
     const {
@@ -44,9 +52,8 @@ Router({
     this.setData({
       navs: navs.map((item) => {
         item.list = [];
-        item.requesting = false;
         item.queryData = {
-          prof_id: app.$store.user.userInfo.prof_group_id,
+          prof_id: item.open_prof ? this.data.profs[0].id : this.data.group_id,
           nav_id: "",
           cate1: 1,
           page_no: 1,
@@ -94,17 +101,23 @@ Router({
       this.selectComponent(select).loadEnd();
     }
   },
+  handleChangeProfs(e) {
+    const { active } = this.data;
+    this.setData({
+      [`navs[${active}].queryData.prof_id`]: this.data.profs[e.detail.index].id,
+    });
+    this.handleRefresh();
+  },
   handleChange(e) {
     const { index } = e.detail;
     const { navs, active } = this.data;
 
     this.setData({
       active: index,
-      "queryData.nav_id": this.data.navs[index].id,
     });
 
     if (navs[active].list.length === 0) {
-      this.fetchData();
+      this.handleRefresh();
     }
   },
   handleRefresh() {

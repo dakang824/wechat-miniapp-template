@@ -1,72 +1,17 @@
-.top-wrap {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  background-color: #ffffff;
-  z-index: 99;
-  -webkit-box-shadow: 0 0 20rpx -5rpx rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 20rpx -5rpx rgba(0, 0, 0, 0.1);
+.home__scroll {
+  height: calc(100vh - 88rpx);
 }
 
-swiper {
-  height: 100vh;
+.home__tab__active {
+  font-size: 28rpx !important;
+  font-weight: bold !important;
 }
 
-.cells {
-  background: #ffffff;
-  margin-top: 20rpx;
+.home__box .van-tabs__wrap {
+  margin-right: 25rpx;
 }
 
-.cell {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 20rpx;
-}
-
-.cell:not(:last-child) {
-  border-bottom: 1rpx solid #ebedf0;
-}
-
-.cell__bd {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.cell__bd .name {
-  height: 80rpx;
-  font-size: 28rpx;
-  margin-bottom: 12rpx;
-}
-
-.cell__bd .tags {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.cell__bd .tags .tags__bd {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.cell__bd .tags .tags__bd > view {
-  display: inline-block;
-  border: 1px solid rgba(28, 188, 154, 0.6);
-  color: rgba(28, 188, 154, 0.6);
-  font-size: 20rpx;
-  height: 30rpx;
-  line-height: 30rpx;
-  padding: 0 8rpx;
-}
-
-.cell__bd .tags .date {
-  color: #999999;
-  font-size: 24rpx;
+.home__more image {
+  width: 34rpx;
+  height: 34rpx;
 }

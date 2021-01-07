@@ -2,6 +2,7 @@
   min-height: 100vh;
   --button-primary-background-color: #1cbc9a;
   --button-primary-border-color: #1cbc9a;
+  --sidebar-selected-border-color: #1cbc9a;
 }
 
 .container--gap {

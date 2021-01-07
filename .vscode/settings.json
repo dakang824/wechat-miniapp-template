@@ -1,7 +1,9 @@
 {
   "files.associations": {
-    "*.wxml": "wxml",
-    "*.wxss": "css"
+    "*.wxml": "html",
+    "*.wxss": "css",
+    "*.cjson": "jsonc",
+    "*.wxs": "javascript"
   },
   "editor.quickSuggestions": {
     "strings": true

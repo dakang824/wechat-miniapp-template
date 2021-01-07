@@ -2,13 +2,12 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-06 20:46:56
+ * @LastEditTime: 2021-01-07 14:12:13
  */
 import Api from "../config/axios/request";
 import { globalData } from "../store/globalData";
 
-let api = Api(),
-  app = getApp();
+let api = Api();
 let request = api.create({
   url: globalData.baseURL, //默认的接口后缀
   method: "get", //默认的HTTP 请求方法

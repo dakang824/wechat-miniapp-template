@@ -1,7 +1,6 @@
 {
   "disableScroll": true,
   "usingComponents": {
-    "scroll": "/components/scroll/index",
     "list-item": "/components/list-item/index"
   }
 }
