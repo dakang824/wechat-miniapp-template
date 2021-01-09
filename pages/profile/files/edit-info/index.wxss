@@ -1,0 +1,32 @@
+.edit-info {
+  padding: 25rpx;
+}
+
+.edit-info__title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+}
+
+.edit-info__btn {
+  margin: 200rpx 30rpx 0;
+}
+
+.edit-info__textarea {
+  color: #323233;
+}
+
+.edit-info__textarea__input {
+  height: 320rpx;
+  width: 652rpx;
+  font-size: 28rpx;
+  color: #333;
+  background-color: #e4e7ed;
+  border-radius: 10rpx;
+  padding: 25rpx;
+}
+
+.edit-info__textarea__length {
+  text-align: right;
+  margin-top: 20rpx;
+}

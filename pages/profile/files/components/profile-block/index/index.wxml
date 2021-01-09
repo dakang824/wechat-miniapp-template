@@ -2,18 +2,18 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-09 19:27:51
+ * @LastEditTime: 2021-01-09 20:35:06
 -->
 <view class="profile-block">
-  <view class="profile-block__title  u-flex u-row-between van-hairline--bottom">
+  <view class="profile-block__title u-flex u-row-between van-hairline--bottom">
     <view>个人介绍</view>
-    <u-icon :name="icon" :color="vuex_theme" size="34" bindtap="handleClick" />
+    <van-icon name="{{icon}}" bind:click="handleClick" color='#1CBC9A' size='34rpx'/>
   </view>
-  <block v-if="type === 1">
-    <view v-if="showJump" class="profile-block__cell">
+  <block wx:if="{{type === 1}}">
+    <view wx:if="{{showJump}}" class="profile-block__cell">
       <view class="u-flex u-row-between">
         <view class="profile-block__cell__title">EPC工程管理小程序</view>
-        <u-icon name="arrow-right" color="#999" bindtap="handleJump"></u-icon>
+        <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
       </view>
       <view class="profile-block__cell__tag">
         <text>2018年06月-至今</text> <text>产品经理</text>
@@ -25,15 +25,15 @@
     </view>
   </block>
 
-  <block v-if="type === 2">
-    <view v-if="showJump" class="profile-block__cell">
+  <block wx:if="{{type === 2}}">
+    <view wx:if="{{showJump}}" class="profile-block__cell">
       <view class="u-flex u-row-between">
         <view class="profile-block__cell__title">EPC工程管理小程序</view>
-        <u-icon name="arrow-right" color="#999" bindtap="handleJump"></u-icon>
+        <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
       </view>
     </view>
     <view class="profile-block__info">
-      <van-imag width="100%" height="333rpx" :src="src"></van-imag>
+      <van-image width="100%" height="333rpx" src="{{src}}"></van-image>
     </view>
   </block>
 </view>

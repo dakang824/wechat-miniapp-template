@@ -18,7 +18,8 @@
         "files/index",
         "skill/index",
         "qr-code/index",
-        "opinion/index"
+        "opinion/index",
+        "files/edit-info/index"
       ]
     },
     {

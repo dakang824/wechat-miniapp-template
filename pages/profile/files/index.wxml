@@ -6,9 +6,9 @@
 -->
 <container class="files" is-gray>
   <profile-header />
-  <profile-block :show-jump="false" icon="edit-pen-fill" bindtap="handleAddInfo" />
-  <profile-block bindtap="handleAddProject" />
-  <profile-block :type="2" bindtap="handleAddProject" />
+  <profile-block show-jump="{{false}}" bind:click="handleAddInfo" />
+  <profile-block bindtap="handleAddProject" icon="add-o" />
+  <profile-block type="{{2}}" bindtap="handleAddProject" icon="add-o" />
 
   <view class="files__btn">
     <van-button type="primary" block>保存</van-button>

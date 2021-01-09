@@ -2,11 +2,11 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的档案头部用户信息
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-09 19:23:10
+ * @LastEditTime: 2021-01-09 20:09:20
 -->
 <view class="profile-header u-flex">
   <view class="profile-header__image">
-    <u-avatar :src="src" size="large"></u-avatar>
+    <van-image width="120rpx" height="120rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" round/>
   </view>
   <view class="profile-header__info">
     <view class="profile-header__info__name">何银辉</view>

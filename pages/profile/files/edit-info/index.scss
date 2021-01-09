@@ -1,0 +1,29 @@
+@import "../../../../assets/css/variables";
+.edit-info {
+  padding: $padding-xs;
+  &__title {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: $padding-md;
+  }
+  &__btn {
+    margin: 200rpx $padding-md 0;
+  }
+
+  &__textarea {
+    color: #323233;
+    &__input {
+      height: 320rpx;
+      width: 652rpx;
+      font-size: 28rpx;
+      color: $text-normal;
+      background-color: $border-color;
+      border-radius: $border-radius-md;
+      padding: 25rpx;
+    }
+    &__length {
+      text-align: right;
+      margin-top: 20rpx;
+    }
+  }
+}
