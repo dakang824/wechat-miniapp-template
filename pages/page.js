@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-09 22:46:02
+ * @LastEditTime: 2021-01-09 23:15:59
  */
 const app = getApp();
 import {
@@ -10,7 +10,6 @@ import {
   bindDataFunc,
   bindToLoginBeforeFunc,
 } from "./page.utils";
-console.log(app);
 /**
  * 路由拦截器
  */
@@ -33,6 +32,12 @@ const Router = (pageObj, share = true) => {
     let _page = pageObj.onShow;
     pageObj.onShow = function () {
       app.$router.setRouter();
+
+      // 判断用户是否登录
+      if (!app.$store.isLogin) {
+        app.$router.toLogin();
+        return;
+      }
 
       //公共参数
       this.setData({

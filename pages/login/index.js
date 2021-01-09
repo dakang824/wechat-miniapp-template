@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:用户登录
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-06 19:36:58
+ * @LastEditTime: 2021-01-09 23:18:24
  */
 import { Router, app } from "../page";
 Router(
@@ -13,9 +13,10 @@ Router(
       password: true,
       loading: false,
     },
-    onShow() {
+    onLoad() {
       wx.hideHomeButton();
     },
+    onShow() {},
     handleIcon() {
       this.setData({
         password: !this.data.password,
