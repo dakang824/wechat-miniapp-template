@@ -6,6 +6,7 @@
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
+<van-dialog id="van-dialog" />
 <container>
   <view class="answer">
     <van-tabs active="{{ active }}" bind:change="handleChange" type="card" color="#1cbc9a">
@@ -13,7 +14,11 @@
       <van-tab title="背题模式"></van-tab>
     </van-tabs>
 
-    <swiper class="answer__swipe" bindanimationfinish="bindanimationfinish">
+    <swiper
+      class="answer__swipe"
+      bindanimationfinish="bindanimationfinish"
+      bindchange="handleSwiperChange"
+    >
       <swiper-item wx:for="{{list}}" wx:key="id">
         <view class="answer__swipe-item">
           <view class="u-flex u-row-between">
@@ -61,32 +66,33 @@
               >完成</van-button>
             </view>
           </view>
-          <view class="answer__swipe-item__footer u-flex u-row-between">
-            <view
-              class="answer__swipe-item__footer__left"
-              bindtap="handleCollect"
-              data-i="{{index+'_'+item.id}}"
-            >
-              <van-icon
-                name="{{item.collect?'like':'like-o'}}"
-                size="36rpx"
-                color="{{item.collect?'#ff665b':''}}"
-              />
-              <text>收藏</text>
-            </view>
-            <view class="answer__swipe-item__footer__right u-flex u-row-between">
-              <view class="right">
-                <van-icon name="checked" size="36rpx" />
-                <text>{{item.right_count}}</text>
-              </view>
-              <view class="wrong">
-                <van-icon name="clear" size="36rpx" />
-                <text>{{item.wrong_count}}</text>
-              </view>
-            </view>
-          </view>
         </view>
       </swiper-item>
     </swiper>
+    <view class="answer__swipe-item__footer u-flex u-row-between">
+      <view
+        class="answer__swipe-item__footer__left"
+        bindtap="handleCollect"
+        data-i="{{swiperCurrent+'_'+list[swiperCurrent].id}}"
+      >
+        <van-icon
+          name="{{list[swiperCurrent].collect?'like':'like-o'}}"
+          size="36rpx"
+          color="{{list[swiperCurrent].collect?'#ff665b':''}}"
+        />
+        <text>收藏</text>
+      </view>
+      <van-count-down time="{{ time }}" bind:finish="timeFinish" slot="title" />
+      <view class="answer__swipe-item__footer__right u-flex u-row-between">
+        <view class="right">
+          <van-icon name="checked" size="36rpx" />
+          <text>{{list[swiperCurrent].right_count}}</text>
+        </view>
+        <view class="wrong">
+          <van-icon name="clear" size="36rpx" />
+          <text>{{list[swiperCurrent].wrong_count}}</text>
+        </view>
+      </view>
+    </view>
   </view>
 </container>

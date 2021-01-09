@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:答题
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-08 18:33:19
+ * @LastEditTime: 2021-01-09 16:51:49
  */
 import { Router, app } from "../../page";
 Router({
@@ -72,13 +72,20 @@ Router({
     const current = this.data.list[e.currentTarget.dataset.ind],
       { active, navs, activeKey } = this.data;
     const params = JSON.stringify({
-      prof_id: navs[active].id,
-      module_id: navs[active].modules[activeKey].id,
+      prof_id: 1 || navs[active].id,
+      module_id: 1 || navs[active].modules[activeKey].id,
       page_no: 1,
       page_size: 30,
       api: current.api,
+      company_id: app.$store.user.userInfo.comp_id,
     });
-    app.$router.nav("/pages/answer/index/index?params=", params);
+
+    app.$router.nav(
+      `/pages/answer/${
+        current.api === "getZiCeQues" ? "form" : "index"
+      }/index?params=`,
+      params
+    );
   },
   handleChange(e) {
     const { index } = e.detail;

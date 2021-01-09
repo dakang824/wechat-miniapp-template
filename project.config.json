@@ -63,6 +63,12 @@
         {
           "name": "pages/answer/index/index",
           "pathName": "pages/answer/index/index",
+          "query": "params={\"prof_id\":2,\"module_id\":1,\"page_no\":1,\"page_size\":30,\"api\":\"getZiCeQues\",\"judge_count\":\"12\",\"radio_count\":\"1\",\"check_count\":\"1\",\"time\":\"1\"}",
+          "scene": null
+        },
+        {
+          "name": "pages/tabbar/answer/index",
+          "pathName": "pages/tabbar/answer/index",
           "query": "params={\"prof_id\":2,\"module_id\":1,\"page_no\":1,\"page_size\":30,\"api\":\"getQuesByOrder\"}",
           "scene": null
         }

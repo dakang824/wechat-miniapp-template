@@ -1,0 +1,4 @@
+.form__btn {
+  padding: 25rpx;
+  margin-top: 50rpx;
+}

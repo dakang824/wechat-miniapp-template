@@ -2,12 +2,16 @@
 .answer {
   margin-top: $padding-xs;
   &__swipe {
-    height: calc(100vh - 124rpx);
+    height: calc(100vh - 197rpx);
+    overflow: auto;
     width: 100wh;
-    margin: $padding-md 0;
+    margin: $padding-md 0 0;
     position: relative;
+    swiper-item {
+      overflow: auto;
+    }
     &-item {
-      padding: 0 $padding-md;
+      padding: 0 $padding-md $padding-md;
       &__checkbox {
         margin-right: 20rpx;
       }
@@ -54,6 +58,7 @@
         padding: $padding-md;
         color: #999;
         font-size: 28rpx;
+        background: #fff;
         &__left,
         .right,
         .wrong {

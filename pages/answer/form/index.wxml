@@ -1,0 +1,43 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 填写信息
+ * @Date: 2021-01-09 14:41:05
+ * @LastEditTime: 2021-01-09 14:46:02
+-->
+<van-notify id="van-notify" />
+<container class="form">
+  <van-cell-group>
+    <van-field
+      type="number"
+      label="判断题数量"
+      model:value="{{ judge_count }}"
+      placeholder="请输入判断题数量"
+      required
+    />
+    <van-field
+      type="number"
+      label="单选题数量"
+      model:value="{{ radio_count }}"
+      placeholder="请输入单选题数量"
+      required
+    />
+    <van-field
+      type="number"
+      label="多选题数量"
+      model:value="{{ check_count }}"
+      placeholder="请输入多选题数量"
+      required
+    />
+    <van-field
+      type="number"
+      label="考试时间"
+      model:value="{{ time }}"
+      placeholder="请输入考试时间 单位(分钟)"
+      required
+    />
+  </van-cell-group>
+
+  <view class="form__btn">
+    <van-button type="primary" block bind:click="handleClick">确认</van-button>
+  </view>
+</container>

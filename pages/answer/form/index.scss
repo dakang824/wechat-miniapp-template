@@ -1,0 +1,7 @@
+@import "../../../assets/css/variables";
+.form {
+  &__btn {
+    padding: $padding-xs;
+    margin-top: 50rpx;
+  }
+}
