@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-06 19:30:38
+ * @LastEditTime: 2021-01-08 18:48:16
  */
 const app = getApp();
 import {

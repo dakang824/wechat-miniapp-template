@@ -22,17 +22,26 @@
       wx:key="id"
       tab-active-class="home__tab__active"
     >
-      <view class="u-flex u-col-top">
-        <van-sidebar
-          active-key="{{ activeKey }}"
-          bind:change="onChange"
-          wx:if="{{item.modules.length}}"
-          custom-class="answer__box"
-        >
+      <view class="u-flex u-col-top" wx:if="{{item.modules.length}}">
+        <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
           <van-sidebar-item title="{{item.name}}" wx:for="{{item.modules}}" wx:key="id" />
         </van-sidebar>
-        <view>{{navs[active].modules.length}}</view>
+        <view class="answer__box u-flex u-row-between u-flex-wrap">
+          <view
+            class="answer__box__block u-flex u-row-center u-col-center"
+            wx:for="{{list}}"
+            wx:key="index"
+            bindtap="handleClick"
+            data-ind="{{index}}"
+          >
+            <view>
+              <image src="{{item.icon}}" style="width:{{item.width}};height:{{item.height}}" />
+              <view>{{item.name}}</view>
+            </view>
+          </view>
+        </view>
       </view>
+      <van-empty description="暂无模块" wx:else />
     </van-tab>
   </van-tabs>
 </container>

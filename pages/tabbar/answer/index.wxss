@@ -1,1 +1,24 @@
-/* No CSS */
+.answer__box {
+  width: 100%;
+  padding: 30rpx;
+}
+
+.answer__box__block {
+  background: #e7fffb;
+  -webkit-box-flex: 0.48;
+      -ms-flex: 0.48;
+          flex: 0.48;
+  min-width: 48%;
+  border-radius: 20rpx;
+  text-align: center;
+  font-size: 26rpx;
+  padding: 19rpx 0;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.answer__box__block image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-bottom: 10rpx;
+}

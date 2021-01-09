@@ -1,0 +1,92 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description:开始考试
+ * @Date: 2021-01-08 18:19:16
+ * @LastEditTime: 2021-01-08 18:59:26
+-->
+<wxs src="../../../wxs/utils.wxs" module="utils" />
+<van-notify id="van-notify" />
+<container>
+  <view class="answer">
+    <van-tabs active="{{ active }}" bind:change="handleChange" type="card" color="#1cbc9a">
+      <van-tab title="答题模式"></van-tab>
+      <van-tab title="背题模式"></van-tab>
+    </van-tabs>
+
+    <swiper class="answer__swipe">
+      <swiper-item wx:for="{{list}}" wx:key="id">
+        <view class="answer__swipe-item">
+          <view class="u-flex u-row-between">
+            <van-tag
+              type="primary"
+              size="medium"
+            >{{item.type===1?'单选':item.type===2?'多选':item.type===3?'判断':''}}</van-tag>
+            <text class="answer__swipe-item__total">{{index+1}}/{{total}}</text>
+          </view>
+          <view class="answer__swipe-item__title">{{item.content}}</view>
+          <view class="answer__swipe-item__ul">
+            <view
+              class="answer__swipe-item__ul__li u-flex u-col-center {{item.result !== null&&(item.result&it.value||it.rig||item.type===2)?(it.rig?'success':'error'):''}}"
+              wx:for="{{item.queOptions}}"
+              wx:key="id"
+              wx:for-index="idx"
+              wx:for-item="it"
+              data-i="{{it}}"
+              data-ind="{{index}}"
+              bindtap="handleSelect"
+            >
+              <van-checkbox
+                value="{{utils.includes(item.res,it.name)}}"
+                wx:if="{{item.type===2}}"
+                checked-color="#1CBC9A"
+                custom-class="answer__swipe-item__checkbox"
+              ></van-checkbox>
+              {{it.name}}
+              {{it.content}}
+              <van-icon
+                size="35rpx"
+                name="{{it.rig ?'success':'cross'}}"
+                color="{{it.rig ?'#1cbc9a':'#ff665b'}}"
+                wx:if="{{item.result !== null&&(item.result&it.value||it.rig||item.type===2)}}"
+                custom-class="icon_right"
+              />
+            </view>
+            <view class="answer__swipe_btn u-flex u-row-center" wx:if="{{item.type===2}}">
+              <van-button
+                type="primary"
+                custom-class="btn"
+                size="normal"
+                data-ind="{{index}}"
+                bind:click="handleMultipleChoice"
+              >完成</van-button>
+            </view>
+          </view>
+          <view class="answer__swipe-item__footer u-flex u-row-between">
+            <view
+              class="answer__swipe-item__footer__left"
+              bindtap="handleCollect"
+              data-i="{{index+'_'+item.id}}"
+            >
+              <van-icon
+                name="{{item.collect?'like':'like-o'}}"
+                size="36rpx"
+                color="{{item.collect?'#ff665b':''}}"
+              />
+              <text>收藏</text>
+            </view>
+            <view class="answer__swipe-item__footer__right u-flex u-row-between">
+              <view class="right">
+                <van-icon name="checked" size="36rpx" />
+                <text>{{item.right_count}}</text>
+              </view>
+              <view class="wrong">
+                <van-icon name="clear" size="36rpx" />
+                <text>{{item.wrong_count}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+</container>

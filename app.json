@@ -12,6 +12,10 @@
       "pages": ["index/index"]
     },
     {
+      "root": "pages/answer",
+      "pages": ["index/index"]
+    },
+    {
       "root": "pages/teacher",
       "pages": ["student-list/index"]
     }
@@ -69,6 +73,9 @@
     "van-icon": "@vant/weapp/icon/index",
     "van-sidebar": "@vant/weapp/sidebar/index",
     "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
     "scroll": "/components/scroller",
     "container": "/components/container"
   },

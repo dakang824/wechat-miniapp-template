@@ -1,5 +1,23 @@
+@import "../../../assets/css/variables";
 .answer {
   &__box {
-    .
+    width: 100%;
+    padding: $padding-md;
+    &__block {
+      background: #e7fffb;
+      flex: 0.48;
+      min-width: 48%;
+      border-radius: 20rpx;
+      text-align: center;
+      font-size: 26rpx;
+      padding: 19rpx 0;
+      color: $text-normal;
+      margin-bottom: 30rpx;
+      image {
+        width: 44rpx;
+        height: 44rpx;
+        margin-bottom: 10rpx;
+      }
+    }
   }
 }

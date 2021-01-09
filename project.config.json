@@ -49,18 +49,24 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
+    "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/answer/index/index",
+          "pathName": "pages/answer/index/index",
+          "query": "params={\"prof_id\":2,\"module_id\":1,\"page_no\":1,\"page_size\":30,\"api\":\"getQuesByOrder\"}",
+          "scene": null
+        }
+      ]
     }
   }
 }
