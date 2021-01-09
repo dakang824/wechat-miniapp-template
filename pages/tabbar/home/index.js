@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-01-07 23:14:50
+ * @LastEditTime: 2021-01-09 21:27:04
  */
 import { Router, app } from "../../page";
 Router({
@@ -38,6 +38,7 @@ Router({
     await this.fetchDataNavs();
     await this.fetchData();
   },
+  onShow() {},
   async getMyProfession() {
     const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {

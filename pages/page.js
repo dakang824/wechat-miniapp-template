@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-08 18:48:16
+ * @LastEditTime: 2021-01-09 21:22:05
  */
 const app = getApp();
 import {
@@ -40,6 +40,7 @@ const Router = (pageObj, share = true) => {
       //公共参数
       this.setData({
         isLogin: app.$store.isLogin,
+        $themeColor: "#1cbc9a",
       });
 
       //额外参数

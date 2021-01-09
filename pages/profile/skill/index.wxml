@@ -1,2 +1,22 @@
-<!--pages/profile/skill/index.wxml-->
-<text>pages/profile/skill/index.wxml</text>
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 我的技能
+ * @Date: 2021-01-09 17:44:24
+ * @LastEditTime: 2021-01-09 20:58:50
+-->
+<container class="skill">
+  <van-search value="{{ keyWorld }}" placeholder="请输入搜索关键词" bind:search="onSearch" />
+
+  <van-dropdown-menu active-color="{{$themeColor}}">
+    <van-dropdown-item value="{{ value }}" options="{{ option1 }}" />
+  </van-dropdown-menu>
+
+  <van-collapse value="{{ activeNames }}" bind:change="onChange">
+    <van-collapse-item title="有赞微商城" name="1">
+      <van-cell title="单元格" is-link value="内容" custom-class="cell" />
+      <van-cell title="单元格" is-link value="内容" custom-class="cell" />
+    </van-collapse-item>
+    <van-collapse-item title="有赞零售" name="2">网店吸粉获客、会员分层营销、一机多种收款，告别经营低效和客户流失</van-collapse-item>
+    <van-collapse-item title="有赞美业" name="3">线上拓客，随时预约，贴心顺手的开单收银</van-collapse-item>
+  </van-collapse>
+</container>

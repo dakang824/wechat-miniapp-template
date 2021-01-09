@@ -2,14 +2,14 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-08 18:59:26
+ * @LastEditTime: 2021-01-09 21:34:12
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
 <van-dialog id="van-dialog" />
 <container>
   <view class="answer">
-    <van-tabs active="{{ active }}" bind:change="handleChange" type="card" color="#1cbc9a">
+    <van-tabs active="{{ active }}" bind:change="handleChange" type="card" color="{{$themeColor}}">
       <van-tab title="答题模式"></van-tab>
       <van-tab title="背题模式"></van-tab>
     </van-tabs>
@@ -43,7 +43,7 @@
               <van-checkbox
                 value="{{utils.includes(item.res,it.name)}}"
                 wx:if="{{item.type===2}}"
-                checked-color="#1CBC9A"
+                checked-color="{{$themeColor}}"
                 custom-class="answer__swipe-item__checkbox"
               ></van-checkbox>
               {{it.name}}
@@ -51,7 +51,7 @@
               <van-icon
                 size="35rpx"
                 name="{{it.rig ?'success':'cross'}}"
-                color="{{it.rig ?'#1cbc9a':'#ff665b'}}"
+                color="{{it.rig ?$themeColor:'#ff665b'}}"
                 wx:if="{{active||(item.result !== null&&(item.result&it.value||it.rig||item.type===2))}}"
                 custom-class="icon_right"
               />

@@ -1,7 +1,13 @@
-const app = getApp();
+/*
+ * @Author: yukang 1172248038@qq.com
+ * @Description:学生列表
+ * @Date: 2021-01-06 18:00:03
+ * @LastEditTime: 2021-01-09 21:25:59
+ */
 const { CityList } = require("../../../utils/city.js");
 
-Page({
+import { Router, app } from "../../page";
+Router({
   data: {
     listData: [],
     searchValue: "",
@@ -85,4 +91,5 @@ Page({
       this.setList(this.formatList(CityList));
     }, 100);
   },
+  onShow() {},
 });

@@ -6,7 +6,8 @@
     "pages/tabbar/profile/index",
     "pages/login/index"
   ],
-  "subpackages": [{
+  "subpackages": [
+    {
       "root": "pages/home",
       "pages": ["index/index"]
     },
@@ -42,7 +43,8 @@
     "selectedColor": "#1CBC9A",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/tabbar/home/index",
         "iconPath": "/assets/image/tabbar/index.png",
         "selectedIconPath": "/assets/image/tabbar/index-select.png",
@@ -90,6 +92,10 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-count-down": "@vant/weapp/count-down/index",
     "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
     "scroll": "/components/scroller",
     "container": "/components/container"
   },

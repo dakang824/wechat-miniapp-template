@@ -2,15 +2,15 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 答题
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-09 14:53:56
+ * @LastEditTime: 2021-01-09 21:37:17
 -->
 <container class="answer">
   <van-tabs
     sticky
     bind:change="handleChange"
     active="{{ active }}"
-    color="#1cbc9a"
-    title-active-color="#1cbc9a"
+    color="{{$themeColor}}"
+    title-active-color="{{$themeColor}}"
     wx:if="{{ navs.length }}"
     swipeable
     tab-active-class="home__tab__active"

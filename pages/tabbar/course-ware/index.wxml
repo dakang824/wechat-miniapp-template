@@ -2,15 +2,15 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-05 22:39:26
- * @LastEditTime: 2021-01-07 23:24:12
+ * @LastEditTime: 2021-01-09 21:30:25
 -->
 <container class="home">
   <van-tabs
     sticky
     bind:change="handleChange"
     active="{{ active }}"
-    color="#1cbc9a"
-    title-active-color="#1cbc9a"
+    color="{{ $themeColor }}"
+    title-active-color="{{ $themeColor }}"
     border
     wx:if="{{ navs.length }}"
     swipeable
@@ -26,8 +26,8 @@
       <view class="home__box">
         <van-tabs
           wx:if="{{ item.modules.length }}"
-          color="#1cbc9a"
-          title-active-color="#1cbc9a"
+          color="{{ $themeColor }}"
+          title-active-color="{{ $themeColor }}"
           ellipsis="{{ false }}"
           border="{{ false }}"
           line-height="0"

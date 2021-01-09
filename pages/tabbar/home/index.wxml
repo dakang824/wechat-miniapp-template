@@ -1,3 +1,9 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-05 22:43:08
+ * @LastEditTime: 2021-01-09 21:28:56
+-->
 <!-- * @Author: yukang 1172248038@qq.com
  * @Description: 首页
  * @Date: 2021-01-05 22:43:08
@@ -7,8 +13,8 @@
     sticky
     bind:change="handleChange"
     active="{{ active }}"
-    color="#1cbc9a"
-    title-active-color="#1cbc9a"
+    color="{{ $themeColor }}"
+    title-active-color="{{ $themeColor }}"
     border
     wx:if="{{ navs.length }}"
     swipeable
@@ -23,15 +29,19 @@
     >
       <view class="home__box">
         <van-tabs
-          wx:if="{{ item.open_prof&&profs.length }}"
-          color="#1cbc9a"
-          title-active-color="#1cbc9a"
+          wx:if="{{ item.open_prof && profs.length }}"
+          color="{{ $themeColor }}"
+          title-active-color="{{ $themeColor }}"
           ellipsis="{{ false }}"
           border="{{ false }}"
           line-height="0"
           bind:change="handleChangeProfs"
         >
-          <van-tab title="{{ item.name }}" wx:for="{{ profs }}" wx:key="id"></van-tab>
+          <van-tab
+            title="{{ item.name }}"
+            wx:for="{{ profs }}"
+            wx:key="id"
+          ></van-tab>
           <!-- <view slot="nav-right" wx:if="{{ profs.length > 4 }}" class="home__more u-flex">
             <image src="/assets/image/more.png" />
           </view>-->
@@ -47,7 +57,11 @@
             data-ind="{{ index }}"
           >
             <view class="list-inner" slot="inner">
-              <list-item wx:for="{{ item.list }}" wx:key="index" mode></list-item>
+              <list-item
+                wx:for="{{ item.list }}"
+                wx:key="index"
+                mode
+              ></list-item>
             </view>
           </scroll>
         </view>

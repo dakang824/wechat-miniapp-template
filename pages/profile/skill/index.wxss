@@ -1,1 +1,8 @@
-/* pages/profile/skill/index.wxss */
+.cell {
+  padding: 10px 0 !important;
+}
+
+.cell.van-cell:after {
+  left: 0;
+  right: 0;
+}

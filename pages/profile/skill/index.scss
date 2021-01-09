@@ -1,0 +1,7 @@
+.cell {
+  padding: 10px 0 !important;
+  &.van-cell:after {
+    left: 0;
+    right: 0;
+  }
+}

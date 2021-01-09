@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的成绩
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-09 19:10:39
+ * @LastEditTime: 2021-01-09 21:35:35
 -->
 <container class="success" is-gap>
   <view class="success__subsection">
@@ -10,7 +10,7 @@
       active="{{ active }}"
       bind:change="onChange"
       type="card"
-      color="#1cbc9a"
+      color="{{ $themeColor }}"
     >
       <van-tab title="{{ item.name }}" wx:for="{{ list }}" wx:key="index">
         <view

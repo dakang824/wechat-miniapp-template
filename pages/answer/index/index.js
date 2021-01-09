@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-09 17:06:36
+ * @LastEditTime: 2021-01-09 21:32:53
  */
 import { Router, app } from "../../page";
 Router(
@@ -26,6 +26,7 @@ Router(
 
       this.fetchData();
     },
+    onShow() {},
     async fetchData() {
       const { end, params } = this.data,
         { api, ...rest } = params;
@@ -188,8 +189,6 @@ Router(
         [`list[${arr[0]}].collect`]: !list[arr[0]].collect,
       });
     },
-    onShow() {},
-
     onUnload() {},
   },
   false
