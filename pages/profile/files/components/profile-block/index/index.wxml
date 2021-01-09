@@ -1,0 +1,39 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-09 19:14:02
+ * @LastEditTime: 2021-01-09 19:27:51
+-->
+<view class="profile-block">
+  <view class="profile-block__title  u-flex u-row-between van-hairline--bottom">
+    <view>个人介绍</view>
+    <u-icon :name="icon" :color="vuex_theme" size="34" bindtap="handleClick" />
+  </view>
+  <block v-if="type === 1">
+    <view v-if="showJump" class="profile-block__cell">
+      <view class="u-flex u-row-between">
+        <view class="profile-block__cell__title">EPC工程管理小程序</view>
+        <u-icon name="arrow-right" color="#999" bindtap="handleJump"></u-icon>
+      </view>
+      <view class="profile-block__cell__tag">
+        <text>2018年06月-至今</text> <text>产品经理</text>
+      </view>
+    </view>
+
+    <view class="profile-block__info">
+      <text space="emsp" decode>4年的产品工作经验，已参加过多款产品开发设计，包括APP商城型、web商城型、小程序在线教育型、O2O服务预约型和后台CMS等产品设计开发；了解技术开发；善于跨部门协调资源熟悉软件产品整体实现过程，包括从需求分析，开发到产品发布；思路清晰，数据分析能力强，积极认真，高效沟通，对工作负责等。</text>
+    </view>
+  </block>
+
+  <block v-if="type === 2">
+    <view v-if="showJump" class="profile-block__cell">
+      <view class="u-flex u-row-between">
+        <view class="profile-block__cell__title">EPC工程管理小程序</view>
+        <u-icon name="arrow-right" color="#999" bindtap="handleJump"></u-icon>
+      </view>
+    </view>
+    <view class="profile-block__info">
+      <van-imag width="100%" height="333rpx" :src="src"></van-imag>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,20 @@
+@import "../../../../../../assets/css/variables";
+.profile-header {
+  background-color: #fff;
+  padding: $padding-md;
+  &__info {
+    margin-left: $padding-md;
+    &__name {
+      font-size: 36rpx;
+      font-weight: bold;
+    }
+    &__job {
+      font-size: 26rpx;
+      color: #555;
+      margin-top: 15rpx;
+      text {
+        padding-right: 36rpx;
+      }
+    }
+  }
+}

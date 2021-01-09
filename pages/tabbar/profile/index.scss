@@ -1,0 +1,16 @@
+@import "../../../assets/css/variables";
+.profile {
+  &__box {
+    &__header {
+      padding: 40rpx $padding-xs;
+      text {
+        font-size: 38rpx;
+        font-weight: bold;
+        margin-left: 50rpx;
+      }
+    }
+    &__login-out {
+      margin: 50rpx 30rpx;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../../assets/css/variables";
+.success {
+  &__item {
+    padding: $padding-md;
+    &__left {
+      font-size: 22rpx;
+      color: $text-lighter;
+      &__title {
+        font-size: $font-size-normal;
+        font-weight: bold;
+        margin-bottom: 30rpx;
+        color: $text-normal;
+      }
+      text {
+        padding-left: 97rpx;
+      }
+    }
+    &__right {
+      width: 80rpx;
+      height: 80rpx;
+      line-height: 80rpx;
+      text-align: center;
+      border: 1px solid $border-color;
+      border-radius: 10rpx;
+      font-size: 36rpx;
+    }
+  }
+}

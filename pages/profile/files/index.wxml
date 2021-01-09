@@ -1,0 +1,16 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 我的档案
+ * @Date: 2021-01-09 17:44:24
+ * @LastEditTime: 2021-01-09 19:23:33
+-->
+<container class="files" is-gray>
+  <profile-header />
+  <profile-block :show-jump="false" icon="edit-pen-fill" bindtap="handleAddInfo" />
+  <profile-block bindtap="handleAddProject" />
+  <profile-block :type="2" bindtap="handleAddProject" />
+
+  <view class="files__btn">
+    <van-button type="primary" block>保存</van-button>
+  </view>
+</container>

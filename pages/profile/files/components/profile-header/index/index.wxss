@@ -1,0 +1,23 @@
+.profile-header {
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.profile-header__info {
+  margin-left: 30rpx;
+}
+
+.profile-header__info__name {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.profile-header__info__job {
+  font-size: 26rpx;
+  color: #555;
+  margin-top: 15rpx;
+}
+
+.profile-header__info__job text {
+  padding-right: 36rpx;
+}

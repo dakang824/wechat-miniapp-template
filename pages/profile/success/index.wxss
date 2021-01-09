@@ -1,0 +1,29 @@
+.success__item {
+  padding: 30rpx;
+}
+
+.success__item__left {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.success__item__left__title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: #333;
+}
+
+.success__item__left text {
+  padding-left: 97rpx;
+}
+
+.success__item__right {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border: 1px solid #e4e7ed;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+}

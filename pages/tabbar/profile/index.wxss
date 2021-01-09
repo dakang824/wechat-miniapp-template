@@ -1,1 +1,13 @@
-/* pages/tabbar/profile/index.wxss */
+.profile__box__header {
+  padding: 40rpx 25rpx;
+}
+
+.profile__box__header text {
+  font-size: 38rpx;
+  font-weight: bold;
+  margin-left: 50rpx;
+}
+
+.profile__box__login-out {
+  margin: 50rpx 30rpx;
+}

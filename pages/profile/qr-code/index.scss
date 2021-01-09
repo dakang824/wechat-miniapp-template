@@ -1,0 +1,80 @@
+@import "../../../assets/css/variables";
+.qr-code {
+  &__content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__box {
+    position: relative;
+    width: 334rpx;
+    height: 334rpx;
+    background: #ffffff;
+    border: 1px solid $theme-color;
+    border-radius: 20rpx;
+    margin: auto;
+    &__img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 280rpx;
+      height: 280rpx;
+    }
+    &__left-top,
+    &__left-bottom,
+    &__right-top,
+    &__right-bottom {
+      position: absolute;
+      top: -4rpx;
+      left: -4rpx;
+      width: 58rpx;
+      height: 58rpx;
+      border: 6rpx solid $theme-color;
+      border-top-left-radius: 20rpx;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+    }
+
+    &__left {
+      &-bottom {
+        top: inherit;
+        bottom: -4rpx;
+        border: 6rpx solid $theme-color;
+        border-bottom-left-radius: 20rpx;
+        border-top-left-radius: 0;
+        border-right-color: transparent;
+        border-top-color: transparent;
+      }
+    }
+    &__right {
+      &-top {
+        left: inherit;
+        right: -4rpx;
+        border: 6rpx solid $theme-color;
+        border-top-right-radius: 20rpx;
+        border-top-left-radius: 0;
+        border-left-color: transparent;
+        border-bottom: transparent;
+      }
+      &-bottom {
+        top: inherit;
+        left: inherit;
+        bottom: -4rpx;
+        right: -4rpx;
+        border: 6rpx solid $theme-color;
+        border-bottom-right-radius: 20rpx;
+        border-bottom-left-radius: 0;
+        border-left-color: transparent;
+        border-top: transparent;
+      }
+    }
+  }
+  &__tip {
+    text-align: center;
+    margin-top: 82rpx;
+  }
+}

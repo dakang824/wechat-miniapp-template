@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "profile-header": "./components/profile-header/index",
+    "profile-block": "./components/profile-block/index"
+  }
+}

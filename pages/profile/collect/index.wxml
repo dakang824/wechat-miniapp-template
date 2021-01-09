@@ -1,0 +1,9 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-09 17:44:24
+ * @LastEditTime: 2021-01-09 18:58:53
+-->
+<container>
+  <list-item wx:for="{{ 10 }}" wx:key="index" mode></list-item>
+</container>

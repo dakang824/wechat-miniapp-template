@@ -1,0 +1,31 @@
+@import "../../../../../../assets/css/variables";
+.profile-block {
+  background-color: #fff;
+  margin-top: 20rpx;
+  &__title {
+    font-size: 30rpx;
+    font-weight: bold;
+    padding: $padding-md;
+  }
+  &__cell {
+    padding: $padding-md;
+    padding-bottom: 0;
+    &__title {
+      font-size: 28rpx;
+      font-weight: bold;
+    }
+    &__tag {
+      font-size: 24rpx;
+      color: #a5a5a5;
+      margin-top: 20rpx;
+      text {
+        padding-right: 40rpx;
+      }
+    }
+  }
+  &__info {
+    font-size: 28rpx;
+    color: #888;
+    padding: $padding-md;
+  }
+}

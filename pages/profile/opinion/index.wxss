@@ -1,0 +1,12 @@
+.opinion textarea {
+  width: 640rpx;
+  height: 350rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  padding: 25rpx;
+}
+
+.opinion__btn {
+  margin: 60rpx 78rpx;
+}

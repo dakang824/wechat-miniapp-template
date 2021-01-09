@@ -1,0 +1,24 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-09 17:44:24
+ * @LastEditTime: 2021-01-09 18:11:36
+-->
+<container class="qr-code">
+  <view class="qr-code__content">
+    <view class="qr-code__box">
+      <view class="qr-code__box__left-top"></view>
+      <view class="qr-code__box__right-top"></view>
+      <view class="qr-code__box__left-bottom"></view>
+      <view class="qr-code__box__right-bottom"></view>
+
+      <van-image
+        width="280rpx"
+        height="280rpx"
+        src="/assets/image/qr-code.png"
+        class="qr-code__box__img"
+      />
+    </view>
+    <view class="qr-code__tip">老师扫码进行技能树审核</view>
+  </view>
+</container>
