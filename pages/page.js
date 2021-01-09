@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-09 21:22:05
+ * @LastEditTime: 2021-01-09 22:46:02
  */
 const app = getApp();
 import {
@@ -10,10 +10,7 @@ import {
   bindDataFunc,
   bindToLoginBeforeFunc,
 } from "./page.utils";
-import $utils from "../utils/index";
-import * as $api from "../api/index";
-app.$utils = $utils;
-app.$api = $api;
+console.log(app);
 /**
  * 路由拦截器
  */
