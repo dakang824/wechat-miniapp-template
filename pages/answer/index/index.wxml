@@ -13,7 +13,7 @@
       <van-tab title="背题模式"></van-tab>
     </van-tabs>
 
-    <swiper class="answer__swipe">
+    <swiper class="answer__swipe" bindanimationfinish="bindanimationfinish">
       <swiper-item wx:for="{{list}}" wx:key="id">
         <view class="answer__swipe-item">
           <view class="u-flex u-row-between">
@@ -26,7 +26,7 @@
           <view class="answer__swipe-item__title">{{item.content}}</view>
           <view class="answer__swipe-item__ul">
             <view
-              class="answer__swipe-item__ul__li u-flex u-col-center {{item.result !== null&&(item.result&it.value||it.rig||item.type===2)?(it.rig?'success':'error'):''}}"
+              class="answer__swipe-item__ul__li u-flex u-col-center {{active?(it.rig?'success':'error'):item.result !== null&&(item.result&it.value||it.rig||item.type===2)?(it.rig?'success':'error'):''}}"
               wx:for="{{item.queOptions}}"
               wx:key="id"
               wx:for-index="idx"
@@ -47,11 +47,11 @@
                 size="35rpx"
                 name="{{it.rig ?'success':'cross'}}"
                 color="{{it.rig ?'#1cbc9a':'#ff665b'}}"
-                wx:if="{{item.result !== null&&(item.result&it.value||it.rig||item.type===2)}}"
+                wx:if="{{active||(item.result !== null&&(item.result&it.value||it.rig||item.type===2))}}"
                 custom-class="icon_right"
               />
             </view>
-            <view class="answer__swipe_btn u-flex u-row-center" wx:if="{{item.type===2}}">
+            <view class="answer__swipe_btn u-flex u-row-center" wx:if="{{!active&&item.type===2}}">
               <van-button
                 type="primary"
                 custom-class="btn"

@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-08 23:53:06
+ * @LastEditTime: 2021-01-09 14:33:31
  */
 import { Router, app } from "../../page";
 Router({
@@ -11,6 +11,7 @@ Router({
     end: false,
     active: 0,
     total: 0,
+    copyList: [],
   },
 
   onLoad(options) {
@@ -53,11 +54,13 @@ Router({
     const { i, ind } = e.currentTarget.dataset,
       { list } = this.data;
 
+    // 判断是否已经做过改题
+    if (list[ind].result !== null) {
+      return;
+    }
+
     // 单选和判断
-    if (
-      list[ind].result === null &&
-      (list[ind].type === 1 || list[ind].type === 3)
-    ) {
+    if (list[ind].type === 1 || list[ind].type === 3) {
       const index = list[ind].queOptions.findIndex((item) => item.id === i.id);
       this.setData({
         [`list[${ind}].result`]: i.value,
@@ -85,16 +88,35 @@ Router({
       }
     }
   },
+  bindanimationfinish(e) {
+    const { current } = e.detail;
+    const { list, total, params } = this.data;
+    if (params.page_size - current === 2 && list.length !== total) {
+      this.fetchData();
+    }
+  },
   handleMultipleChoice(e) {
-    const { ind } = e.currentTarget.dataset,
-      { list } = this.data;
+    let { ind } = e.currentTarget.dataset,
+      { list } = this.data,
+      right = 0;
+
+    const key_val = list[ind].queOptions.reduce((a, b) => {
+      a[b.name] = b.value;
+      right += b.rig ? b.value : 0;
+      return a;
+    }, {});
 
     const result = list[ind].res.reduce((a, b) => {
-      return a + b;
+      return a + key_val[b];
     }, 0);
-    console.log(result);
+
     this.setData({
       [`list[${ind}].result`]: result,
+    });
+
+    app.$api.commitQueResult({
+      que_id: list[ind].id,
+      result: result === right ? 1 : 0,
     });
   },
   handleChange(e) {

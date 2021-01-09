@@ -24,7 +24,7 @@
         &__li {
           background: #f5f5f5;
           border-radius: $border-radius-md;
-          padding: $padding-md;
+          padding: $padding-md $padding-xs;
           margin-bottom: 24rpx;
           position: relative;
           .icon_right {
