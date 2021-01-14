@@ -56,7 +56,7 @@
               <list-item
                 wx:for="{{ item.list }}"
                 wx:key="index"
-                mode
+                mode="{{ item }}"
               ></list-item>
             </view>
           </scroll>

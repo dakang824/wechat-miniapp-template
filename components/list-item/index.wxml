@@ -1,12 +1,27 @@
-<navigator class="list-item u-flex u-row-between van-hairline--bottom" url="/pages/index/detail" hover-class="u-cell-hover">
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-06 15:08:29
+ * @LastEditTime: 2021-01-15 00:25:50
+-->
+<wxs src="../../wxs/utils.wxs" module="utils" />
+<navigator
+  class="list-item u-flex u-row-between van-hairline--bottom"
+  url="/pages/index/detail"
+  hover-class="u-cell-hover"
+>
   <view class="list-item__left">
     <view class="list-item__left__title van-multi-ellipsis--l3">
-      继电保护工技能等级评价实操考核 评分表 主变差动保护启动值校验
-        的操作电保护工技能等级评价实操考核 评分表 主变差动保护启动值校验 的操作
+      {{ mode.title }}
     </view>
-    <view>人资部 2020-06-05</view>
+    <view> {{ mode.author }} {{utils.slice(mode.create_time,16)}}</view>
   </view>
   <view class="list-item__right">
-    <van-image width="100%" height="150rpx" :src="src" border-radius="10"></van-image>
+    <van-image
+      width="100%"
+      height="150rpx"
+      :src="{{utils.baseUrl(cover_pic)}}"
+      border-radius="10"
+    ></van-image>
   </view>
 </navigator>

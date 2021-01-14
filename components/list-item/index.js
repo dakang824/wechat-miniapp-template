@@ -1,3 +1,9 @@
+/*
+ * @Author: yukang 1172248038@qq.com
+ * @Description:
+ * @Date: 2021-01-06 15:08:29
+ * @LastEditTime: 2021-01-15 00:21:54
+ */
 import { Comp, app } from "../component";
 
 Comp({
@@ -6,9 +12,9 @@ Comp({
     addGlobalClass: true,
   },
   properties: {
-    model: {
-      type: Array,
-      value: [],
+    mode: {
+      type: Object,
+      value: {},
     },
   },
   data: {},
