@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-09 21:32:53
+ * @LastEditTime: 2021-01-14 23:46:09
  */
 import { Router, app } from "../../page";
 Router(
@@ -14,6 +14,8 @@ Router(
       total: 0,
       copyList: [],
       time: null,
+      timeData: {},
+      doTime: null,
       swiperCurrent: 0,
     },
 
@@ -55,6 +57,7 @@ Router(
             this.setData({
               code: data.code,
               tests: data.tests,
+              time: data.tests.time * 60 * 1000,
             });
           }
         } else {
@@ -80,6 +83,11 @@ Router(
         message: "考试已结束,终止答题",
       }).then(() => {
         app.$router.back();
+      });
+    },
+    timeChange(e) {
+      this.setData({
+        timeData: e.detail,
       });
     },
     bindanimationfinish(e) {
@@ -108,9 +116,44 @@ Router(
         [`list[${ind}].result`]: result,
       });
 
-      app.$api.commitQueResult({
+      this.sendResult({ ind, right: result === right });
+    },
+    sendResult({ ind, right }) {
+      const { params, code, tests, timeData, doTime, time, list } = this.data;
+      let score = null,
+        t = 0,
+        api = "commitQueResult";
+
+      if (params.api === "getTests") {
+        const {
+          radio_score,
+          radio_count,
+          judge_count,
+          judge_score,
+          check_score,
+          check_count,
+        } = tests;
+        score =
+          list[ind].type === 1
+            ? radio_score / radio_count
+            : list[ind].type === 2
+            ? check_score / check_count
+            : judge_score / judge_count;
+        api = "commitTestQueResult";
+        const nowDate = timeData.minutes * 60 + timeData.seconds;
+        t = (doTime || time / 1000) - nowDate;
+        this.setData({
+          doTime: nowDate,
+        });
+      }
+
+      app.$api[api]({
+        test_id: tests.id,
+        code,
+        score: right ? score : 0,
+        time: t,
         que_id: list[ind].id,
-        result: result === right ? 1 : 0,
+        result: right ? 1 : 0,
       });
     },
     handleSelect(e) {
@@ -130,12 +173,9 @@ Router(
         this.setData({
           [`list[${ind}].result`]: i.value,
         });
-        const right = list[ind].queOptions.find((item) => item.rig);
-
-        app.$api.commitQueResult({
-          que_id: list[ind].id,
-          result: i.value & right.value ? 1 : 0,
-        });
+        let right = list[ind].queOptions.find((item) => item.rig);
+        // 提交选择结果
+        this.sendResult({ ind, right: i.value & right.value });
       } else {
         //多选
         const index = list[ind].queOptions.findIndex(

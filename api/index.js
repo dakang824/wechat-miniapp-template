@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-08 17:54:19
+ * @LastEditTime: 2021-01-14 22:19:38
  */
 import request from "./request.api";
 
@@ -94,4 +94,9 @@ export const commitTestQueResult = (data) => {
 // 获取模拟考成绩
 export const getTestScoreResult = (data) => {
   return request.post("/service/front/getTestScoreResult", data);
+};
+
+// 查询所有专业 文章/课件中顶部导航显示所有专业
+export const getAllProfession = (data) => {
+  return request.post("/service/front/getAllProfession", data);
 };

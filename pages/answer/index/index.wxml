@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-09 22:17:32
+ * @LastEditTime: 2021-01-14 22:57:19
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -82,7 +82,15 @@
         />
         <text>收藏</text>
       </view>
-      <van-count-down time="{{ time }}" bind:finish="timeFinish" slot="title" wx:if='{{time}}'/>
+      <van-count-down
+        time="{{ time }}"
+        bind:finish="timeFinish"
+        slot="title"
+        wx:if="{{time}}"
+        use-slot
+        bind:change="timeChange"
+        format="HH:mm:ss:SSS"
+      >{{ utils.zeroFill(timeData.hours) }}:{{ utils.zeroFill(timeData.minutes) }}:{{ utils.zeroFill(timeData.seconds) }}</van-count-down>
       <view class="answer__swipe-item__footer__right u-flex u-row-between">
         <view class="right">
           <van-icon name="checked" size="36rpx" />

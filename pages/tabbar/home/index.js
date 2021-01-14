@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-01-09 21:27:04
+ * @LastEditTime: 2021-01-14 22:20:45
  */
 import { Router, app } from "../../page";
 Router({
@@ -34,16 +34,16 @@ Router({
     },
   },
   async onLoad() {
-    await this.getMyProfession();
+    await this.getAllProfession();
     await this.fetchDataNavs();
     await this.fetchData();
   },
   onShow() {},
-  async getMyProfession() {
+  async getAllProfession() {
     const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {
       data: { profs },
-    } = await app.$api.getMyProfession({ group_id });
+    } = await app.$api.getAllProfession({ group_id });
     this.setData({ profs, group_id });
   },
   async fetchDataNavs() {
