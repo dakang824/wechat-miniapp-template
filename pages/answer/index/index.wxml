@@ -63,6 +63,7 @@
                 size="normal"
                 data-ind="{{index}}"
                 bind:click="handleMultipleChoice"
+                disabled="{{item.result!==null}}"
               >完成</van-button>
             </view>
           </view>
