@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-14 23:46:09
+ * @LastEditTime: 2021-01-15 00:09:22
  */
 import { Router, app } from "../../page";
 Router(
@@ -118,7 +118,7 @@ Router(
 
       this.sendResult({ ind, right: result === right });
     },
-    sendResult({ ind, right }) {
+    async sendResult({ ind, right }) {
       const { params, code, tests, timeData, doTime, time, list } = this.data;
       let score = null,
         t = 0,
@@ -147,7 +147,7 @@ Router(
         });
       }
 
-      app.$api[api]({
+      await app.$api[api]({
         test_id: tests.id,
         code,
         score: right ? score : 0,
@@ -155,6 +155,25 @@ Router(
         que_id: list[ind].id,
         result: right ? 1 : 0,
       });
+
+      if (params.api === "getTests" && ind === list.length - 1) {
+        const {
+          data: {
+            score: { right_count, wrong_count, score },
+          },
+        } = await app.$api.getTestScoreResult({
+          test_id: tests.id,
+          code,
+        });
+        app.$utils.Dialog.alert({
+          title: "得分结果",
+          message: `正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score}分,\n正确率:${(
+            right_count / list.length
+          ).toFixed(2)}%`,
+        }).then(() => {
+          app.$router.back();
+        });
+      }
     },
     handleSelect(e) {
       const { i, ind } = e.currentTarget.dataset,
