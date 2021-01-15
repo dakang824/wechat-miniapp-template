@@ -2,32 +2,31 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的成绩
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-09 21:35:35
+ * @LastEditTime: 2021-01-15 19:53:05
 -->
 <container class="success" is-gap>
   <view class="success__subsection">
-    <van-tabs
-      active="{{ active }}"
-      bind:change="onChange"
-      type="card"
-      color="{{ $themeColor }}"
-    >
+    <van-tabs active="{{ current }}" bind:change="onChange" type="card" color="{{ $themeColor }}">
       <van-tab title="{{ item.name }}" wx:for="{{ list }}" wx:key="index">
-        <view
-          class="success__item u-flex u-row-between van-hairline--bottomm"
-          wx:for="{{ 10 }}"
-        >
-          <view class="success__item__left">
-            <view class="success__item__left__title">
-              2020年三种人考试基建变电
+        <block wx:if="{{item[index].data.length}}">
+          <view
+            class="success__item u-flex u-row-between van-hairline--bottomm"
+            wx:for="{{ item[index].data }}"
+          >
+            <view class="success__item__left">
+              <view class="success__item__left__title">2020年三种人考试基建变电</view>
+              <view class="u-flex">
+                基建变电
+                <text>2020-06-05</text>
+              </view>
             </view>
-            <view class="u-flex">
-              基建变电
-              <text>2020-06-05</text>
-            </view>
+            <view class="success__item__right">98</view>
           </view>
-          <view class="success__item__right">98</view>
-        </view>
+          <load-more status="{{list[current].status}}" />
+        </block>
+        <block wx:else>
+          <van-empty description="~ 暂无数据 ~" />
+        </block>
       </van-tab>
     </van-tabs>
   </view>

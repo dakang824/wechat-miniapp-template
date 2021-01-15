@@ -100,3 +100,8 @@ export const getTestScoreResult = (data) => {
 export const getAllProfession = (data) => {
   return request.post("/service/front/getAllProfession", data);
 };
+
+// 个人中心-查询我的成绩
+export const findMyScore = (data) => {
+  return request.post("/service/front/findMyScore", data);
+};

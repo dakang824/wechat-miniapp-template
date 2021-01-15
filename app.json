@@ -33,10 +33,10 @@
     }
   ],
   "window": {
-    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "学习平台",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#999999",
@@ -96,8 +96,11 @@
     "van-dropdown-item": "@vant/weapp/dropdown-item/index",
     "van-collapse": "@vant/weapp/collapse/index",
     "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-loading": "@vant/weapp/loading/index",
     "scroll": "/components/scroller",
-    "container": "/components/container"
+    "container": "/components/container",
+    "load-more": "/components/load-more"
   },
   "sitemapLocation": "sitemap.json"
 }
