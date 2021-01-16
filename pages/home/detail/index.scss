@@ -1,0 +1,25 @@
+@import "../../../assets/css/variables";
+.detail {
+  &__header {
+    padding: $padding-md;
+    font-size: 22rpx;
+    color: $text-lighter;
+    &__txt {
+      font-size: 35rpx;
+      font-weight: bold;
+      color: $text-normal;
+      padding-bottom: $padding-md;
+    }
+  }
+  &__content {
+    padding: $padding-xs;
+    overflow: auto;
+  }
+  &__collect {
+    margin-right: 10rpx;
+  }
+  image,
+  .van-image {
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,26 @@
+.detail__header {
+  padding: 30rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.detail__header__txt {
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 30rpx;
+}
+
+.detail__content {
+  padding: 25rpx;
+  overflow: auto;
+}
+
+.detail__collect {
+  margin-right: 10rpx;
+}
+
+.detail image,
+.detail .van-image {
+  vertical-align: middle;
+}

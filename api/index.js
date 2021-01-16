@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-14 22:19:38
+ * @LastEditTime: 2021-01-16 15:05:24
  */
 import request from "./request.api";
 
@@ -104,4 +104,14 @@ export const getAllProfession = (data) => {
 // 个人中心-查询我的成绩
 export const findMyScore = (data) => {
   return request.post("/service/front/findMyScore", data);
+};
+
+// 个人中心-查询我的收藏
+export const findMyCollectArticle = (data) => {
+  return request.post("/service/front/findMyCollectArticle", data);
+};
+
+// 个人中心-查询我的二维码
+export const findMyQRCode = (data) => {
+  return request.post("/service/front/findMyQRCode", data);
 };

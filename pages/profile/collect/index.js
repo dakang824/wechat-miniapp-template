@@ -1,15 +1,59 @@
 /*
  * @Author: yukang 1172248038@qq.com
- * @Description:收藏
+ * @Description:我的收藏
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-09 19:55:21
+ * @LastEditTime: 2021-01-16 14:49:19
  */
 import { Router, app } from "../../page";
-Router(
-  {
-    data: {},
-    onLoad(options) {},
-    onShow() {},
+Router({
+  data: {
+    list: [],
+    status: "loadmore", //loadmore 加载更多,loading 加载中,nomore 没有更多
+    postData: {
+      pageNo: 1,
+      pageSize: 10,
+    },
   },
-  false
-);
+
+  onLoad(options) {
+    this.fetchData();
+  },
+  async reset() {
+    this.setData({
+      list: [],
+      status: "loadmore",
+      "postData.pageNo": 1,
+    });
+  },
+  async onPullDownRefresh() {
+    await this.reset();
+    await this.fetchData();
+    wx.stopPullDownRefresh();
+  },
+  onReachBottom() {
+    const { status } = this.data;
+    if (status !== "nomore") {
+      this.fetchData();
+    }
+  },
+  async fetchData() {
+    const { postData, list: d } = this.data;
+    this.setData({
+      status: "loading",
+    });
+
+    const {
+      data: {
+        userScores: { list },
+      },
+    } = await app.$api.findMyCollectArticle(postData);
+
+    this.setData({
+      list: [...d, ...list],
+      "postData.pageNo": postData.pageNo + 1,
+      status: postData.pageSize !== list.length ? "nomore" : "loadmore",
+    });
+  },
+
+  onShow() {},
+});

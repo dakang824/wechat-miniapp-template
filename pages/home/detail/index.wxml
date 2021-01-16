@@ -1,0 +1,30 @@
+<wxs src="../../../wxs/utils.wxs" module="utils" />
+<container class="detail">
+  <view class="detail__header van-hairline--bottom">
+    <view class="detail__header__txt">{{article.title}}</view>
+    <view class="u-flex u-row-between">
+      <view>{{article.author}}</view>
+      <view>{{utils.slice(article.create_time,10)}}</view>
+      <view class="u-flex u-col-center" bindtap="handleCollect">
+        <van-icon
+          name="{{collect?'like':'like-o'}}"
+          size="32rpx"
+          custom-class="detail__collect"
+          color="{{collect?'#FF665B':''}}"
+        />收藏
+      </view>
+    </view>
+  </view>
+  <view class="detail__content">
+    <van-image
+      width="100%"
+      fit="widthFix"
+      src="{{utils.baseUrl(item.path)}}"
+      wx:for="{{article.articleContent}}"
+      lazy-load
+      use-loading-slot
+    >
+      <van-loading slot="loading" type="spinner" size="20" vertical />
+    </van-image>
+  </view>
+</container>
