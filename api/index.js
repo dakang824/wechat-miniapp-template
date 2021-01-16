@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-16 15:05:24
+ * @LastEditTime: 2021-01-16 18:03:01
  */
 import request from "./request.api";
 
@@ -114,4 +114,44 @@ export const findMyCollectArticle = (data) => {
 // 个人中心-查询我的二维码
 export const findMyQRCode = (data) => {
   return request.post("/service/front/findMyQRCode", data);
+};
+
+// 个人中心-查询我资料
+export const findMyResume = (data) => {
+  return request.post("/service/front/findMyResume", data);
+};
+
+// 个人中心 - 我的资料 - 添加项目经验
+export const addResumeProject = (data) => {
+  return request.post("/service/front/addResumeProject", data);
+};
+
+// 个人中心 - 我的资料 - 修改个人简历
+export const modifyMyResume = (data) => {
+  return request.post("/service/front/modifyMyResume", data);
+};
+
+// 个人中心 - 我的资料 - 修改项目经验
+export const modifyResumeProject = (data) => {
+  return request.post("/service/front/modifyResumeProject", data);
+};
+
+// 个人中心 - 我的资料 - 删除项目经验
+export const deleteResumeProject = (data) => {
+  return request.post("/service/front/deleteResumeProject", data);
+};
+
+// 个人中心 - 我的资料 - 添加教育经历
+export const addResumeEdu = (data) => {
+  return request.post("/service/front/addResumeEdu", data);
+};
+
+// 个人中心 - 我的资料 - 修改教育经历
+export const modifyResumeEdu = (data) => {
+  return request.post("/service/front/modifyResumeEdu", data);
+};
+
+// 个人中心 - 我的资料 - 删除教育经历
+export const deleteResumeEdu = (data) => {
+  return request.post("/service/front/deleteResumeEdu", data);
 };

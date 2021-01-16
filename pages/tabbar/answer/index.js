@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:答题
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-14 22:22:23
+ * @LastEditTime: 2021-01-16 17:06:02
  */
 import { Router, app } from "../../page";
 Router({
@@ -73,8 +73,8 @@ Router({
     const current = this.data.list[e.currentTarget.dataset.ind],
       { active, navs, activeKey } = this.data;
     const params = JSON.stringify({
-      prof_id: 1 || navs[active].id,
-      module_id: 1 || navs[active].modules[activeKey].id,
+      prof_id: navs[active].id,
+      module_id: navs[active].modules[activeKey].id,
       page_no: 1,
       page_size: 30,
       api: current.api,
