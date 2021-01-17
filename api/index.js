@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-17 08:43:34
+ * @LastEditTime: 2021-01-17 15:48:29
  */
 import request from "./request.api";
 
@@ -164,6 +164,21 @@ export const addResumeCert = (data) => {
 // 个人中心 - 我的资料 - 修改资格证书
 export const modifyResumeCert = (data) => {
   return request.post("/service/front/modifyResumeCert", data);
+};
+
+// 个人中心 - 我的资料 - 删除资格证书
+export const deleteResumeCert = (data) => {
+  return request.post("/service/front/deleteResumeCert", data);
+};
+
+// 个人中心 - 我的资料 - 添加荣誉证书
+export const addResumeHonor = (data) => {
+  return request.post("/service/front/addResumeHonor", data);
+};
+
+// 个人中心 - 我的资料 - 修改荣誉证书
+export const modifyResumeHonor = (data) => {
+  return request.post("/service/front/modifyResumeHonor", data);
 };
 
 // 个人中心 - 我的资料 - 删除荣誉证书

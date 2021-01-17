@@ -2,6 +2,17 @@
   padding: 25rpx;
 }
 
+.edit-info .cell .van-cell__title {
+  -webkit-box-flex: inherit;
+      -ms-flex: inherit;
+          flex: inherit;
+  min-width: 7em;
+}
+
+.edit-info .cell .van-cell__value {
+  text-align: left;
+}
+
 .edit-info__title {
   font-size: 32rpx;
   font-weight: bold;

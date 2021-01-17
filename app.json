@@ -100,6 +100,7 @@
     "van-loading": "@vant/weapp/loading/index",
     "van-uploader": "@vant/weapp/uploader/index",
     "van-calendar": "@vant/weapp/calendar/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "scroll": "/components/scroller",
     "container": "/components/container",
     "load-more": "/components/load-more"

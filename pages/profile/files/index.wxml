@@ -2,33 +2,48 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的档案
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-17 12:34:39
+ * @LastEditTime: 2021-01-17 15:02:35
 -->
 <container class="files" is-gray>
   <profile-header mode="{{resume}}" />
   <profile-block mode="{{info}}" show-jump="{{false}}" title="个人介绍" bind:click="handleAddInfo" />
-  <profile-block mode="{{resume.projects}}" icon="add-o" title="项目经历" bind:click="handleAddProject" bind:update='handleUpdateProject'/>
-  <profile-block mode="{{resume.edus}}" icon="add-o" title="教育经历" bindtap="handleAddProject" />
+  <profile-block
+    mode="{{resume.projects}}"
+    icon="add-o"
+    title="项目经历"
+    bind:click="handleAddProject"
+    bind:update="handleUpdateProject"
+  />
+  <profile-block
+    mode="{{resume.edus}}"
+    icon="add-o"
+    title="教育经历"
+    bind:click="handleAddEdus"
+    bind:update="handleUpdateEdus"
+  />
   <profile-block
     mode="{{resume.certs}}"
     type="{{2}}"
     icon="add-o"
     title="资格证书"
-    bindtap="handleAddProject"
+    bind:click="handleAddResumeCert"
+    bind:update="handleUpdateResumeCert"
   />
   <profile-block
     mode="{{resume.honors}}"
     type="{{2}}"
     icon="add-o"
     title="获得荣誉"
-    bindtap="handleAddProject"
+    bind:click="handleAddResumeHonor"
+    bind:update="handleUpdateResumeHonor"
   />
   <profile-block
     mode="{{resume.thesis}}"
     type="{{2}}"
     icon="add-o"
     title="发布论文"
-    bindtap="handleAddProject"
+    bind:click="handleAddResumeThesis"
+    bind:update="handleUpdateResumeThesis"
   />
 
   <view class="files__btn">

@@ -1,6 +1,15 @@
 @import "../../../../assets/css/variables";
 .edit-info {
   padding: $padding-xs;
+  .cell {
+    .van-cell__title {
+      flex: inherit;
+      min-width: 7em;
+    }
+    .van-cell__value {
+      text-align: left;
+    }
+  }
   &__title {
     font-size: 32rpx;
     font-weight: bold;

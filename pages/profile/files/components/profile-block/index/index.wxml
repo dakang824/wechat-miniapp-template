@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-17 12:33:13
+ * @LastEditTime: 2021-01-17 15:20:22
 -->
 <wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-block">
@@ -25,6 +25,9 @@
 
       <view class="profile-block__info">
         <text space="emsp" decode>{{item.intro}}</text>
+        <view wx:if='{{item.perfor}}'>
+          <text space="emsp" decode>{{item.perfor}}</text>
+        </view>
       </view>
     </block>
   </block>
@@ -37,7 +40,7 @@
             <text wx:if="{{item.time}}">{{utils.slice(utils.formatTime(item.time),8) }}</text>
             {{item.name}}
           </view>
-          <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
+          <van-icon name="arrow" color="#999" bindtap="handleJump" data-i='{{index}}'></van-icon>
         </view>
       </view>
       <view class="profile-block__info">
