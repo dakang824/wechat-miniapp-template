@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-17 09:37:10
+ * @LastEditTime: 2021-01-17 12:33:13
 -->
 <wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-block">
@@ -15,7 +15,7 @@
       <view wx:if="{{showJump}}" class="profile-block__cell">
         <view class="u-flex u-row-between">
           <view class="profile-block__cell__title">{{item.name}}</view>
-          <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
+          <van-icon name="arrow" color="#999" bindtap="handleJump" data-i='{{index}}'></van-icon>
         </view>
         <view class="profile-block__cell__tag">
           <text>{{utils.formatTime(item.start_time)}}-{{utils.formatTime(item.end_time)}}</text>

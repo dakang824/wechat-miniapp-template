@@ -5,8 +5,9 @@
  * @LastEditTime: 2021-01-17 12:11:02
 -->
 <container>
+  <van-calendar show="{{ show }}" type="range" bind:close="onDisplay" bind:confirm="onConfirm" />
   <view class="edit-info">
-    <view class="edit-info__title">个人介绍</view>
+    <view class="edit-info__title">{{title}}</view>
     <block wx:for="{{form}}" wx:key="index">
       <van-field
         value="{{ item.val }}"
@@ -28,6 +29,14 @@
           bind:updateImgs="updateImgs"
         />
       </view>
+      <van-cell
+        required="{{item.required}}"
+        title="{{item.title}}"
+        value="{{ text }}"
+        bind:click="onDisplay"
+        custom-class="cell"
+        wx:if="{{item.type==='calendar'}}"
+      />
     </block>
 
     <!-- <view class="edit-info__textarea">

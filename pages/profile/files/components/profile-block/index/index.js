@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 19:21:29
- * @LastEditTime: 2021-01-17 09:19:34
+ * @LastEditTime: 2021-01-17 12:40:16
  */
 import { Comp, app } from "../../../../../../components/component";
 
@@ -38,10 +38,10 @@ Comp({
   },
   methods: {
     handleClick() {
-      this.triggerEvent("click", this.data.type);
+      this.triggerEvent("click");
     },
-    handleJump() {
-      console.log(1);
+    handleJump(e) {
+      this.triggerEvent("update", e.currentTarget.dataset.i);
     },
   },
 });

@@ -99,6 +99,7 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-loading": "@vant/weapp/loading/index",
     "van-uploader": "@vant/weapp/uploader/index",
+    "van-calendar": "@vant/weapp/calendar/index",
     "scroll": "/components/scroller",
     "container": "/components/container",
     "load-more": "/components/load-more"
