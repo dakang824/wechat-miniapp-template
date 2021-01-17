@@ -2,5 +2,6 @@
   "usingComponents": {
     "list-item": "/components/list-item/index"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "我的收藏"
 }

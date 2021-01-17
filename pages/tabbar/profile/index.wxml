@@ -2,13 +2,14 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-09 17:39:20
+ * @LastEditTime: 2021-01-17 16:20:21
 -->
+<wxs src="../../../wxs/utils.wxs" module="utils" />
 <container>
   <view class="profile__box">
     <view class="u-flex profile__box__header">
-      <van-image width="120rpx" height="120rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" round/>
-      <text>何银辉</text>
+      <van-image width="120rpx" height="120rpx" src="{{utils.baseUrl(userInfo.icon)}}" round/>
+      <text>{{userInfo.nickname||userInfo.name}}</text>
     </view>
     <van-cell clickable title="{{item.name}}"  size="large" wx:for='{{list}}' wx:key='index' icon="/assets/image/icon{{index}}.png" is-link url='{{item.url}}'/>
     <view class="profile__box__login-out">

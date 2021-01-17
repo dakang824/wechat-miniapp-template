@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 19:21:29
- * @LastEditTime: 2021-01-17 12:40:16
+ * @LastEditTime: 2021-01-17 16:11:13
  */
 import { Comp, app } from "../../../../../../components/component";
 
@@ -37,6 +37,11 @@ Comp({
     src: "https://cdn.uviewui.com/uview/example/fade.jpg",
   },
   methods: {
+    handlePreviewImage(e) {
+      wx.previewImage({
+        urls: [e.currentTarget.dataset.src],
+      });
+    },
     handleClick() {
       this.triggerEvent("click");
     },

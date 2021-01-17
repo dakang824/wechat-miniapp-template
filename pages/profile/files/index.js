@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-17 15:52:14
+ * @LastEditTime: 2021-01-17 16:23:43
  */
 import { Router, app } from "../../page";
 Router({
@@ -18,6 +18,10 @@ Router({
       data: { resume },
     } = await app.$api.findMyResume({});
     this.setData({ resume, info: [{ intro: resume.summary }] });
+    wx.stopPullDownRefresh();
+  },
+  onPullDownRefresh() {
+    this.fetchData();
   },
   goJump(type, str) {
     app.$store.other = this.data.resume;

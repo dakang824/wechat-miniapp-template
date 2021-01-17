@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-09 17:45:02
+ * @LastEditTime: 2021-01-17 16:17:01
  */
 import { Router, app } from "../../page";
 Router(
@@ -18,7 +18,11 @@ Router(
       ],
     },
     onLoad(options) {},
-    onShow() {},
+    onShow() {
+      this.setData({
+        userInfo: app.$store.user.userInfo,
+      });
+    },
     handleLoginOut() {
       app.$store.isLogin = false;
       app.$store.user.userInfo = {};

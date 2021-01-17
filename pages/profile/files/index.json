@@ -3,5 +3,6 @@
     "profile-header": "./components/profile-header/index",
     "profile-block": "./components/profile-block/index"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "我的档案"
 }

@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-17 15:20:22
+ * @LastEditTime: 2021-01-17 16:10:32
 -->
 <wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-block">
@@ -44,7 +44,7 @@
         </view>
       </view>
       <view class="profile-block__info">
-        <van-image width="100%" height="333rpx" src="{{utils.baseUrl(item.pic_path)}}"></van-image>
+        <van-image width="100%" height="333rpx" src="{{utils.baseUrl(item.pic_path)}}" data-src="{{utils.baseUrl(item.pic_path)}}" bind:click="handlePreviewImage"></van-image>
       </view>
     </block>
   </block>
