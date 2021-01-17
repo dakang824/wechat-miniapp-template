@@ -16,6 +16,7 @@ App({
   $router: new Router(),
   $api,
   $utils,
+  globalData,
   async onLaunch() {
     promisifyAll();
     //初始化，全局监听

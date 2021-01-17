@@ -89,6 +89,11 @@
           "pathName": "pages/home/detail/index",
           "query": "id=2",
           "scene": null
+        },
+        {
+          "name": "pages/profile/files/index",
+          "pathName": "pages/profile/files/index",
+          "scene": null
         }
       ]
     }

@@ -2,38 +2,47 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-09 20:35:06
+ * @LastEditTime: 2021-01-17 09:37:10
 -->
+<wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-block">
   <view class="profile-block__title u-flex u-row-between van-hairline--bottom">
-    <view>个人介绍</view>
-    <van-icon name="{{icon}}" bind:click="handleClick" color='#1CBC9A' size='34rpx'/>
+    <view>{{title}}</view>
+    <van-icon name="{{icon}}" bind:click="handleClick" color="#1CBC9A" size="34rpx" />
   </view>
   <block wx:if="{{type === 1}}">
-    <view wx:if="{{showJump}}" class="profile-block__cell">
-      <view class="u-flex u-row-between">
-        <view class="profile-block__cell__title">EPC工程管理小程序</view>
-        <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
+    <block wx:for="{{mode}}" wx:key="index">
+      <view wx:if="{{showJump}}" class="profile-block__cell">
+        <view class="u-flex u-row-between">
+          <view class="profile-block__cell__title">{{item.name}}</view>
+          <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
+        </view>
+        <view class="profile-block__cell__tag">
+          <text>{{utils.formatTime(item.start_time)}}-{{utils.formatTime(item.end_time)}}</text>
+          <text>{{item.roles}}</text>
+        </view>
       </view>
-      <view class="profile-block__cell__tag">
-        <text>2018年06月-至今</text> <text>产品经理</text>
-      </view>
-    </view>
 
-    <view class="profile-block__info">
-      <text space="emsp" decode>4年的产品工作经验，已参加过多款产品开发设计，包括APP商城型、web商城型、小程序在线教育型、O2O服务预约型和后台CMS等产品设计开发；了解技术开发；善于跨部门协调资源熟悉软件产品整体实现过程，包括从需求分析，开发到产品发布；思路清晰，数据分析能力强，积极认真，高效沟通，对工作负责等。</text>
-    </view>
+      <view class="profile-block__info">
+        <text space="emsp" decode>{{item.intro}}</text>
+      </view>
+    </block>
   </block>
 
   <block wx:if="{{type === 2}}">
-    <view wx:if="{{showJump}}" class="profile-block__cell">
-      <view class="u-flex u-row-between">
-        <view class="profile-block__cell__title">EPC工程管理小程序</view>
-        <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
+    <block wx:for="{{mode}}" wx:key="index">
+      <view wx:if="{{showJump}}" class="profile-block__cell">
+        <view class="u-flex u-row-between">
+          <view class="profile-block__cell__title">
+            <text wx:if="{{item.time}}">{{utils.slice(utils.formatTime(item.time),8) }}</text>
+            {{item.name}}
+          </view>
+          <van-icon name="arrow" color="#999" bindtap="handleJump"></van-icon>
+        </view>
       </view>
-    </view>
-    <view class="profile-block__info">
-      <van-image width="100%" height="333rpx" src="{{src}}"></van-image>
-    </view>
+      <view class="profile-block__info">
+        <van-image width="100%" height="333rpx" src="{{utils.baseUrl(item.pic_path)}}"></van-image>
+      </view>
+    </block>
   </block>
 </view>

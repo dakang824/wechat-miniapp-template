@@ -2,17 +2,18 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的档案头部用户信息
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-09 20:09:20
+ * @LastEditTime: 2021-01-17 12:24:02
 -->
+<wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-header u-flex">
   <view class="profile-header__image">
-    <van-image width="120rpx" height="120rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" round/>
+    <van-image width="120rpx" height="120rpx" src="{{utils.baseUrl(mode.icon)}}" round />
   </view>
   <view class="profile-header__info">
-    <view class="profile-header__info__name">何银辉</view>
+    <view class="profile-header__info__name">{{mode.name}}</view>
     <view class="profile-header__info__job">
-      <text>人资部</text>
-      <text>档案专员</text>
+      <text>{{mode.department}}</text>
+      <text>{{mode.position}}</text>
     </view>
   </view>
 </view>

@@ -19,6 +19,10 @@
   font-weight: bold;
 }
 
+.profile-block__cell__title text {
+  margin-right: 20rpx;
+}
+
 .profile-block__cell__tag {
   font-size: 24rpx;
   color: #a5a5a5;

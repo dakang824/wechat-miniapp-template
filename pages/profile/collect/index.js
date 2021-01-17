@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:我的收藏
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-16 14:49:19
+ * @LastEditTime: 2021-01-17 08:44:30
  */
 import { Router, app } from "../../page";
 Router({
@@ -44,7 +44,7 @@ Router({
 
     const {
       data: {
-        userScores: { list },
+        articleCollects: { list },
       },
     } = await app.$api.findMyCollectArticle(postData);
 

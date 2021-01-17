@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "uploader": "/components/uploader"
+  },
   "navigationBarTitleText": "个人介绍"
 }

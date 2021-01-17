@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 19:21:29
- * @LastEditTime: 2021-01-09 20:34:48
+ * @LastEditTime: 2021-01-17 09:19:34
  */
 import { Comp, app } from "../../../../../../components/component";
 
@@ -23,6 +23,14 @@ Comp({
     type: {
       type: Number,
       value: 1,
+    },
+    title: {
+      type: String,
+      value: "",
+    },
+    mode: {
+      type: Object,
+      value: {},
     },
   },
   data: {

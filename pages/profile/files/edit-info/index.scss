@@ -9,7 +9,14 @@
   &__btn {
     margin: 200rpx $padding-md 0;
   }
-
+  &__uploader {
+    margin: 20rpx;
+    &__title {
+      color: #646566;
+      font-size: 26rpx;
+      margin-bottom: 20rpx;
+    }
+  }
   &__textarea {
     color: #323233;
     &__input {

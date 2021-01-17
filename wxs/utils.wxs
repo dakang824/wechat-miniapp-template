@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:工具类
  * @Date: 2021-01-06 13:07:47
- * @LastEditTime: 2021-01-15 00:35:24
+ * @LastEditTime: 2021-01-17 10:03:53
  */
 /* eslint-disable */
 var bem = require("./bem.wxs");
@@ -29,6 +29,10 @@ var baseUrl = function (val) {
   return "http://47.101.210.167:9999/" + val;
 };
 
+function formatTime(t) {
+  return t.slice(0, 10).replace("-", "年").replace("-", "月") + "日";
+}
+
 module.exports = {
   bem: memoize(bem),
   memoize: memoize,
@@ -37,4 +41,5 @@ module.exports = {
   zeroFill: zeroFill,
   slice: slice,
   baseUrl: baseUrl,
+  formatTime: formatTime,
 };

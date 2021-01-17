@@ -1,7 +1,36 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-09 19:57:31
+ * @LastEditTime: 2021-01-17 12:11:02
+-->
 <container>
   <view class="edit-info">
     <view class="edit-info__title">个人介绍</view>
-    <view class="edit-info__textarea">
+    <block wx:for="{{form}}" wx:key="index">
+      <van-field
+        value="{{ item.val }}"
+        required="{{item.required}}"
+        clearable
+        label="{{item.title}}"
+        type="{{item.type}}"
+        autosize="{{item.type==='textarea'}}"
+        bind:change="handleInputChange"
+        placeholder="请输入{{item.title}}"
+        data-ind="{{index}}"
+        wx:if="{{item.type==='text'||item.type==='textarea'}}"
+      />
+      <view class="edit-info__uploader" wx:if="{{item.type==='icon'}}">
+        <view class="edit-info__uploader__title">{{item.title}}</view>
+        <uploader
+          fileList="{{fileList}}"
+          maxCount="{{item.maxCount}}"
+          bind:updateImgs="updateImgs"
+        />
+      </view>
+    </block>
+
+    <!-- <view class="edit-info__textarea">
       <textarea
         max-length="300"
         placeholder="例如：1. 项目概况  2. 人员分工  3. 我的职责"
@@ -13,10 +42,10 @@
         <label class>{{ value.length }}</label>
         <label>/{{ maxlength }}</label>
       </view>
-    </view>
+    </view>-->
 
     <view class="edit-info__btn">
-      <van-button type="primary" block>保存</van-button>
+      <van-button type="primary" block bind:click="handleSave">保存</van-button>
     </view>
   </view>
 </container>

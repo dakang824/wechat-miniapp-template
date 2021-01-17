@@ -1,9 +1,10 @@
 <!--
  * @Author: yukang 1172248038@qq.com
- * @Description: 
+ * @Description: 我的二维码
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-09 18:11:36
+ * @LastEditTime: 2021-01-17 08:57:28
 -->
+<wxs src="../../../wxs/utils.wxs" module="utils" />
 <container class="qr-code">
   <view class="qr-code__content">
     <view class="qr-code__box">
@@ -15,8 +16,9 @@
       <van-image
         width="280rpx"
         height="280rpx"
-        src="/assets/image/qr-code.png"
+        src="{{utils.baseUrl(qr_path)}}"
         class="qr-code__box__img"
+        bind:click="handleClick"
       />
     </view>
     <view class="qr-code__tip">老师扫码进行技能树审核</view>

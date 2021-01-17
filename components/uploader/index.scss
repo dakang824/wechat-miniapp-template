@@ -1,0 +1,22 @@
+@import "../../assets/css/variables";
+.list-item {
+  padding: $padding-md;
+  background: #fff;
+  &__left {
+    color: $text-lighter;
+    font-size: $font-size-smallest;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150rpx;
+    margin-right: $padding-xs;
+    &__title {
+      font-size: $font-size-normal;
+      font-weight: bold;
+      color: $text-normal;
+    }
+  }
+  &__right {
+    min-width: 226rpx;
+  }
+}
