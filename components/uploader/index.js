@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-06 15:08:29
- * @LastEditTime: 2021-01-17 11:53:52
+ * @LastEditTime: 2021-01-26 16:42:29
  */
 import { Comp, app } from "../component";
 
@@ -26,7 +26,7 @@ Comp({
   methods: {
     async afterRead(event) {
       const { file } = event.detail,
-        { baseURL, fileUpload } = app.globalData;
+        { baseURL, fileUpload } = app.$store;
       const { data } = await wx.pro.uploadFile({
         url: `${baseURL + fileUpload}`,
         filePath: file.url,

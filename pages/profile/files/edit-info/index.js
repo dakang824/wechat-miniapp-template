@@ -2,9 +2,12 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 修改个人信息
  * @Date: 2021-01-09 19:57:31
- * @LastEditTime: 2021-01-17 15:59:05
+ * @LastEditTime: 2021-01-26 16:42:44
  */
-import { Router, app } from "../../../page";
+import {
+  Router,
+  app
+} from "../../../page";
 Router({
   data: {
     ind: 0,
@@ -19,9 +22,13 @@ Router({
     fileList: [],
   },
   onLoad(options) {
-    let { type, index = null } = options,
-      info = app.$store.other,
-      { baseURL } = app.globalData;
+    let {
+      type,
+      index = null
+    } = options,
+    info = app.$store.other, {
+      baseURL
+    } = app.$store;
 
     this.setData({
       info,
@@ -30,18 +37,18 @@ Router({
     const form = this.initData(type),
       uploader = form.find((item) => item.type === "icon"),
       key =
-        type == 4 ? "certs" : type == 5 ? "honors" : type == 6 ? "thesis" : "";
-    const fileList = uploader
-      ? type == 1
-        ? [{ url: baseURL + info.icon }]
-        : (type == 4 || type == 5 || type == 6) && index !== null
-        ? [
-            {
-              url: baseURL + info[key][index].pic_path,
-            },
-          ]
-        : ""
-      : [];
+      type == 4 ? "certs" : type == 5 ? "honors" : type == 6 ? "thesis" : "";
+    const fileList = uploader ?
+      type == 1 ?
+      [{
+        url: baseURL + info.icon
+      }] :
+      (type == 4 || type == 5 || type == 6) && index !== null ?
+      [{
+        url: baseURL + info[key][index].pic_path,
+      }, ] :
+      "" :
+      [];
 
     this.setData({
       fileList,
@@ -55,8 +62,7 @@ Router({
     let info = app.$store.other,
       form;
     if (type == 1) {
-      form = [
-        {
+      form = [{
           type: "text",
           value: "name",
           title: "简历名称",
@@ -97,8 +103,7 @@ Router({
         intro: "",
         perfor: "",
       };
-      form = [
-        {
+      form = [{
           type: "text",
           value: "name",
           title: "项目名称",
@@ -144,8 +149,7 @@ Router({
         end_time: "",
         perfor: "",
       };
-      form = [
-        {
+      form = [{
           type: "text",
           value: "name",
           title: "学校名称",
@@ -183,8 +187,7 @@ Router({
         time: "",
         pic_path: "",
       };
-      form = [
-        {
+      form = [{
           type: "text",
           value: "name",
           title: "学校名称",
@@ -210,8 +213,7 @@ Router({
         name: "",
         pic_path: "",
       };
-      form = [
-        {
+      form = [{
           type: "text",
           value: "name",
           title: "证书名称",
@@ -231,8 +233,7 @@ Router({
         name: "",
         pic_path: "",
       };
-      form = [
-        {
+      form = [{
           type: "text",
           value: "name",
           title: "证书名称",
@@ -250,7 +251,9 @@ Router({
     return form;
   },
   updateImgs(e) {
-    const { baseURL } = app.globalData,
+    const {
+      baseURL
+    } = app.$store,
       val = JSON.parse(JSON.stringify(e.detail)).map((item) =>
         item.url.slice(baseURL.length)
       );
@@ -265,26 +268,39 @@ Router({
     });
   },
   handleDelect() {
-    const { type, info, index, title } = this.data,
+    const {
+      type,
+      info,
+      index,
+      title
+    } = this.data,
       pages = getCurrentPages(),
       prepage = pages[pages.length - 2];
     app.$utils.Dialog.confirm({
-      title: "温馨提示",
-      message: `确定是否删除该${title}?`,
-    })
+        title: "温馨提示",
+        message: `确定是否删除该${title}?`,
+      })
       .then(async () => {
         if (type == 2) {
           //删除项目经历
-          await app.$api.deleteResumeProject({ id: info.projects[index].id });
+          await app.$api.deleteResumeProject({
+            id: info.projects[index].id
+          });
         } else if (type == 3) {
           //删除教育经历
-          await app.$api.deleteResumeEdu({ edu_id: info.edus[index].id });
+          await app.$api.deleteResumeEdu({
+            edu_id: info.edus[index].id
+          });
         } else if (type == 4) {
           //删除资格证书
-          await app.$api.deleteResumeCert({ cert_id: info.certs[index].id });
+          await app.$api.deleteResumeCert({
+            cert_id: info.certs[index].id
+          });
         } else if (type == 5) {
           //删除荣誉证书
-          await app.$api.deleteResumeHonor({ honor_id: info.honors[index].id });
+          await app.$api.deleteResumeHonor({
+            honor_id: info.honors[index].id
+          });
         } else if (type == 6) {
           //删除论文
           await app.$api.deleteResumeThesis({
@@ -298,13 +314,22 @@ Router({
       .catch(() => {});
   },
   async handleSave() {
-    const { type, form, fileList, info, index } = this.data,
+    const {
+      type,
+      form,
+      fileList,
+      info,
+      index
+    } = this.data,
       pages = getCurrentPages(),
       prepage = pages[pages.length - 2];
     const val = form.reduce((a, b) => {
       a[b.value] = b.val;
       if (b.required && b.val === "") {
-        app.$utils.Notify({ type: "danger", message: `${b.title}不能为空` });
+        app.$utils.Notify({
+          type: "danger",
+          message: `${b.title}不能为空`
+        });
         return false;
       }
       return a;
@@ -379,7 +404,13 @@ Router({
   },
 
   onDisplay(e) {
-    this.setData({ show: !this.data.show, ind: e.currentTarget.dataset.ind });
+    this.setData({
+      show: !this.data.show,
+      ind: e.currentTarget.dataset.ind
+    });
   },
   onShow() {},
+  onUnload() {
+    app.$store.other = {}
+  }
 });

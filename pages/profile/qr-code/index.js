@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:我的二维码
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-17 09:05:05
+ * @LastEditTime: 2021-01-26 16:42:54
  */
 import { Router, app } from "../../page";
 Router({
@@ -16,7 +16,7 @@ Router({
   onShow() {},
   handleClick() {
     wx.previewImage({
-      urls: [app.globalData.baseURL + this.data.qr_path],
+      urls: [app.$store.baseURL + this.data.qr_path],
     });
   },
   async fetchData() {
