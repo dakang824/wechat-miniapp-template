@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:程序入口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-26 16:46:50
+ * @LastEditTime: 2021-01-26 16:57:01
  */
 import { init } from "./store/store";
 import Router from "./config/router/router";
@@ -16,9 +16,9 @@ App({
   $router: new Router(),
   $api,
   $utils,
-  async onLaunch() {
+  onLaunch() {
     promisifyAll(); // 初始化所有wx.api为promise结构;
-    await init(globalData).then((store) => {
+    init(globalData).then((store) => {
       this.$store = store;
     });
   },
