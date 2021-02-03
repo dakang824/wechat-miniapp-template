@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-26 16:32:48
+ * @LastEditTime: 2021-02-02 15:40:20
  */
 const app = getApp();
 import {
@@ -32,11 +32,16 @@ const Router = (pageObj, share = true) => {
     let _page = pageObj.onShow;
     pageObj.onShow = function () {
       app.$router.setRouter();
-      console.log(app, "第三方");
       // 判断用户是否登录
       if (!app.$store.isLogin) {
         app.$router.toLogin();
         return;
+      } else if (
+        //判断用户为老师只能访问老师页面
+        app.$store.user.userInfo.roles === 2 &&
+        !app.$router.last.includes("teacher")
+      ) {
+        app.$router.redirect(`/pages/teacher/student-list/index`);
       }
 
       //公共参数

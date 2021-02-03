@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:用户登录
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-09 23:18:24
+ * @LastEditTime: 2021-02-02 15:40:40
  */
 import { Router, app } from "../page";
 Router(
@@ -55,8 +55,9 @@ Router(
         }
 
         app.$store.isLogin = true;
+        (app.$store.user.userInfo.roles === 1 && app.$router.toHome()) ||
+          app.$router.redirect(`/pages/teacher/student-list/index`);
 
-        app.$router.toHome();
         this.setData({
           loading: false,
         });

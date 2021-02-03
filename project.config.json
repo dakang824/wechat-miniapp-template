@@ -93,6 +93,12 @@
         {
           "name": "pages/profile/files/index",
           "pathName": "pages/profile/files/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/student-list/index",
+          "pathName": "pages/teacher/student-list/index",
           "scene": null
         }
       ]
