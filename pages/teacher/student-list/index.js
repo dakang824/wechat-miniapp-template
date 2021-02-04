@@ -2,16 +2,11 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-04 07:58:30
+ * @LastEditTime: 2021-02-04 13:45:25
  */
-const {
-  CityList
-} = require("../../../utils/city.js");
+const { CityList } = require("../../../utils/city.js");
 
-import {
-  Router,
-  app
-} from "../../page";
+import { Router, app } from "../../page";
 Router({
   data: {
     listData: [],
@@ -55,7 +50,7 @@ Router({
           return {
             name: item.city,
             code: item.code,
-            short: item.short
+            short: item.short,
           };
         });
 
@@ -92,9 +87,8 @@ Router({
     });
   },
   itemClick(e) {
-    console.log(e);
     app.$router.nav(
-      `/pages/teacher/skill/index?user_id=${e.detail.user_id}&user_name=${e.detail.user_name}`
+      `/pages/teacher/student-skill/index?user_id=${e.detail.user_id}&user_name=${e.detail.user_name}`
     );
   },
   onLoad() {

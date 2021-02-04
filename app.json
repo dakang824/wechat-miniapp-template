@@ -29,7 +29,7 @@
     },
     {
       "root": "pages/teacher",
-      "pages": ["student-list/index", "skill/index"]
+      "pages": ["student-list/index", "student-skill/index"]
     }
   ],
   "window": {

@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-02-04 08:26:50
+ * @LastEditTime: 2021-02-04 14:02:11
  */
 import { Router, app } from "../../page";
 Router(
@@ -23,7 +23,7 @@ Router(
         },
         {
           name: "我的技能",
-          url: "/pages/profile/skill/index",
+          url: "/pages/profile/student-skill/index",
         },
         {
           name: "我的二维码",
