@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-01-09 16:39:10
+ * @LastEditTime: 2021-02-04 22:35:23
  */
 import { Router, app } from "../../page";
 Router(
@@ -48,6 +48,7 @@ Router(
           });
           return;
         }
+
         app.$router.redirect(
           `/pages/answer/index/index?params=`,
           JSON.stringify({
@@ -56,6 +57,12 @@ Router(
             radio_count,
             check_count,
             time,
+
+            tests: {
+              radio_score: 1,
+              judge_score: 1,
+              check_score: 1,
+            },
           })
         );
       }

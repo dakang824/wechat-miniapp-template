@@ -2,10 +2,15 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 填写信息
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-01-09 14:46:02
+ * @LastEditTime: 2021-02-04 22:48:34
 -->
 <van-notify id="van-notify" />
 <container class="form">
+  <van-notice-bar
+  left-icon="volume-o"
+  text="判断题/单选题/多选题总共不能大于100道题,一道题1分。"
+  mode="closeable"
+/>
   <van-cell-group>
     <van-field
       type="number"
