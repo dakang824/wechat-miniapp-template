@@ -2,13 +2,11 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:用户登录
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-04 08:27:48
+ * @LastEditTime: 2021-02-04 22:11:14
  */
-import {
-  Router,
-  app
-} from "../page";
-Router({
+import { Router, app } from "../page";
+Router(
+  {
     data: {
       account: "",
       pwd: "",
@@ -25,65 +23,48 @@ Router({
       });
     },
     _checkData() {
-      const {
-        account,
-        pwd
-      } = this.data;
+      const { account, pwd } = this.data;
       if (account === "") {
         app.$utils.Notify({
           type: "danger",
-          message: "请输入姓名"
+          message: "请输入姓名",
         });
         return false;
       } else if (pwd === "") {
         app.$utils.Notify({
           type: "danger",
-          message: "请输入工号"
+          message: "请输入工号",
         });
         return false;
       }
       return true;
     },
     async handleLogin() {
-      const {
-        account,
-        pwd
-      } = this.data;
+      const { account, pwd } = this.data;
       if (this._checkData()) {
         this.setData({
           loading: true,
         });
+
+        console.log({
+          account,
+          pwd: app.$utils.sha1(pwd),
+          sys_id: app.$store.sys_id,
+        });
+        return;
         const {
-          code
-        } = await wx.pro.login();
-        const {
-          code: resCode,
-          data: {
-            sys_id,
-            userinfo = {}
-          },
-        } = await app.$api.wxLogin({
-          code
+          data: { userinfo },
+        } = await app.$api.bindAccount({
+          account,
+          pwd: app.$utils.sha1(pwd),
+          sys_id: app.$store.sys_id,
         });
 
-        if (resCode === 5) {
-          const {
-            data: {
-              userinfo
-            },
-          } = await app.$api.bindAccount({
-            account,
-            pwd,
-            sys_id
-          });
-          app.$store.user.userInfo = userinfo;
-        } else if (resCode === 200) {
-          app.$store.user.userInfo = userinfo;
-        }
+        app.$store.user.userInfo = userinfo;
 
         app.$store.isLogin = true;
         (app.$store.user.userInfo.roles === 1 && app.$router.toHome()) ||
-        app.$router.redirect(`/pages/teacher/student-list/index`);
+          app.$router.redirect(`/pages/teacher/student-list/index`);
 
         this.setData({
           loading: false,

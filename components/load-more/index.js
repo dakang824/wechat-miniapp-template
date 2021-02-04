@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-06 15:08:29
- * @LastEditTime: 2021-01-15 19:46:02
+ * @LastEditTime: 2021-02-04 21:24:34
  */
 import { Comp, app } from "../component";
 
@@ -15,6 +15,10 @@ Comp({
     status: {
       type: String,
       value: "loadmore",
+    },
+    length: {
+      type: Number,
+      value: 5,
     },
     loadmore: {
       type: String,

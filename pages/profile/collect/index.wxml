@@ -2,12 +2,12 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-16 14:50:55
+ * @LastEditTime: 2021-02-04 21:25:11
 -->
 <container>
   <block wx:if="{{list.length}}">
-    <list-item wx:for="{{ list }}" wx:key="index" mode="{{ item }}"></list-item>
-    <load-more status="{{status}}" />
+    <list-item wx:for="{{ list }}" wx:key="index" mode="{{ item.article }}"></list-item>
+    <load-more status="{{status}}" length='{{list.length}}'/>
   </block>
   <block wx:else>
     <van-empty description="~ 暂无数据 ~" />

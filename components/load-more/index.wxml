@@ -2,9 +2,11 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-06 15:08:29
- * @LastEditTime: 2021-01-15 19:42:46
+ * @LastEditTime: 2021-02-04 21:24:42
 -->
-<van-divider contentPosition="center" dashed>
-  <van-loading size="24px" wx:if="{{status==='loading'}}">{{loading}}</van-loading>
-  {{status==='loadmore'?loadmore:status==='nomore'?nomore:''}}
+<van-divider contentPosition="center" dashed wx:if="{{ length >= 5 }}">
+  <van-loading size="24px" wx:if="{{ status === 'loading' }}">
+    {{ loading }}
+  </van-loading>
+  {{ status === "loadmore" ? loadmore : status === "nomore" ? nomore : "" }}
 </van-divider>

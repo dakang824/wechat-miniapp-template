@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-04 08:23:40
+ * @LastEditTime: 2021-02-04 22:12:08
  */
 const app = getApp();
 import {
@@ -30,18 +30,42 @@ const Router = (pageObj, share = true) => {
   //程序一打开就判断用户是否登录
   if (pageObj.onLoad) {
     let _page = pageObj.onLoad;
-    pageObj.onLoad = function (options) {
-      if (!app.$store.isLogin) {
-        app.$router.toLogin();
-        return;
-      } else if (
-        //判断用户为老师只能访问老师页面
-        app.$store.user.userInfo.roles === 2 &&
-        !app.$router.last.includes("teacher")
-      ) {
-        app.$router.redirect(`/pages/teacher/student-list/index`);
+    pageObj.onLoad = async function (options) {
+      try {
+        // 判断登录逻辑
+        if (!app.$store.isLogin) {
+          const { code } = await wx.pro.login();
+          const {
+            code: resCode,
+            data: { sys_id, userinfo = {} },
+          } = await app.$api.wxLogin({
+            code,
+          });
+
+          if (resCode === 5) {
+            app.$store.sys_id = sys_id;
+            app.$router.toLogin();
+          } else if (resCode === 200) {
+            app.$store.user.userInfo = userinfo;
+            app.$store.isLogin = true;
+            if (app.$store.user.userInfo.roles === 1) {
+              app.$router.toHome();
+            } else {
+              app.$router.redirect(`/pages/teacher/student-list/index`);
+            }
+          }
+        } else if (
+          //判断用户为老师只能访问老师页面
+          app.$store.user.userInfo.roles === 2 &&
+          !app.$router.last.includes("teacher")
+        ) {
+          app.$router.redirect(`/pages/teacher/student-list/index`);
+        }
+      } catch (err) {
+        console.log(err);
+      } finally {
+        _page.call(this, options);
       }
-      _page.call(this, options);
     };
   }
 
@@ -77,7 +101,8 @@ const Router = (pageObj, share = true) => {
       } else return initShare;
       _page.call(this);
     };
-  } else {}
+  } else {
+  }
 
   return Page(pageObj);
 };

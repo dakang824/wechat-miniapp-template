@@ -26,7 +26,7 @@ request.interceptors.request.use(
     config.data && userInfo.id ? (config.data.ope_id = userInfo.id) : "";
 
     //返回的是和wx.request相关的参数
-    console.log(config);
+    // console.log(config);
     wx.showNavigationBarLoading();
     wx.showLoading({
       title: "加载内容",
