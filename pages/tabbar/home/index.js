@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-01-26 16:30:58
+ * @LastEditTime: 2021-02-04 08:25:42
  */
 import { Router, app } from "../../page";
 Router({
@@ -38,7 +38,9 @@ Router({
     await this.fetchDataNavs();
     await this.fetchData();
   },
-  onShow() {},
+  onShow() {
+    wx.showTabBar();
+  },
   async getAllProfession() {
     const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {

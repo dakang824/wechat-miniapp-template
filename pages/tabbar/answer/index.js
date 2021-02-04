@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:答题
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-16 17:06:02
+ * @LastEditTime: 2021-02-04 08:26:24
  */
 import { Router, app } from "../../page";
 Router({
@@ -59,7 +59,9 @@ Router({
   async onLoad(options) {
     await this.fetchDataNavs();
   },
-  onShow() {},
+  onShow() {
+    wx.showTabBar();
+  },
   async fetchDataNavs() {
     const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {

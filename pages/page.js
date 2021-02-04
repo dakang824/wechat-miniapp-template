@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-02 15:40:20
+ * @LastEditTime: 2021-02-04 08:23:40
  */
 const app = getApp();
 import {
@@ -27,12 +27,10 @@ const Router = (pageObj, share = true) => {
   //需跳转到登录的方法前置监听
   bindToLoginBeforeFunc(pageObj, pageObj.needToLogin, this, app);
 
-  //常用参数和配置信息
-  if (pageObj.onShow) {
-    let _page = pageObj.onShow;
-    pageObj.onShow = function () {
-      app.$router.setRouter();
-      // 判断用户是否登录
+  //程序一打开就判断用户是否登录
+  if (pageObj.onLoad) {
+    let _page = pageObj.onLoad;
+    pageObj.onLoad = function () {
       if (!app.$store.isLogin) {
         app.$router.toLogin();
         return;
@@ -43,6 +41,16 @@ const Router = (pageObj, share = true) => {
       ) {
         app.$router.redirect(`/pages/teacher/student-list/index`);
       }
+      _page.call(this);
+    };
+  }
+
+  //常用参数和配置信息
+  if (pageObj.onShow) {
+    let _page = pageObj.onShow;
+
+    pageObj.onShow = function () {
+      app.$router.setRouter();
 
       //公共参数
       this.setData({

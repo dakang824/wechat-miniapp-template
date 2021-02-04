@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:程序入口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-26 16:57:01
+ * @LastEditTime: 2021-02-04 08:25:09
  */
 import { init } from "./store/store";
 import Router from "./config/router/router";
@@ -17,6 +17,7 @@ App({
   $api,
   $utils,
   onLaunch() {
+    wx.hideTabBar();
     promisifyAll(); // 初始化所有wx.api为promise结构;
     init(globalData).then((store) => {
       this.$store = store;

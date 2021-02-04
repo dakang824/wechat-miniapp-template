@@ -2,12 +2,9 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-01-09 21:29:54
+ * @LastEditTime: 2021-02-04 08:26:33
  */
-import {
-  Router,
-  app
-} from "../../page";
+import { Router, app } from "../../page";
 Router({
   data: {
     active: 0,
@@ -24,7 +21,8 @@ Router({
       },
       loadmore: {
         type: "default",
-        icon: "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
+        icon:
+          "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
         background: "#f2f2f2",
         title: {
           show: true,
@@ -39,15 +37,13 @@ Router({
     await this.fetchDataNavs();
     await this.fetchData();
   },
-  onShow() {},
+  onShow() {
+    wx.showTabBar();
+  },
   async fetchDataNavs() {
+    const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {
-      prof_group_id: group_id
-    } = app.$store.user.userInfo;
-    const {
-      data: {
-        profs: navs
-      },
+      data: { profs: navs },
     } = await app.$api.getAllProfession();
     this.setData({
       navs: navs.map((item) => {
@@ -68,13 +64,8 @@ Router({
     });
   },
   async fetchData(e) {
-    const {
-      navs,
-      active
-    } = this.data, {
-      queryData,
-      list: currentList
-    } = navs[active];
+    const { navs, active } = this.data,
+      { queryData, list: currentList } = navs[active];
 
     this.setData({
       [`navs[${active}].requesting`]: true,
@@ -83,13 +74,10 @@ Router({
     queryData.prof_id = navs[active].id;
 
     const {
-      data: {
-        articles: {
-          list,
-          total: length
+        data: {
+          articles: { list, total: length },
         },
-      },
-    } = await app.$api.findArticle(queryData),
+      } = await app.$api.findArticle(queryData),
       limit = list.length,
       end = limit === queryData.page_size;
 
@@ -110,9 +98,7 @@ Router({
     }
   },
   handleChangeProfs(e) {
-    const {
-      active
-    } = this.data;
+    const { active } = this.data;
     // this.setData({
     //   [`navs[${active}].queryData.prof_id`]: this.data.navs[active].modules[
     //     e.detail.index
@@ -121,13 +107,8 @@ Router({
     // this.handleRefresh();
   },
   handleChange(e) {
-    const {
-      index
-    } = e.detail;
-    const {
-      navs,
-      active
-    } = this.data;
+    const { index } = e.detail;
+    const { navs, active } = this.data;
 
     this.setData({
       active: index,
@@ -138,10 +119,9 @@ Router({
     }
   },
   handleRefresh() {
-    const {
-      active
-    } = this.data;
-    this.setData({
+    const { active } = this.data;
+    this.setData(
+      {
         [`navs[${active}].list`]: [],
         [`navs[${active}].queryData.page_no`]: 1,
       },

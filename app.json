@@ -17,7 +17,7 @@
         "collect/index",
         "success/index",
         "files/index",
-        "skill/index",
+
         "qr-code/index",
         "opinion/index",
         "files/edit-info/index"
@@ -29,14 +29,15 @@
     },
     {
       "root": "pages/teacher",
-      "pages": ["student-list/index"]
+      "pages": ["student-list/index", "skill/index"]
     }
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "学习平台",
     "navigationBarTextStyle": "black",
-    "backgroundTextStyle": "dark"
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f1f1f1"
   },
   "tabBar": {
     "color": "#999999",
