@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 答题
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-09 21:37:17
+ * @LastEditTime: 2021-02-04 15:56:36
 -->
 <container class="answer">
   <van-tabs

@@ -30,7 +30,7 @@ const Router = (pageObj, share = true) => {
   //程序一打开就判断用户是否登录
   if (pageObj.onLoad) {
     let _page = pageObj.onLoad;
-    pageObj.onLoad = function () {
+    pageObj.onLoad = function (options) {
       if (!app.$store.isLogin) {
         app.$router.toLogin();
         return;
@@ -41,7 +41,7 @@ const Router = (pageObj, share = true) => {
       ) {
         app.$router.redirect(`/pages/teacher/student-list/index`);
       }
-      _page.call(this);
+      _page.call(this, options);
     };
   }
 
@@ -77,8 +77,7 @@ const Router = (pageObj, share = true) => {
       } else return initShare;
       _page.call(this);
     };
-  } else {
-  }
+  } else {}
 
   return Page(pageObj);
 };

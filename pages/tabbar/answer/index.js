@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:答题
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-02-04 08:26:24
+ * @LastEditTime: 2021-02-04 15:56:47
  */
 import { Router, app } from "../../page";
 Router({
@@ -66,7 +66,9 @@ Router({
     const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {
       data: { profs: navs },
-    } = await app.$api.getMyProfession({ group_id });
+    } = await app.$api.getMyProfession({
+      group_id,
+    });
     this.setData({
       navs,
     });
@@ -75,7 +77,7 @@ Router({
     const current = this.data.list[e.currentTarget.dataset.ind],
       { active, navs, activeKey } = this.data;
     const params = JSON.stringify({
-      prof_id: navs[active].id,
+      prof_id: 1 || navs[active].id,
       module_id: navs[active].modules[activeKey].id,
       page_no: 1,
       page_size: 30,

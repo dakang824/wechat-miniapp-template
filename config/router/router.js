@@ -5,7 +5,6 @@ export default class Router {
 
   //页面跳转
   nav(url, str) {
-    console.log(url, this.last);
     if (url === this.last) {
       return false;
     } else this.last = url;

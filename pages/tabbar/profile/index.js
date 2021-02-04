@@ -4,12 +4,13 @@
  * @Date: 2021-01-05 22:40:10
  * @LastEditTime: 2021-02-04 14:02:11
  */
-import { Router, app } from "../../page";
-Router(
-  {
+import {
+  Router,
+  app
+} from "../../page";
+Router({
     data: {
-      list: [
-        {
+      list: [{
           name: "我的收藏",
           url: "/pages/profile/collect/index",
         },
@@ -23,7 +24,7 @@ Router(
         },
         {
           name: "我的技能",
-          url: "/pages/profile/student-skill/index",
+          url: "/pages/teacher/student-skill/index",
         },
         {
           name: "我的二维码",
