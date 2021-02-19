@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 21:21:21
+ * @LastEditTime: 2021-02-19 22:10:20
  */
 import { Router, app } from "../../page";
 Router({
@@ -56,7 +56,10 @@ Router({
     const {
       data: { profs },
     } = await app.$api.getMyProfession({ group_id });
-    const prof = profs.map((item) => ({ text: item.name, value: item.id }));
+    const prof = profs.map((item) => ({
+      text: `${item.name}（完成度${1}%）`,
+      value: item.id,
+    }));
 
     this.setData({
       prof,
