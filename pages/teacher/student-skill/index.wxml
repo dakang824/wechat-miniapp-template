@@ -2,10 +2,11 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-02-19 16:21:10
- * @LastEditTime: 2021-02-19 17:20:41
+ * @LastEditTime: 2021-02-19 19:06:44
 -->
+<van-notify id="van-notify" />
 <container class="skill"> 
-  <van-search value="{{ keyWorld }}" placeholder="请输入搜索关键词" bind:search="onSearch" />
+  <van-search value="{{ keyWorld }}" placeholder="请输入搜索关键词" bind:search="onSearch" bind:clear='onClear'/>
   <van-dropdown-menu active-color="{{$themeColor}}">
     <van-dropdown-item
       value="{{ postData.prof_id }}"
@@ -14,7 +15,7 @@
     />
   </van-dropdown-menu>
   <block wx:if='{{dataTree.length}}'>
-    <van-panel custom-class='panel'  wx:for='{{dataTree}}' use-footer-slot status="{{item.status==1?'已完成':'未完成'}}">
+    <van-panel custom-class='panel'  wx:for='{{dataTree}}' use-footer-slot status="{{item.score.length&&(item.score[0].res?'已通过':'未通过')}}">
       <view slot="footer" class="header" wx:if='{{roles==2}}'>
         <van-button size="small" type="warning" bind:click='handleNoPass' data-i='{{item}}'>不通过</van-button>
         <van-button size="small" custom-class="btn" color="{{$themeColor}}"  bind:click='handlePass' data-i='{{item}}'>通过</van-button>

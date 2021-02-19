@@ -2,9 +2,10 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 17:26:26
+ * @LastEditTime: 2021-02-19 19:08:43
  */
 import { Router, app } from "../../page";
+var score;
 Router({
   data: {
     prof: [],
@@ -78,39 +79,74 @@ Router({
       prof_id,
     });
     this.setData({
+      currentIndex: prof_id,
       dataTree: this.processingData(list),
       roles: app.$store.user.userInfo.roles,
     });
+    score = "";
   },
   processingData(data) {
-    return data.map((item) => {
+    let arr = data.map((item) => {
       item.label = item.name;
-      item.downSkillTree.length ? (item.children = item.downSkillTree) : "";
+      item.downSkillTree.length && (item.children = item.downSkillTree);
+      item.score && (score = item.score);
       this.processingData(item.downSkillTree);
-
       return item;
     });
+    arr.length && (arr[0].score = score);
+    return arr;
   },
   handleJump(e) {
     app.$store.other = e.currentTarget.dataset;
     app.$router.nav(`/pages/teacher/student-skill-detail/index`);
   },
   handleChange(e) {
+    this.setData({
+      currentIndex: e.detail,
+    });
     this.getData(e.detail);
   },
+  onSearch(e) {
+    this.setData({
+      "postData.skill_name": e.detail,
+    });
+    this.getData(this.data.currentIndex);
+  },
+  onClear() {
+    this.setData({
+      "postData.skill_name": "",
+    });
+    this.getData(this.data.currentIndex);
+  },
   async handlePass(e) {
-    const { id } = e.currentTarget.dataset.i;
+    const { score } = e.currentTarget.dataset.i;
+    if (!score.length) {
+      app.$utils.Notify({
+        type: "danger",
+        message: "无score数据",
+      });
+      return;
+    }
     const { data } = await app.$api.auditSkillTreeScore({
-      score_id: id,
+      score_id: score[0].id,
       res: 1,
     });
+    this.getData(this.data.currentIndex);
   },
   async handleNoPass(e) {
-    const { id } = e.currentTarget.dataset.i;
+    const { score } = e.currentTarget.dataset.i;
+    if (!score.length) {
+      app.$utils.Notify({
+        type: "danger",
+        message: "无score数据",
+      });
+      return;
+    }
     const { data } = await app.$api.auditSkillTreeScore({
-      score_id: id,
+      score_id: score[0].id,
       res: 2,
     });
+    this.getData(this.data.currentIndex);
   },
   onUnload() {
     app.$store.other = {};

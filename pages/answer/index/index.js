@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-04 22:36:15
+ * @LastEditTime: 2021-02-19 19:25:10
  */
 import { Router, app } from "../../page";
 Router(
@@ -222,16 +222,20 @@ Router(
     },
     async handlingData(list, total) {
       const { params } = this.data;
-      for (const item of list) {
-        const {
-          data: { collect },
-        } = await app.$api.checkHasCollectQues({
-          que_id: item.id,
-        });
-        item.collect = collect;
+      const que_ids = list.map((item) => item.id).join();
+
+      const {
+        data: { collect },
+      } = await app.$api.checkHasCollectQues({
+        que_ids,
+      });
+
+      list.map((item) => {
+        item.collect =
+          collect.find((i) => item.id === i.que_id * 1).collect * 1;
         item.result = null;
         item.res = [];
-      }
+      });
 
       this.setData({
         list: [...this.data.list, ...list],

@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-09 21:56:27
+ * @LastEditTime: 2021-02-19 18:58:42
  */
 import Api from "../config/axios/request";
 import { globalData } from "../store/globalData";
@@ -23,7 +23,9 @@ request.interceptors.request.use(
     const {
       user: { userInfo },
     } = wx.getStorageSync("store") || {};
-    config.data && userInfo.id ? (config.data.ope_id = userInfo.id) : "";
+    config.data && userInfo.id && !("ope_id" in config.data)
+      ? (config.data.ope_id = userInfo.id)
+      : "";
 
     //返回的是和wx.request相关的参数
     // console.log(config);
