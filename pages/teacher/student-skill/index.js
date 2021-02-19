@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 22:10:20
+ * @LastEditTime: 2021-02-19 22:18:18
  */
 import { Router, app } from "../../page";
 Router({
@@ -64,7 +64,7 @@ Router({
     this.setData({
       prof,
       professionsKeyVal: prof.reduce((a, b) => {
-        a[b.value] = b.text;
+        a[b.value] = b.text.split("（")[0];
         return a;
       }, {}),
       postData: {

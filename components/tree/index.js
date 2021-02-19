@@ -6,7 +6,7 @@ Comp({
    */
   properties: {
     operation: {
-      type: String,
+      type: Boolean,
       value: false,
     },
     dataTree: {
