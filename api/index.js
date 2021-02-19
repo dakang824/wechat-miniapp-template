@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-19 12:00:34
+ * @LastEditTime: 2021-02-19 14:01:20
  */
 import request from "./request.api";
 
@@ -204,4 +204,9 @@ export const deleteResumeThesis = (data) => {
 // 个人中心 - 我的资料 - 删除论文
 export const findUsers = (data) => {
   return request.post("/service/front/findUsers", data);
+};
+
+// 查询技能树成绩
+export const querySkillTreeScore = (data) => {
+  return request.post("/service/front/querySkillTreeScore", data);
 };

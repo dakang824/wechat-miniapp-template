@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全局变量
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-17 11:25:09
+ * @LastEditTime: 2021-02-19 14:12:46
  */
 const globalData = {
   isLogin: false,
@@ -17,9 +17,7 @@ const globalData = {
     },
     userWallets: {},
   },
-  other: {
-    searchData: "",
-  },
+  other: {},
 };
 
 module.exports = {

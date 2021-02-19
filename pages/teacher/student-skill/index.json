@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "tree": "/components/tree/index"
+  },
   "navigationBarTitleText": "我的技能"
 }
