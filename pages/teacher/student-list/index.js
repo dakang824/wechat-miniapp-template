@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-04 13:45:25
+ * @LastEditTime: 2021-02-19 12:11:06
  */
 const { CityList } = require("../../../utils/city.js");
 
@@ -76,6 +76,7 @@ Router({
     this.setData({
       searchValue: "",
     });
+
     this.setList(this.formatList(CityList));
   },
   setList(listData) {
@@ -91,12 +92,26 @@ Router({
       `/pages/teacher/student-skill/index?user_id=${e.detail.user_id}&user_name=${e.detail.user_name}`
     );
   },
-  onLoad() {
+  async onLoad() {
     wx.hideHomeButton();
     // 模拟异步获取数据场景
-    setTimeout(() => {
-      this.setList(this.formatList(CityList));
-    }, 100);
+
+    const {
+      data: {
+        userList: { list },
+      },
+    } = await app.$api.findUsers({});
+    console.log(list);
+    const arr = list.map((item) => ({
+      id: item.id,
+      provincecode: "150000",
+      city: item.name,
+      code: item.prof_group.name,
+      initial: "A",
+      short: "Alashanmeng",
+    }));
+
+    this.setList(this.formatList(arr));
   },
   onShow() {},
 });

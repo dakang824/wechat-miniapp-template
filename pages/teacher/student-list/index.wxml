@@ -1,6 +1,14 @@
-<van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" use-action-slot background="#f1f1f1">
-  <view slot="action" bind:tap="onClick" class="u-flex u-col-center">
-    <van-icon name="scan" size="45rpx" color='{{$themeColor}}' />
-  </view>
-</van-search>
-<index-list bind:click="itemClick" empty-show="{{emptyShow}}" top-size="{{topSize}}" list-data="{{listData}}" color="#3F82FD"></index-list>
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-06 18:00:03
+ * @LastEditTime: 2021-02-19 09:37:37
+-->
+<view wx:if='{{isLogin}}'>
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" use-action-slot background="#f1f1f1">
+    <view slot="action" bind:tap="onClick" class="u-flex u-col-center">
+      <van-icon name="scan" size="45rpx" color='{{$themeColor}}' />
+    </view>
+  </van-search>
+  <index-list bind:click="itemClick" empty-show="{{emptyShow}}" top-size="{{topSize}}" list-data="{{listData}}" color="#3F82FD"></index-list>
+</view>

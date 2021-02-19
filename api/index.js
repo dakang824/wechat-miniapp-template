@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-01-17 15:48:29
+ * @LastEditTime: 2021-02-19 12:00:34
  */
 import request from "./request.api";
 
@@ -199,4 +199,9 @@ export const modifyResumeThesis = (data) => {
 // 个人中心 - 我的资料 - 删除论文
 export const deleteResumeThesis = (data) => {
   return request.post("/service/front/deleteResumeThesis", data);
+};
+
+// 个人中心 - 我的资料 - 删除论文
+export const findUsers = (data) => {
+  return request.post("/service/front/findUsers", data);
 };

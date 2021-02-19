@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/teacher/student-list/index",
+    "pages/teacher/student-skill/index",
+
     "pages/tabbar/home/index",
     "pages/tabbar/course-ware/index",
     "pages/tabbar/answer/index",
@@ -26,10 +29,6 @@
     {
       "root": "pages/answer",
       "pages": ["index/index", "form/index"]
-    },
-    {
-      "root": "pages/teacher",
-      "pages": ["student-list/index", "student-skill/index"]
     }
   ],
   "window": {

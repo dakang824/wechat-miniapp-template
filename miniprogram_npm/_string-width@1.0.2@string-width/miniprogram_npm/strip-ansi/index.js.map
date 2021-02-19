@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AAAA;AACA;AACA;AACA;AACA;AACA;AACA","file":"index.js","sourcesContent":["\nvar ansiRegex = require('ansi-regex')();\n\nmodule.exports = function (str) {\n\treturn typeof str === 'string' ? str.replace(ansiRegex, '') : str;\n};\n"]}
