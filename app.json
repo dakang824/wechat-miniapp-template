@@ -102,6 +102,7 @@
     "van-calendar": "@vant/weapp/calendar/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-panel": "@vant/weapp/panel/index",
     "scroll": "/components/scroller",
     "container": "/components/container",
     "load-more": "/components/load-more"

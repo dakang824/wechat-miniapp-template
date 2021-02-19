@@ -1,8 +1,14 @@
-.cell {
-  padding: 10px 0 !important;
+.header {
+  text-align: right;
 }
 
-.cell.van-cell:after {
-  left: 0;
-  right: 0;
+.btn {
+  margin-left: 10px;
+}
+
+.panel {
+  border: 1rpx solid #ebedf0;
+  margin: 25rpx;
+  border-radius: 6rpx;
+  overflow: hidden;
 }

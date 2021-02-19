@@ -1,7 +1,12 @@
-.cell {
-  padding: 10px 0 !important;
-  &.van-cell:after {
-    left: 0;
-    right: 0;
-  }
+.van-hairline--bottom {
+  padding: 10px;
+  text-align: right;
+}
+.btn {
+  margin-left: 10px;
+}
+.panel {
+  border: 1rpx solid #ebedf0;
+  margin: 25rpx;
+  border-radius: 6rpx;
 }

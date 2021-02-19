@@ -16,7 +16,7 @@
   justify-content: center;
   align-items: center;
 }
-.tree-item-onOff image {
+.tree-item-onOff  image {
   width: 9px;
   height: 5px;
   display: block;
@@ -45,15 +45,15 @@
   justify-content: center;
   align-items: center;
 }
-.img image {
+.img  image {
   width: 15px;
   height: 10px;
   display: block;
 }
 .tree-item-name-select {
-  background: #ecf7fa;
-  color: #0079fe;
+  background: #ECF7FA;
+  color: #0079FE;
 }
 .tree-item-name-select2 {
-  color: #0079fe;
+  color: #0079FE;
 }

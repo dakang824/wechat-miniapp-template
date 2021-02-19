@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 15:19:45
+ * @LastEditTime: 2021-02-19 17:26:26
  */
 import { Router, app } from "../../page";
 Router({
@@ -10,65 +10,48 @@ Router({
     prof: [],
     keyWorld: "",
     activeNames: ["1"],
-    selectKey: "", //选中的节点id
-    dataTree: [
-      {
-        id: 1,
-        name: "一级A",
-        children: [
-          {
-            id: 23,
-            name: "二级A-a",
-            children: [
-              {
-                id: 98,
-                name: "三级A-a-1",
-              },
-            ],
-          },
-          {
-            id: 20,
-            name: "二级A-b",
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "一级B",
-        children: [
-          {
-            id: 21,
-            name: "二级B-a",
-          },
-        ],
-      },
-    ],
     postData: {
       prof_id: "",
       user_name: "",
       skill_name: "",
       user_id: "",
     },
-  },
-  onChange(event) {
-    console.log(event);
-    this.setData({
-      activeNames: event.detail,
-    });
-  },
-  handleSelect(e) {
-    if (e.detail.tips) {
-      console.log("必须选择到最后一个节点");
-    } else {
-      this.setData({
-        selectKey: e.detail.item.id,
-      });
-    }
+
+    dataTree: [
+      // {
+      //   id: 1,
+      //   name: "一级A",
+      //   children: [
+      //     {
+      //       id: 23,
+      //       name: "二级A-a",
+      //       children: [
+      //         {
+      //           id: 98,
+      //           name: "三级A-a-1",
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       id: 20,
+      //       name: "二级A-b",
+      //     },
+      //   ],
+      // },
+    ],
+    selectKey: "", //选中的节点id
   },
   async onLoad(options) {
-    const val = Object.keys(app.$store.other).length
-      ? app.$store.other
-      : app.$store.user.userInfo;
+    const other = Object.keys(app.$store.other).length;
+
+    const val =
+      other &&
+      wx.setNavigationBarTitle({
+        title: app.$store.other.name,
+      })
+        ? app.$store.other
+        : app.$store.user.userInfo;
+
     const { prof_group_id: group_id, name, id } = val;
     const {
       data: { profs },
@@ -94,7 +77,19 @@ Router({
       ...this.data.postData,
       prof_id,
     });
-    this.setData({ list });
+    this.setData({
+      dataTree: this.processingData(list),
+      roles: app.$store.user.userInfo.roles,
+    });
+  },
+  processingData(data) {
+    return data.map((item) => {
+      item.label = item.name;
+      item.downSkillTree.length ? (item.children = item.downSkillTree) : "";
+      this.processingData(item.downSkillTree);
+
+      return item;
+    });
   },
   handleJump(e) {
     app.$store.other = e.currentTarget.dataset;
@@ -102,6 +97,20 @@ Router({
   },
   handleChange(e) {
     this.getData(e.detail);
+  },
+  async handlePass(e) {
+    const { id } = e.currentTarget.dataset.i;
+    const { data } = await app.$api.auditSkillTreeScore({
+      score_id: id,
+      res: 1,
+    });
+  },
+  async handleNoPass(e) {
+    const { id } = e.currentTarget.dataset.i;
+    const { data } = await app.$api.auditSkillTreeScore({
+      score_id: id,
+      res: 2,
+    });
   },
   onUnload() {
     app.$store.other = {};

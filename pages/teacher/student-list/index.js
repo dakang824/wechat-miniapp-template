@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-19 13:56:35
+ * @LastEditTime: 2021-02-19 17:27:45
  */
 // const { CityList } = require("../../../utils/city.js");
 
@@ -111,7 +111,7 @@ Router({
       list.map((item) => {
         return {
           id: item.id,
-          provincecode: "150000",
+          provincecode: item.id,
           city: item.name,
           code: item.prof_group.name,
           initial: item.pinyin

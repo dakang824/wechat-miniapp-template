@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:全部接口
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-19 14:01:20
+ * @LastEditTime: 2021-02-19 17:02:37
  */
 import request from "./request.api";
 
@@ -209,4 +209,9 @@ export const findUsers = (data) => {
 // 查询技能树成绩
 export const querySkillTreeScore = (data) => {
   return request.post("/service/front/querySkillTreeScore", data);
+};
+
+// 查询技能树成绩
+export const auditSkillTreeScore = (data) => {
+  return request.post("/service/front/auditSkillTreeScore", data);
 };

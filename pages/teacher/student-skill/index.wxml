@@ -1,12 +1,11 @@
 <!--
  * @Author: yukang 1172248038@qq.com
- * @Description: 我的技能
- * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 15:38:59
+ * @Description: 
+ * @Date: 2021-02-19 16:21:10
+ * @LastEditTime: 2021-02-19 17:20:41
 -->
-<container class="skill">
+<container class="skill"> 
   <van-search value="{{ keyWorld }}" placeholder="请输入搜索关键词" bind:search="onSearch" />
-
   <van-dropdown-menu active-color="{{$themeColor}}">
     <van-dropdown-item
       value="{{ postData.prof_id }}"
@@ -14,15 +13,24 @@
       bind:change="handleChange"
     />
   </van-dropdown-menu>
-
-  <van-collapse value="{{ activeNames }}" bind:change="onChange">
-    111
-    <tree
-        data-tree="{{dataTree}}"
-        selectKey="{{selectKey}}"
-        bind:select="handleSelect"
-        isSelectLastNode
-        isOpenAll
-      />
-  </van-collapse>
+  <block wx:if='{{dataTree.length}}'>
+    <van-panel custom-class='panel'  wx:for='{{dataTree}}' use-footer-slot status="{{item.status==1?'已完成':'未完成'}}">
+      <view slot="footer" class="header" wx:if='{{roles==2}}'>
+        <van-button size="small" type="warning" bind:click='handleNoPass' data-i='{{item}}'>不通过</van-button>
+        <van-button size="small" custom-class="btn" color="{{$themeColor}}"  bind:click='handlePass' data-i='{{item}}'>通过</van-button>
+      </view>
+      <view class="container">
+        <tree
+          dataTree="{{ dataTree }}"
+          selectKey="{{ selectKey }}"
+          bind:select="handleSelect"
+          isSelectLastNode
+          isOpenAll
+        ></tree>
+      </view>
+    </van-panel>
+  </block>
+  <block wx:else>
+    <van-empty description="~ 暂无数据 ~" />
+  </block>
 </container>
