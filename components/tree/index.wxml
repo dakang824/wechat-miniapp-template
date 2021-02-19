@@ -8,8 +8,10 @@
       </view>
       <view class="tree-item-name {{selectKey == item.id ? 'tree-item-name-select' : '' }}" bindtap="select" data-item="{{item}}" data-index="{{index}}">
         <view class="name">{{item.name}}</view>
-        <view class="img">
-          <!-- <image wx:if="{{selectKey == item.id }}" src="/assets/icon/u435.svg"></image> -->
+        <view class="img" wx:if="{{!item.children.length}}">
+          <van-button type="primary" size="mini" wx:if='{{operation&&item.score[0].res==0}}' bind:click='handleClick' data-item="{{item}}">通过</van-button>
+          <van-tag type="success" wx:if='{{item.score[0].res==1}}'>已通过</van-tag>
+          <van-tag type="warning" wx:if='{{!operation&&item.score[0].res==0}}'>未通过</van-tag>
         </view>
       </view>
     </view>
@@ -19,6 +21,7 @@
       selectKey="{{selectKey}}"
       isSelectLastNode="{{isSelectLastNode}}"
       isOpenAll="{{isOpenAll}}"
+      operation='{{operation}}'
     >
     </c-tree>
   </view>

@@ -2,10 +2,9 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 19:08:43
+ * @LastEditTime: 2021-02-19 21:21:21
  */
 import { Router, app } from "../../page";
-var score;
 Router({
   data: {
     prof: [],
@@ -58,8 +57,13 @@ Router({
       data: { profs },
     } = await app.$api.getMyProfession({ group_id });
     const prof = profs.map((item) => ({ text: item.name, value: item.id }));
+
     this.setData({
       prof,
+      professionsKeyVal: prof.reduce((a, b) => {
+        a[b.value] = b.text;
+        return a;
+      }, {}),
       postData: {
         user_name: name,
         skill_name: "",
@@ -68,6 +72,14 @@ Router({
       },
     });
     this.getData(prof[0].value);
+  },
+  processingData(data) {
+    return data.map((item) => {
+      item.label = item.name;
+      item.downSkillTree.length && (item.children = item.downSkillTree);
+      this.processingData(item.downSkillTree);
+      return item;
+    });
   },
   async getData(prof_id) {
     const {
@@ -78,24 +90,31 @@ Router({
       ...this.data.postData,
       prof_id,
     });
+
+    const data = this.processingData(list);
+    const map = data.reduce((a, b) => {
+      const prof_name = this.data.professionsKeyVal[b.prof_id];
+      a[prof_name] = a[prof_name] || [];
+      a[prof_name].push(b);
+      return a;
+    }, {});
+
+    const result = Object.values(map).map((item) => {
+      return {
+        name: this.data.professionsKeyVal[item[0].prof_id],
+        children: item,
+        id: 1,
+        prof_id: item[0].prof_id,
+      };
+    });
+
     this.setData({
       currentIndex: prof_id,
-      dataTree: this.processingData(list),
+      dataTree: result,
       roles: app.$store.user.userInfo.roles,
     });
-    score = "";
   },
-  processingData(data) {
-    let arr = data.map((item) => {
-      item.label = item.name;
-      item.downSkillTree.length && (item.children = item.downSkillTree);
-      item.score && (score = item.score);
-      this.processingData(item.downSkillTree);
-      return item;
-    });
-    arr.length && (arr[0].score = score);
-    return arr;
-  },
+
   handleJump(e) {
     app.$store.other = e.currentTarget.dataset;
     app.$router.nav(`/pages/teacher/student-skill-detail/index`);
@@ -119,7 +138,7 @@ Router({
     this.getData(this.data.currentIndex);
   },
   async handlePass(e) {
-    const { score } = e.currentTarget.dataset.i;
+    const { score } = e.detail;
     if (!score.length) {
       app.$utils.Notify({
         type: "danger",

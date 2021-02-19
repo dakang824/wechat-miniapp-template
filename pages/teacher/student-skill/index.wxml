@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-02-19 16:21:10
- * @LastEditTime: 2021-02-19 19:06:44
+ * @LastEditTime: 2021-02-19 21:59:47
 -->
 <van-notify id="van-notify" />
 <container class="skill"> 
@@ -15,18 +15,19 @@
     />
   </van-dropdown-menu>
   <block wx:if='{{dataTree.length}}'>
-    <van-panel custom-class='panel'  wx:for='{{dataTree}}' use-footer-slot status="{{item.score.length&&(item.score[0].res?'已通过':'未通过')}}">
-      <view slot="footer" class="header" wx:if='{{roles==2}}'>
+    <van-panel custom-class='panel'  wx:for='{{dataTree}}' wx:key="index">
+      <!-- <view slot="footer" class="header" wx:if='{{roles==2}}'>
         <van-button size="small" type="warning" bind:click='handleNoPass' data-i='{{item}}'>不通过</van-button>
         <van-button size="small" custom-class="btn" color="{{$themeColor}}"  bind:click='handlePass' data-i='{{item}}'>通过</van-button>
-      </view>
+      </view> -->
       <view class="container">
         <tree
           dataTree="{{ dataTree }}"
           selectKey="{{ selectKey }}"
-          bind:select="handleSelect"
+          operation="{{ roles == 2 }}"
           isSelectLastNode
           isOpenAll
+          bind:click="handlePass"
         ></tree>
       </view>
     </van-panel>

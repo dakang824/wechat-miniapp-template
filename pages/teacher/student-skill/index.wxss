@@ -1,4 +1,5 @@
-.header {
+.van-hairline--bottom {
+  padding: 10px;
   text-align: right;
 }
 
@@ -7,8 +8,7 @@
 }
 
 .panel {
-  border: 1rpx solid #ebedf0;
+  border: 1rpx dashed #ebedf0;
   margin: 25rpx;
   border-radius: 6rpx;
-  overflow: hidden;
 }
