@@ -4,7 +4,10 @@
  * @Date: 2021-01-05 22:43:08
  * @LastEditTime: 2021-02-04 08:25:42
  */
-import { Router, app } from "../../page";
+import {
+  Router,
+  app
+} from "../../page";
 Router({
   data: {
     active: 0,
@@ -21,8 +24,7 @@ Router({
       },
       loadmore: {
         type: "default",
-        icon:
-          "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
+        icon: "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
         background: "#f2f2f2",
         title: {
           show: true,
@@ -42,9 +44,13 @@ Router({
     wx.showTabBar();
   },
   async getAllProfession() {
-    const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {
-      data: { profs },
+      prof_group_id: group_id
+    } = app.$store.user.userInfo;
+    const {
+      data: {
+        profs
+      },
     } = await app.$api.getAllProfession();
     this.setData({
       profs,
@@ -53,7 +59,9 @@ Router({
   },
   async fetchDataNavs() {
     const {
-      data: { navs },
+      data: {
+        navs
+      },
     } = await app.$api.getAllArtNav();
     this.setData({
       navs: navs.map((item) => {
@@ -74,8 +82,13 @@ Router({
     });
   },
   async fetchData(e) {
-    const { navs, active } = this.data,
-      { queryData, list: currentList } = navs[active];
+    const {
+      navs,
+      active
+    } = this.data, {
+      queryData,
+      list: currentList
+    } = navs[active];
 
     this.setData({
       [`navs[${active}].requesting`]: true,
@@ -84,10 +97,13 @@ Router({
     queryData.nav_id = navs[active].id;
 
     const {
-        data: {
-          articles: { list, total: length },
+      data: {
+        articles: {
+          list,
+          total: length
         },
-      } = await app.$api.findArticle(queryData),
+      },
+    } = await app.$api.findArticle(queryData),
       limit = list.length,
       end = limit === queryData.page_size;
 
@@ -108,28 +124,33 @@ Router({
     }
   },
   handleChangeProfs(e) {
-    const { active } = this.data;
+    const {
+      active
+    } = this.data;
     this.setData({
       [`navs[${active}].queryData.prof_id`]: this.data.profs[e.detail.index].id,
     });
     this.handleRefresh();
   },
   handleChange(e) {
-    const { index } = e.detail;
-    const { navs, active } = this.data;
-
     this.setData({
-      active: index,
+      active: e.detail.index,
     });
+
+    const {
+      navs,
+      active
+    } = this.data;
 
     if (navs[active].list.length === 0) {
       this.handleRefresh();
     }
   },
   handleRefresh() {
-    const { active } = this.data;
-    this.setData(
-      {
+    const {
+      active
+    } = this.data;
+    this.setData({
         [`navs[${active}].list`]: [],
         [`navs[${active}].queryData.page_no`]: 1,
       },

@@ -9,10 +9,9 @@
     "pages/tabbar/profile/index",
     "pages/login/index"
   ],
-  "subpackages": [
-    {
+  "subpackages": [{
       "root": "pages/home",
-      "pages": ["index/index", "detail/index"]
+      "pages": ["detail/index"]
     },
     {
       "root": "pages/profile",
@@ -43,8 +42,7 @@
     "selectedColor": "#1CBC9A",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/tabbar/home/index",
         "iconPath": "/assets/image/tabbar/index.png",
         "selectedIconPath": "/assets/image/tabbar/index-select.png",
