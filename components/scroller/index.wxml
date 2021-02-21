@@ -1,3 +1,9 @@
+<!--
+ * @Author: yukang 1172248038@qq.com
+ * @Description: 
+ * @Date: 2021-01-07 21:15:48
+ * @LastEditTime: 2021-02-21 19:02:44
+-->
 <block wx:if="{{scrollOption.refresh.type == 'default'}}">
 	<scroll-view
 	 scroll-y
@@ -5,7 +11,7 @@
 	 enhanced="{{true}}"
 	 fast-deceleration="{{true}}"
 	 refresher-enabled="{{true}}"
-	 refresher-threshold="{{100}}"
+	 refresher-threshold="{{40}}"
 	 refresher-default-style="{{scrollOption.refresh.style}}"
 	 refresher-background="#f2f2f2"
 	 refresher-triggered="{{triggered}}"
@@ -14,9 +20,9 @@
 	 bindrefresherrestore="onRestore"
 	 bindscrolltolower="lower"
 	 bindscroll="scroll"
-	 style="height:100%"
+	 style="height:100%;min-height: 100%;"
 	>
-		<view class="inner-empty" wx:if="{{scrollOption.pagination.length==0 && !isRefreshLoading}}">
+		<view class="inner-empty" wx:if="{{scrollOption.pagination.length==0}}">
 			<image src="{{scrollOption.empty.img}}" class="empty-img" mode="aspectFill" />
 		</view>
 		<view class="inner" wx:else>
