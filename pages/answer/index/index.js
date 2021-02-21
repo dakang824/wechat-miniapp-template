@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-21 11:56:18
+ * @LastEditTime: 2021-02-21 19:20:51
  */
 import { Router, app } from "../../page";
 Router(
@@ -248,12 +248,23 @@ Router(
         item.res = [];
       });
 
-      this.setData({
-        list: [...this.data.list, ...list],
-        end: list.length !== params.page_size,
-        [`params.page_no`]: params.page_no + 1,
-        total,
-      });
+      this.setData(
+        {
+          list: [...this.data.list, ...list],
+          end: list.length !== params.page_size,
+          [`params.page_no`]: params.page_no + 1,
+          total,
+        },
+        () => {
+          !this.data.list.length &&
+            app.$utils.Dialog.alert({
+              title: "温馨提示",
+              message: "该模块暂未配置试题,请稍后再试!",
+            }).then(() => {
+              app.$router.back();
+            });
+        }
+      );
     },
     async handleCollect(e) {
       const arr = e.currentTarget.dataset.i.split("_");

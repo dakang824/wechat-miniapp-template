@@ -1,3 +1,7 @@
+.answer .van-sidebar {
+  min-width: 90px;
+}
+
 .answer__box {
   width: 100%;
   padding: 30rpx;

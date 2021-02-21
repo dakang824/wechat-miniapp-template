@@ -2,15 +2,14 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-02-04 14:02:11
+ * @LastEditTime: 2021-02-21 19:27:08
  */
-import {
-  Router,
-  app
-} from "../../page";
-Router({
+import { Router, app } from "../../page";
+Router(
+  {
     data: {
-      list: [{
+      list: [
+        {
           name: "我的收藏",
           url: "/pages/profile/collect/index",
         },
@@ -48,6 +47,10 @@ Router({
       app.$store.other = {};
       app.$store.user.userInfo = {};
       app.$router.toLogin();
+    },
+    async onPullDownRefresh() {
+      await app.$utils.Login(true);
+      wx.stopPullDownRefresh();
     },
   },
   false

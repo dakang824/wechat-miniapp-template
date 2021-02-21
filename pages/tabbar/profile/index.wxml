@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-01-17 16:20:21
+ * @LastEditTime: 2021-02-21 19:22:17
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <container>
@@ -13,7 +13,7 @@
     </view>
     <van-cell clickable title="{{item.name}}"  size="large" wx:for='{{list}}' wx:key='index' icon="/assets/image/icon{{index}}.png" is-link url='{{item.url}}'/>
     <view class="profile__box__login-out">
-      <van-button type="primary" block bind:click='handleLoginOut'>退出登录</van-button>
+      <!-- <van-button type="primary" block bind:click='handleLoginOut'>退出登录</van-button> -->
     </view>
   </view>
 </container>

@@ -1,5 +1,8 @@
 @import "../../../assets/css/variables";
 .answer {
+  .van-sidebar {
+    min-width: 90px;
+  }
   &__box {
     width: 100%;
     padding: $padding-md;
