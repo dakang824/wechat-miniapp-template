@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-21 11:19:00
+ * @LastEditTime: 2021-02-21 15:35:01
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -65,7 +65,7 @@
             </view>
 
             <view
-              class="answer__swipe_btn u-flex {{(swiperCurrent!==(total-1)||swiperCurrent)&&!active?'u-row-between':'u-row-center'}}"
+              class="answer__swipe_btn u-flex {{(swiperCurrent!==(total-1)||swiperCurrent)&&!active||(swiperCurrent!==(total-1)&&swiperCurrent)?'u-row-between':'u-row-center'}}"
             >
               <van-button
                 type="primary"

@@ -2,12 +2,9 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-02-04 08:26:33
+ * @LastEditTime: 2021-02-21 16:39:36
  */
-import {
-  Router,
-  app
-} from "../../page";
+import { Router, app } from "../../page";
 Router({
   data: {
     active: 0,
@@ -24,7 +21,8 @@ Router({
       },
       loadmore: {
         type: "default",
-        icon: "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
+        icon:
+          "http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif",
         background: "#f2f2f2",
         title: {
           show: true,
@@ -43,13 +41,9 @@ Router({
     wx.showTabBar();
   },
   async fetchDataNavs() {
+    const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {
-      prof_group_id: group_id
-    } = app.$store.user.userInfo;
-    const {
-      data: {
-        profs: navs
-      },
+      data: { profs: navs },
     } = await app.$api.getAllProfession();
     this.setData({
       navs: navs.map((item) => {
@@ -70,13 +64,8 @@ Router({
     });
   },
   async fetchData(e) {
-    const {
-      navs,
-      active
-    } = this.data, {
-      queryData,
-      list: currentList
-    } = navs[active];
+    const { navs, active } = this.data,
+      { queryData, list: currentList } = navs[active];
 
     this.setData({
       [`navs[${active}].requesting`]: true,
@@ -85,13 +74,10 @@ Router({
     queryData.prof_id = navs[active].id;
 
     const {
-      data: {
-        articles: {
-          list,
-          total: length
+        data: {
+          articles: { list, total: length },
         },
-      },
-    } = await app.$api.findArticle(queryData),
+      } = await app.$api.findArticle(queryData),
       limit = list.length,
       end = limit === queryData.page_size;
 
@@ -111,36 +97,37 @@ Router({
       this.selectComponent(select).loadEnd();
     }
   },
-  handleChangeProfs(e) {
-    const {
-      active
-    } = this.data;
-    // this.setData({
-    //   [`navs[${active}].queryData.prof_id`]: this.data.navs[active].modules[
-    //     e.detail.index
-    //   ].id,
-    // });
-    // this.handleRefresh();
+  handleChangeProfs(e = { detail: { index: 0 } }) {
+    const { active, navs } = this.data;
+
+    this.setData({
+      [`navs[${active}].active`]: e.detail.index,
+    });
+
+    const module = this.data.navs[active].modules[
+      e.detail.index === 0 ? e.detail.index : navs[active].active
+    ];
+
+    this.setData({
+      [`navs[${active}].queryData.module_id`]: module ? module.id : "",
+    });
+    this.handleRefresh();
   },
   handleChange(e) {
     this.setData({
       active: e.detail.index,
     });
 
-    const {
-      navs,
-      active
-    } = this.data;
+    const { navs, active } = this.data;
 
     if (navs[active].list.length === 0) {
-      this.handleRefresh();
+      this.handleChangeProfs();
     }
   },
   handleRefresh() {
-    const {
-      active
-    } = this.data;
-    this.setData({
+    const { active } = this.data;
+    this.setData(
+      {
         [`navs[${active}].list`]: [],
         [`navs[${active}].queryData.page_no`]: 1,
       },

@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-21 12:34:55
+ * @LastEditTime: 2021-02-21 15:31:05
  */
 // const { CityList } = require("../../../utils/city.js");
 
@@ -128,7 +128,7 @@ Router({
     this.setList(arr);
   },
   async onShow() {
-    await app.$utils.Login();
+    this.data.isLogin && (await app.$utils.Login());
     const isStudent = this.data.isLogin && app.$store.user.userInfo.roles === 1;
     this.setData({ isTeacher: !isStudent });
     if (isStudent) {
