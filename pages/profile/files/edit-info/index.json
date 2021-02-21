@@ -2,5 +2,5 @@
   "usingComponents": {
     "uploader": "/components/uploader"
   },
-  "navigationBarTitleText": "个人介绍"
+  "navigationBarTitleText": "编辑个人信息"
 }

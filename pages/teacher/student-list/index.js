@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-19 17:27:45
+ * @LastEditTime: 2021-02-21 10:18:54
  */
 // const { CityList } = require("../../../utils/city.js");
 
@@ -14,6 +14,7 @@ Router({
     emptyShow: false,
     topSize: 100,
     list: [],
+    show:false
   },
   formatList(list) {
     let tempArr = [];
@@ -122,8 +123,14 @@ Router({
         };
       })
     );
-    this.setData({ list: arr });
+    this.setData({ list: arr,show:true });
     this.setList(arr);
   },
-  onShow() {},
+  onShow() {
+  const isStudent= this.data.isLogin&&app.$store.user.userInfo.roles===1
+   this.setData({show:!isStudent})
+   if(isStudent){
+     app.$router.toHome();
+   }
+  },
 });

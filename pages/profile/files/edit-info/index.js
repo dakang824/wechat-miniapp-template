@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 修改个人信息
  * @Date: 2021-01-09 19:57:31
- * @LastEditTime: 2021-01-26 16:42:44
+ * @LastEditTime: 2021-02-21 11:14:54
  */
 import {
   Router,
@@ -236,7 +236,7 @@ Router({
       form = [{
           type: "text",
           value: "name",
-          title: "证书名称",
+          title: "论文名称",
           val: current.name,
         },
         {
