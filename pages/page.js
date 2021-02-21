@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:封装全局页面
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-04 22:12:08
+ * @LastEditTime: 2021-02-21 12:33:30
  */
 const app = getApp();
 import {
@@ -34,26 +34,7 @@ const Router = (pageObj, share = true) => {
       try {
         // 判断登录逻辑
         if (!app.$store.isLogin) {
-          const { code } = await wx.pro.login();
-          const {
-            code: resCode,
-            data: { sys_id, userinfo = {} },
-          } = await app.$api.wxLogin({
-            code,
-          });
-
-          if (resCode === 5) {
-            app.$store.sys_id = sys_id;
-            app.$router.toLogin();
-          } else if (resCode === 200) {
-            app.$store.user.userInfo = userinfo;
-            app.$store.isLogin = true;
-            if (app.$store.user.userInfo.roles === 1) {
-              app.$router.toHome();
-            } else {
-              app.$router.redirect(`/pages/teacher/student-list/index`);
-            }
-          }
+          await app.$utils.Login();
         } else if (
           //判断用户为老师只能访问老师页面
           app.$store.user.userInfo.roles === 2 &&

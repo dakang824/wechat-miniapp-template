@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-21 10:18:54
+ * @LastEditTime: 2021-02-21 12:34:55
  */
 // const { CityList } = require("../../../utils/city.js");
 
@@ -14,7 +14,7 @@ Router({
     emptyShow: false,
     topSize: 100,
     list: [],
-    show:false
+    isTeacher: false,
   },
   formatList(list) {
     let tempArr = [];
@@ -91,6 +91,7 @@ Router({
     this.setData({
       listData: listData,
       emptyShow: emptyShow,
+      isTeacher: app.$store.user.userInfo.roles === 2,
     });
   },
   itemClick(e) {
@@ -123,14 +124,15 @@ Router({
         };
       })
     );
-    this.setData({ list: arr,show:true });
+    this.setData({ list: arr });
     this.setList(arr);
   },
-  onShow() {
-  const isStudent= this.data.isLogin&&app.$store.user.userInfo.roles===1
-   this.setData({show:!isStudent})
-   if(isStudent){
-     app.$router.toHome();
-   }
+  async onShow() {
+    await app.$utils.Login();
+    const isStudent = this.data.isLogin && app.$store.user.userInfo.roles === 1;
+    this.setData({ isTeacher: !isStudent });
+    if (isStudent) {
+      app.$router.toHome();
+    }
   },
 });
