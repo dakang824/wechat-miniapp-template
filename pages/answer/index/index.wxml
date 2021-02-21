@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-01-14 22:57:19
+ * @LastEditTime: 2021-02-21 09:02:19
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -16,6 +16,7 @@
 
     <swiper
       class="answer__swipe"
+      current="{{swiperCurrent}}"
       bindanimationfinish="bindanimationfinish"
       bindchange="handleSwiperChange"
     >
@@ -56,7 +57,17 @@
                 custom-class="icon_right"
               />
             </view>
-            <view class="answer__swipe_btn u-flex u-row-center" wx:if="{{!active&&item.type===2}}">
+
+            <view
+              class="answer__swipe_btn u-flex {{swiperCurrent||item.type===2?'u-row-between':'u-row-center'}}"
+            >
+              <van-button
+                type="primary"
+                custom-class="btn"
+                size="normal"
+                bind:click="handlePrevious"
+                wx:if="{{swiperCurrent}}"
+              >上一题</van-button>
               <van-button
                 type="primary"
                 custom-class="btn"
@@ -64,7 +75,14 @@
                 data-ind="{{index}}"
                 bind:click="handleMultipleChoice"
                 disabled="{{item.result!==null}}"
+                wx:if="{{!active&&item.type===2}}"
               >完成</van-button>
+              <van-button
+                type="primary"
+                custom-class="btn"
+                size="normal"
+                bind:click="handleNext"
+              >下一题</van-button>
             </view>
           </view>
         </view>
