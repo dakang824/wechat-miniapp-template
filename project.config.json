@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
   "appid": "wxb2e4c9db04332159",
-  "projectname": "miniapp-base",
+  "projectname": "学习平台",
   "debugOptions": {
     "hidedInDevtools": []
   },
