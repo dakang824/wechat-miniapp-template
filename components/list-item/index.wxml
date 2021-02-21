@@ -2,11 +2,10 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-06 15:08:29
- * @LastEditTime: 2021-02-20 20:01:09
+ * @LastEditTime: 2021-02-21 19:35:14
 -->
 <wxs src="../../wxs/utils.wxs" module="utils" />
-<navigator class="list-item u-flex u-row-between van-hairline--bottom" url="/pages/home/detail/index?id={{mode.id}}"
-  hover-class="u-cell-hover">
+<navigator class="list-item u-flex u-row-between van-hairline--bottom" url="/pages/home/detail/index?id={{mode.id}}">
   <view class="list-item__left">
     <view class="list-item__left__title van-multi-ellipsis--l3">
       {{ mode.title }}
