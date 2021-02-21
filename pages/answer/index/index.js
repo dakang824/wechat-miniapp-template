@@ -2,13 +2,11 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-21 09:20:15
+ * @LastEditTime: 2021-02-21 11:56:18
  */
-import {
-  Router,
-  app
-} from "../../page";
-Router({
+import { Router, app } from "../../page";
+Router(
+  {
     data: {
       list: [],
       end: false,
@@ -31,21 +29,12 @@ Router({
     },
     onShow() {},
     async fetchData() {
-      const {
-        end,
-        params
-      } = this.data, {
-        api,
-        ...rest
-      } = params;
+      const { end, params } = this.data,
+        { api, ...rest } = params;
       if (!end) {
         if (api === "getZiCeQues") {
           const {
-            data: {
-              check_ques,
-              radio_ques,
-              judge_ques
-            },
+            data: { check_ques, radio_ques, judge_ques },
           } = await app.$api[api](rest);
           const list = [...check_ques, ...radio_ques, ...judge_ques];
           this.handlingData(list, list.length);
@@ -53,11 +42,7 @@ Router({
             [`params.page_size`]: list.length,
           });
         } else if (api === "getTests") {
-          const {
-            code,
-            msg,
-            data
-          } = await app.$api[api](rest);
+          const { code, msg, data } = await app.$api[api](rest);
           if (code === 5) {
             app.$utils.Dialog.alert({
               title: "温馨提示",
@@ -77,10 +62,7 @@ Router({
         } else {
           const {
             data: {
-              ques: {
-                list,
-                total
-              },
+              ques: { list, total },
             },
           } = await app.$api[api](rest);
           this.handlingData(list, total);
@@ -110,26 +92,20 @@ Router({
         timeData: e.detail,
       });
     },
-    
+
     bindanimationfinish(e) {
-      const {
-        current
-      } = e.detail;
-      const {
-        list,
-        total,
-        params
-      } = this.data;
-      if ((params.page_size*(params.page_no-1)) - current === 2 && list.length !== total) {
+      const { current } = e.detail;
+      const { list, total, params } = this.data;
+      if (
+        params.page_size * (params.page_no - 1) - current === 2 &&
+        list.length !== total
+      ) {
         this.fetchData();
       }
     },
     handleMultipleChoice(e) {
-      let {
-        ind
-      } = e.currentTarget.dataset, {
-          list
-        } = this.data,
+      let { ind } = e.currentTarget.dataset,
+        { list } = this.data,
         right = 0;
 
       const key_val = list[ind].queOptions.reduce((a, b) => {
@@ -151,35 +127,20 @@ Router({
         right: result === right,
       });
     },
-    async sendResult({
-      ind,
-      right
-    }) {
-      const {
-        params,
-        code,
-        tests,
-        timeData,
-        doTime,
-        time,
-        list
-      } = this.data;
+    async sendResult({ ind, right }) {
+      const { params, code, tests, timeData, doTime, time, list } = this.data;
       let score = null,
         t = 0,
         api = "commitQueResult";
 
       if (params.api === "getTests") {
-        const {
-          radio_score,
-          judge_score,
-          check_score
-        } = tests || params.tests;
+        const { radio_score, judge_score, check_score } = tests || params.tests;
         score =
-          list[ind].type === 1 ?
-          radio_score :
-          list[ind].type === 2 ?
-          check_score :
-          judge_score;
+          list[ind].type === 1
+            ? radio_score
+            : list[ind].type === 2
+            ? check_score
+            : judge_score;
         api = "commitTestQueResult";
         const nowDate = timeData.minutes * 60 + timeData.seconds;
         t = (doTime || time / 1000) - nowDate;
@@ -200,11 +161,7 @@ Router({
       if (params.api === "getTests" && ind === list.length - 1) {
         const {
           data: {
-            score: {
-              right_count,
-              wrong_count,
-              score
-            },
+            score: { right_count, wrong_count, score },
           },
         } = await app.$api.getTestScoreResult({
           test_id: tests.id,
@@ -221,13 +178,8 @@ Router({
       }
     },
     handleSelect(e) {
-      const {
-        i,
-        ind
-      } = e.currentTarget.dataset, {
-        list,
-        active
-      } = this.data;
+      const { i, ind } = e.currentTarget.dataset,
+        { list, active } = this.data;
 
       // 判断是否已经做过改题
       if (list[ind].result !== null || active) {
@@ -239,14 +191,11 @@ Router({
         const index = list[ind].queOptions.findIndex(
           (item) => item.id === i.id
         );
+
+        list[ind].res.length && list[ind].res.splice(index, 1);
+
         this.setData({
-          [`list[${ind}].result`]: i.value,
-        });
-        let right = list[ind].queOptions.find((item) => item.rig);
-        // 提交选择结果
-        this.sendResult({
-          ind,
-          right: i.value & right.value,
+          [`list[${ind}].res`]: [i.name],
         });
       } else {
         //多选
@@ -267,15 +216,15 @@ Router({
         }
       }
     },
-    handlePrevious(){
+    handlePrevious() {
       this.setData({
-        swiperCurrent:--this.data.swiperCurrent
-      })
+        swiperCurrent: --this.data.swiperCurrent,
+      });
     },
-    handleNext(){
+    handleNext() {
       this.setData({
-        swiperCurrent:++this.data.swiperCurrent
-      })
+        swiperCurrent: ++this.data.swiperCurrent,
+      });
     },
     handleChange(e) {
       this.setData({
@@ -283,15 +232,11 @@ Router({
       });
     },
     async handlingData(list, total) {
-      const {
-        params
-      } = this.data;
+      const { params } = this.data;
       const que_ids = list.map((item) => item.id).join();
 
       const {
-        data: {
-          collect
-        },
+        data: { collect },
       } = await app.$api.checkHasCollectQues({
         que_ids,
       });
@@ -312,9 +257,7 @@ Router({
     },
     async handleCollect(e) {
       const arr = e.currentTarget.dataset.i.split("_");
-      const {
-        list
-      } = this.data;
+      const { list } = this.data;
       await app.$api.collectQues({
         que_id: arr[1],
         status: list[arr[0]].collect ? 0 : 1,
