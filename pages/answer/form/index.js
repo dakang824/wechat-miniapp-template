@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-02-04 22:35:23
+ * @LastEditTime: 2021-02-24 22:26:48
  */
 import { Router, app } from "../../page";
 Router(
@@ -11,6 +11,10 @@ Router(
       judge_count: "",
       radio_count: "",
       check_count: "",
+      radio_score: "",
+      judge_score: "",
+      check_score: "",
+
       time: "",
     },
     onLoad(options) {
@@ -34,38 +38,63 @@ Router(
     handleClick() {
       if (this._checkData()) {
         const {
-          params,
+          judge_count,
+          radio_count,
+          check_count,
+          radio_score,
+          judge_score,
+          check_score,
+        } = this.data;
+        const total =
+          judge_count * judge_score +
+          radio_count * radio_score +
+          check_count * check_score;
+        if (total > 100) {
+          app.$utils.Dialog.confirm({
+            title: "温馨提示",
+            message: "题目总分不可以大于100。",
+            confirmButtonText: "下一步",
+            cancelButtonText: "去修改",
+          })
+            .then(() => {
+              this.jumpPage();
+            })
+            .catch(() => {
+              // on cancel
+            });
+          return;
+        }
+
+        this.jumpPage();
+      }
+    },
+    jumpPage() {
+      const {
+        params,
+        judge_count,
+        radio_count,
+        check_count,
+        time,
+        radio_score,
+        judge_score,
+        check_score,
+      } = this.data;
+      app.$router.redirect(
+        `/pages/answer/index/index?params=`,
+        JSON.stringify({
+          ...params,
           judge_count,
           radio_count,
           check_count,
           time,
-        } = this.data;
-        const total = judge_count * 1 + radio_count * 1 + check_count * 1;
-        if (total > 100) {
-          app.$utils.Notify({
-            type: "danger",
-            message: "题目总数不能超过100个。",
-          });
-          return;
-        }
 
-        app.$router.redirect(
-          `/pages/answer/index/index?params=`,
-          JSON.stringify({
-            ...params,
-            judge_count,
-            radio_count,
-            check_count,
-            time,
-
-            tests: {
-              radio_score: 1,
-              judge_score: 1,
-              check_score: 1,
-            },
-          })
-        );
-      }
+          tests: {
+            radio_score,
+            judge_score,
+            check_score,
+          },
+        })
+      );
     },
     onShow() {},
     onHide() {},

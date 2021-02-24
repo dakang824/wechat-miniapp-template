@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-21 15:35:01
+ * @LastEditTime: 2021-02-24 22:54:25
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -11,7 +11,7 @@
   <view class="answer">
     <van-tabs active="{{ active }}" bind:change="handleChange" type="card" color="{{$themeColor}}">
       <van-tab title="答题模式"></van-tab>
-      <van-tab title="背题模式" wx:if="{{params.api!=='getTests'}}"></van-tab>
+      <van-tab title="背题模式" wx:if="{{params.api!=='getTests'&&params.api!=='getZiCeQues'}}"></van-tab>
     </van-tabs>
 
     <swiper
@@ -109,6 +109,7 @@
         <text>收藏</text>
       </view>
       <van-count-down
+        class="control-count-down"
         time="{{ time }}"
         bind:finish="timeFinish"
         slot="title"

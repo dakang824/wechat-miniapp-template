@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-21 19:20:51
+ * @LastEditTime: 2021-02-24 23:19:50
  */
 import { Router, app } from "../../page";
 Router(
@@ -79,12 +79,69 @@ Router(
         swiperCurrent: e.detail.current,
       });
     },
+    getScore() {
+      // 暂停倒计时
+      this.timePause();
+      const {
+        list,
+        time,
+        timeData: { days, hours, minutes, seconds, milliseconds },
+        params: {
+          tests: { radio_score, judge_score, check_score },
+        },
+      } = this.data;
+      let right_count = 0,
+        wrong_count = 0;
+      const score = list.reduce((prev, curr) => {
+        if (curr.right) {
+          ++right_count;
+          prev += Number(
+            curr.type === 2
+              ? check_score
+              : curr.type === 1
+              ? radio_score
+              : judge_score
+          );
+        } else {
+          ++wrong_count;
+        }
+        return prev;
+      }, 0);
+
+      const useMilliseconds =
+          time -
+          (days * 1 * 24 * 60 * 60 * 1000 +
+            hours * 60 * 60 * 1000 +
+            minutes * 60 * 1000 +
+            seconds * 1000 +
+            milliseconds),
+        Hours = parseInt(useMilliseconds / 1000 / 60 / 60),
+        Minutes = parseInt(useMilliseconds / 1000 / 60),
+        Seconds = parseInt(useMilliseconds / 1000);
+
+      app.$utils.Dialog.alert({
+        title: "得分结果",
+        confirmButtonText: "我知道了",
+        message: `用时:${Hours}时${Minutes}分${
+          Seconds + 1
+        }秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score}分,\n正确率:${(
+          (right_count / list.length) *
+          100
+        ).toFixed(2)}%`,
+      }).then(() => {
+        app.$router.back();
+      });
+    },
+    timePause() {
+      const countDown = this.selectComponent(".control-count-down");
+      countDown.pause();
+    },
     timeFinish(e) {
       app.$utils.Dialog.alert({
         title: "温馨提示",
         message: "考试已结束,终止答题",
       }).then(() => {
-        app.$router.back();
+        this.getScore();
       });
     },
     timeChange(e) {
@@ -120,6 +177,7 @@ Router(
 
       this.setData({
         [`list[${ind}].result`]: result,
+        [`list[${ind}].right`]: result === right,
       });
 
       this.sendResult({
@@ -175,6 +233,10 @@ Router(
         }).then(() => {
           app.$router.back();
         });
+      }
+
+      if (params.api === "getZiCeQues" && ind === list.length - 1) {
+        this.getScore();
       }
     },
     handleSelect(e) {

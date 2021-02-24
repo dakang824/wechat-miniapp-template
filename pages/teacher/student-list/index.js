@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:学生列表
  * @Date: 2021-01-06 18:00:03
- * @LastEditTime: 2021-02-21 15:31:05
+ * @LastEditTime: 2021-02-24 21:24:22
  */
 // const { CityList } = require("../../../utils/city.js");
 
@@ -75,7 +75,8 @@ Router({
   async onClick() {
     const { result, errMsg } = await wx.pro.scanCode();
     if ("scanCode:ok" === errMsg) {
-      console.log(result);
+      app.$store.other = JSON.parse(result);
+      app.$router.nav(`/pages/teacher/student-skill/index`);
     }
   },
   onCancel() {
@@ -129,9 +130,9 @@ Router({
   },
   async onShow() {
     this.data.isLogin && (await app.$utils.Login());
-    const isStudent = this.data.isLogin && app.$store.user.userInfo.roles === 1;
-    this.setData({ isTeacher: !isStudent });
-    if (isStudent) {
+    const isTeacher = this.data.isLogin && app.$store.user.userInfo.roles === 2;
+    this.setData({ isTeacher });
+    if (!isTeacher) {
       app.$router.toHome();
     }
   },

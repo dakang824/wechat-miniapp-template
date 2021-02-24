@@ -215,3 +215,8 @@ export const querySkillTreeScore = (data) => {
 export const auditSkillTreeScore = (data) => {
   return request.post("/service/front/auditSkillTreeScore", data);
 };
+
+// 查询专业--技能树成绩页面使用
+export const getMyProfessionForSkill = (data) => {
+  return request.post("/service/front/getMyProfessionForSkill", data);
+};
