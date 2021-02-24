@@ -2,12 +2,9 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-19 22:18:18
+ * @LastEditTime: 2021-02-24 23:29:31
  */
-import {
-  Router,
-  app
-} from "../../page";
+import { Router, app } from "../../page";
 Router({
   data: {
     prof: [],
@@ -51,31 +48,21 @@ Router({
       other &&
       wx.setNavigationBarTitle({
         title: app.$store.other.name,
-      }) ?
-      app.$store.other :
-      app.$store.user.userInfo;
+      })
+        ? app.$store.other
+        : app.$store.user.userInfo;
 
+    const { prof_group_id: group_id, name, id } = val;
     const {
-      prof_group_id: group_id,
-      name,
-      id
-    } = val;
-    const {
-      data: {
-        profs
-      },
-    } = await app.$api.getMyProfession({
-      group_id
+      data: { profs },
+    } = await app.$api.getMyProfessionForSkill({
+      user_id: id,
+      group_id,
     });
     const prof = profs.map((item) => ({
-      text: `${item.name}（完成度${1}%）`,
+      text: `${item.name}（完成度${item.finish_rate}%）`,
       value: item.id,
     }));
-
-    app.$api.getMyProfessionForSkill({
-      user_id: id,
-      group_id
-    })
 
     this.setData({
       prof,
@@ -103,9 +90,7 @@ Router({
   async getData(prof_id) {
     const {
       data: {
-        SkilTree: {
-          list
-        },
+        SkilTree: { list },
       },
     } = await app.$api.querySkillTreeScore({
       ...this.data.postData,
@@ -159,9 +144,7 @@ Router({
     this.getData(this.data.currentIndex);
   },
   async handlePass(e) {
-    const {
-      score
-    } = e.detail;
+    const { score } = e.detail;
     if (!score.length) {
       app.$utils.Notify({
         type: "danger",
@@ -169,18 +152,14 @@ Router({
       });
       return;
     }
-    const {
-      data
-    } = await app.$api.auditSkillTreeScore({
+    const { data } = await app.$api.auditSkillTreeScore({
       score_id: score[0].id,
       res: 1,
     });
     this.getData(this.data.currentIndex);
   },
   async handleNoPass(e) {
-    const {
-      score
-    } = e.currentTarget.dataset.i;
+    const { score } = e.currentTarget.dataset.i;
     if (!score.length) {
       app.$utils.Notify({
         type: "danger",
@@ -188,9 +167,7 @@ Router({
       });
       return;
     }
-    const {
-      data
-    } = await app.$api.auditSkillTreeScore({
+    const { data } = await app.$api.auditSkillTreeScore({
       score_id: score[0].id,
       res: 2,
     });
