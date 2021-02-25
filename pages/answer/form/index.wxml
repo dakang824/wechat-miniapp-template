@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 填写信息
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-02-25 20:21:54
+ * @LastEditTime: 2021-02-25 22:30:56
 -->
 <van-dialog id="van-dialog" />
 <container class="form">
@@ -64,7 +64,7 @@
       type="number"
       label="考试时间"
       model:value="{{ time }}"
-      placeholder="请输入考试时间 单位(分钟)"
+      placeholder="单位(分钟)"
       required
       clearable
     />

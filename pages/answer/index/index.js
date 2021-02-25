@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-24 23:19:50
+ * @LastEditTime: 2021-02-25 23:18:48
  */
 import { Router, app } from "../../page";
 Router(
@@ -79,35 +79,61 @@ Router(
         swiperCurrent: e.detail.current,
       });
     },
-    getScore() {
+    async getScore() {
       // 暂停倒计时
       this.timePause();
+
+      const {
+        list,
+        params: { api },
+      } = this.data;
+
+      if (api === "getZiCeQues") {
+        //自测练习
+        let {
+            params: {
+              tests: { judge_score, check_score, radio_score },
+            },
+          } = this.data,
+          right_count = 0,
+          score = 0,
+          wrong_count = 0;
+        score = list.reduce((prev, curr) => {
+          if (curr.right) {
+            ++right_count;
+            prev += Number(
+              curr.type === 2
+                ? check_score
+                : curr.type === 1
+                ? radio_score
+                : judge_score
+            );
+          } else {
+            ++wrong_count;
+          }
+          return prev;
+        }, 0);
+        this.showResult({ right_count, wrong_count, score });
+      } else if (api === "getTests") {
+        //模拟考试
+        const {
+          data: {
+            score: { right_count, wrong_count, score },
+          },
+        } = await app.$api.getTestScoreResult({
+          test_id: this.data.tests.id,
+          code: this.data.code,
+        });
+        this.showResult({ right_count, wrong_count, score });
+      }
+    },
+    showResult({ right_count, wrong_count, score }) {
       const {
         list,
         time,
-        timeData: { days, hours, minutes, seconds, milliseconds },
-        params: {
-          tests: { radio_score, judge_score, check_score },
-        },
-      } = this.data;
-      let right_count = 0,
-        wrong_count = 0;
-      const score = list.reduce((prev, curr) => {
-        if (curr.right) {
-          ++right_count;
-          prev += Number(
-            curr.type === 2
-              ? check_score
-              : curr.type === 1
-              ? radio_score
-              : judge_score
-          );
-        } else {
-          ++wrong_count;
-        }
-        return prev;
-      }, 0);
 
+        timeData: { days, hours, minutes, seconds, milliseconds },
+      } = this.data;
       const useMilliseconds =
           time -
           (days * 1 * 24 * 60 * 60 * 1000 +
@@ -116,15 +142,13 @@ Router(
             seconds * 1000 +
             milliseconds),
         Hours = parseInt(useMilliseconds / 1000 / 60 / 60),
-        Minutes = parseInt(useMilliseconds / 1000 / 60),
-        Seconds = parseInt(useMilliseconds / 1000);
+        Minutes = parseInt(useMilliseconds / 1000 / 60 - Hours * 60 * 60),
+        Seconds = parseInt(useMilliseconds / 1000 - Minutes * 60);
 
       app.$utils.Dialog.alert({
         title: "得分结果",
         confirmButtonText: "我知道了",
-        message: `用时:${Hours}时${Minutes}分${
-          Seconds + 1
-        }秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score}分,\n正确率:${(
+        message: `用时:${Hours}时${Minutes}分${Seconds}秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score}分,\n正确率:${(
           (right_count / list.length) *
           100
         ).toFixed(2)}%`,
@@ -217,22 +241,7 @@ Router(
       });
 
       if (params.api === "getTests" && ind === list.length - 1) {
-        const {
-          data: {
-            score: { right_count, wrong_count, score },
-          },
-        } = await app.$api.getTestScoreResult({
-          test_id: tests.id,
-          code,
-        });
-        app.$utils.Dialog.alert({
-          title: "得分结果",
-          message: `正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score}分,\n正确率:${(
-            right_count / list.length
-          ).toFixed(2)}%`,
-        }).then(() => {
-          app.$router.back();
-        });
+        this.getScore();
       }
 
       if (params.api === "getZiCeQues" && ind === list.length - 1) {

@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-24 22:54:25
+ * @LastEditTime: 2021-02-25 22:37:12
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -41,20 +41,23 @@
               data-ind="{{index}}"
               bindtap="handleSelect"
             >
-              <van-checkbox
-                value="{{utils.includes(item.res,it.name)}}"
-                wx:if="{{item.type===2}}"
-                checked-color="{{$themeColor}}"
-                custom-class="answer__swipe-item__checkbox"
-              ></van-checkbox>
-              <van-checkbox
-                value="{{utils.includes(item.res,it.name)}}"
-                wx:else
-                checked-color="{{$themeColor}}"
-                custom-class="answer__swipe-item__checkbox"
-              ></van-checkbox>
-              {{it.name}}
-              {{it.content}}
+              <view class="u-flex u-col-center" style="flex: 1;">
+                <van-checkbox
+                  value="{{utils.includes(item.res,it.name)}}"
+                  wx:if="{{item.type===2}}"
+                  checked-color="{{$themeColor}}"
+                  custom-class="answer__swipe-item__checkbox"
+                ></van-checkbox>
+                <van-checkbox
+                  value="{{utils.includes(item.res,it.name)}}"
+                  wx:else
+                  checked-color="{{$themeColor}}"
+                  custom-class="answer__swipe-item__checkbox"
+                ></van-checkbox>
+                {{it.name}}
+                {{it.content}}
+              </view>
+
               <van-icon
                 size="35rpx"
                 name="{{it.rig ?'success':'cross'}}"

@@ -3,7 +3,7 @@
   top: 40%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .qr-code__box {
@@ -14,7 +14,6 @@
   border: 1px solid #1cbc9a;
   border-radius: 20rpx;
   margin: auto;
-  overflow: hidden;
 }
 
 .qr-code__box__img {
@@ -28,10 +27,7 @@
   height: 280rpx;
 }
 
-.qr-code__box__left-top,
-.qr-code__box__left-bottom,
-.qr-code__box__right-top,
-.qr-code__box__right-bottom {
+.qr-code__box__left-top, .qr-code__box__left-bottom, .qr-code__box__right-top, .qr-code__box__right-bottom {
   position: absolute;
   top: -4rpx;
   left: -4rpx;

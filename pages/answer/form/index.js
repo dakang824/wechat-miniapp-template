@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-02-24 22:26:48
+ * @LastEditTime: 2021-02-25 22:27:28
  */
 import { Router, app } from "../../page";
 Router(
@@ -44,7 +44,30 @@ Router(
           radio_score,
           judge_score,
           check_score,
+          time,
         } = this.data;
+
+        const r = /^\+?[1-9][0-9]*$/; //正整数判断
+        const res = [
+          { name: "判断题数量", val: judge_count },
+          { name: "判断题分值", val: judge_score },
+          { name: "单选题数量", val: radio_count },
+          { name: "单选题分值", val: radio_score },
+          { name: "多选题数量", val: check_count },
+          { name: "多选题分值", val: check_score },
+          { name: "考试时间", val: time },
+        ];
+
+        for (const item of res) {
+          if (!r.test(item.val)) {
+            app.$utils.Dialog.alert({
+              title: "输入验证",
+              message: `${item.name}:请输入正整数`,
+            }).then(() => {});
+            return;
+          }
+        }
+
         const total =
           judge_count * judge_score +
           radio_count * radio_score +
