@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 填写信息
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-02-24 22:24:04
+ * @LastEditTime: 2021-02-25 20:21:54
 -->
 <van-dialog id="van-dialog" />
 <container class="form">
@@ -53,13 +53,13 @@
       clearable
     />
     <van-field
-    type="number"
-    label="多选题分值"
-    model:value="{{ check_score }}"
-    placeholder="请输入多选每题分值"
-    required
-    clearable
-  />
+      type="number"
+      label="多选题分值"
+      model:value="{{ check_score }}"
+      placeholder="请输入多选每题分值"
+      required
+      clearable
+    />
     <van-field
       type="number"
       label="考试时间"

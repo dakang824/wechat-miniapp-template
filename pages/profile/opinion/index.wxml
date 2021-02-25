@@ -2,11 +2,12 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 意见反馈
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-09 17:46:25
+ * @LastEditTime: 2021-02-25 20:32:32
 -->
+<van-dialog id="van-dialog" />
 <container class="opinion" is-gray is-gap>
-  <textarea placeholder="请输入意见反馈，我们将为你不断改进..." type="textarea" maxlength="100000" />
+  <textarea placeholder="请输入意见反馈，我们将为你不断改进..." type="textarea" maxlength="100000" value='{{value}}' bindinput='handleInputChange'/>
   <view class="opinion__btn">
-    <van-button type="primary" block>提交</van-button>
+    <van-button type="primary" block bind:click="bindSubmit">提交</van-button>
   </view>
 </container>
