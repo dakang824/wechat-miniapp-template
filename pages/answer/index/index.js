@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-25 23:18:48
+ * @LastEditTime: 2021-02-25 23:33:39
  */
 import { Router, app } from "../../page";
 Router(
@@ -148,10 +148,9 @@ Router(
       app.$utils.Dialog.alert({
         title: "得分结果",
         confirmButtonText: "我知道了",
-        message: `用时:${Hours}时${Minutes}分${Seconds}秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score}分,\n正确率:${(
-          (right_count / list.length) *
-          100
-        ).toFixed(2)}%`,
+        message: `用时:${Hours}时${Minutes}分${Seconds}秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${
+          score || 0
+        }分,\n正确率:${((right_count / list.length) * 100).toFixed(2)}%`,
       }).then(() => {
         app.$router.back();
       });
@@ -240,11 +239,11 @@ Router(
         result: right ? 1 : 0,
       });
 
-      if (params.api === "getTests" && ind === list.length - 1) {
-        this.getScore();
-      }
-
-      if (params.api === "getZiCeQues" && ind === list.length - 1) {
+      if (
+        (params.api === "getTests" || params.api === "getZiCeQues") &&
+        ind === list.length - 1
+      ) {
+        //获取考试结果
         this.getScore();
       }
     },
