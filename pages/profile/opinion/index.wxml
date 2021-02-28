@@ -2,9 +2,10 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 意见反馈
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-02-25 20:32:32
+ * @LastEditTime: 2021-02-28 21:32:06
 -->
 <van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
 <container class="opinion" is-gray is-gap>
   <textarea placeholder="请输入意见反馈，我们将为你不断改进..." type="textarea" maxlength="100000" value='{{value}}' bindinput='handleInputChange'/>
   <view class="opinion__btn">

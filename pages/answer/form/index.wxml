@@ -2,9 +2,10 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 填写信息
  * @Date: 2021-01-09 14:41:05
- * @LastEditTime: 2021-02-25 22:30:56
+ * @LastEditTime: 2021-02-28 21:35:08
 -->
 <van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
 <container class="form">
   <!-- <van-notice-bar
   left-icon="volume-o"
