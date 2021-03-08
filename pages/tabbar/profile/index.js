@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-03-08 22:28:27
+ * @LastEditTime: 2021-03-08 22:42:48
  */
 import { Router, app } from "../../page";
 Router(
@@ -36,13 +36,7 @@ Router(
         },
       ],
     },
-    async onLoad(options) {
-      const { authSetting } = await wx.pro.getSetting();
-      if (authSetting["scope.userInfo"]) {
-        const res = await wx.pro.getUserInfo();
-        this.getUserInfo({ detail: { userInfo: res.userInfo } });
-      }
-    },
+    async onLoad(options) {},
     onShow() {
       this.setData({
         userInfo: app.$store.user.userInfo,
@@ -50,7 +44,7 @@ Router(
       wx.showTabBar();
     },
     handleGetUserInfo() {
-      if (this.userInfo.avatarUrl) {
+      if ("avatarUrl" in this.data.userInfo) {
       } else {
         this.setData({
           show: true,
