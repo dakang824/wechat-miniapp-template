@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-03-08 22:42:48
+ * @LastEditTime: 2021-03-08 22:43:58
  */
 import { Router, app } from "../../page";
 Router(
@@ -44,8 +44,7 @@ Router(
       wx.showTabBar();
     },
     handleGetUserInfo() {
-      if ("avatarUrl" in this.data.userInfo) {
-      } else {
+      if (!("avatarUrl" in this.data.userInfo)) {
         this.setData({
           show: true,
         });
