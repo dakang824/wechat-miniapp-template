@@ -2,12 +2,13 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-02-21 19:27:08
+ * @LastEditTime: 2021-03-08 22:28:27
  */
 import { Router, app } from "../../page";
 Router(
   {
     data: {
+      show: false,
       list: [
         {
           name: "我的收藏",
@@ -35,12 +36,33 @@ Router(
         },
       ],
     },
-    onLoad(options) {},
+    async onLoad(options) {
+      const { authSetting } = await wx.pro.getSetting();
+      if (authSetting["scope.userInfo"]) {
+        const res = await wx.pro.getUserInfo();
+        this.getUserInfo({ detail: { userInfo: res.userInfo } });
+      }
+    },
     onShow() {
       this.setData({
         userInfo: app.$store.user.userInfo,
       });
       wx.showTabBar();
+    },
+    handleGetUserInfo() {
+      if (this.userInfo.avatarUrl) {
+      } else {
+        this.setData({
+          show: true,
+        });
+      }
+    },
+    getUserInfo(e) {
+      app.$store.user.userInfo = {
+        ...app.$store.user.userInfo,
+        ...e.detail.userInfo,
+      };
+      this.onShow();
     },
     handleLoginOut() {
       app.$store.isLogin = false;

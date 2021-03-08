@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:工具类
  * @Date: 2021-01-06 13:07:47
- * @LastEditTime: 2021-02-21 19:41:21
+ * @LastEditTime: 2021-03-08 22:34:19
  */
 /* eslint-disable */
 var bem = require("./bem.wxs");
@@ -26,7 +26,7 @@ var slice = function (val, end, start = 0) {
 };
 
 var baseUrl = function (val) {
-  return "http://47.101.210.167:9999/" + val;
+  return "http://47.101.210.167:9999/" + val + "?id=" + Math.random();
 };
 
 function formatTime(t) {

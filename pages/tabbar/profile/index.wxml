@@ -2,14 +2,14 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 个人中心
  * @Date: 2021-01-05 22:40:10
- * @LastEditTime: 2021-02-21 19:22:17
+ * @LastEditTime: 2021-03-08 22:36:40
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <container>
   <view class="profile__box">
-    <view class="u-flex profile__box__header">
-      <van-image width="120rpx" height="120rpx" src="{{utils.baseUrl(userInfo.icon)}}" round/>
-      <text>{{userInfo.nickname||userInfo.name}}</text>
+    <view class="u-flex profile__box__header" bindtap='handleGetUserInfo'>
+      <van-image width="120rpx" height="120rpx" src="{{userInfo.avatarUrl?userInfo.avatarUrl:utils.baseUrl(userInfo.icon)}}" round/>
+      <text>{{userInfo.nickName||'点击登录'}}</text>
     </view>
     <van-cell clickable title="{{item.name}}"  size="large" wx:for='{{list}}' wx:key='index' icon="/assets/image/icon{{index}}.png" is-link url='{{item.url}}'/>
     <view class="profile__box__login-out">
@@ -17,3 +17,15 @@
     </view>
   </view>
 </container>
+
+<van-dialog
+  title="授权提示"
+  show="{{ show }}"
+  message='获得您的公开信息(昵称、头像、地区及性别) '
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:getuserinfo="getUserInfo"
+>
+  
+</van-dialog>
