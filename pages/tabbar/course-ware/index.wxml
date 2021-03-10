@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-05 22:39:26
- * @LastEditTime: 2021-01-09 21:30:25
+ * @LastEditTime: 2021-03-10 22:34:50
 -->
 <container class="home">
   <van-tabs
@@ -25,22 +25,18 @@
     >
       <view class="home__box">
         <van-tabs
-          wx:if="{{ item.modules.length }}"
           color="{{ $themeColor }}"
           title-active-color="{{ $themeColor }}"
           ellipsis="{{ false }}"
           border="{{ false }}"
           line-height="0"
           bind:change="handleChangeProfs"
+          active="{{ item.active }}"
         >
-          <van-tab
-            title="{{ item.name }}"
-            wx:for="{{ item.modules }}"
-            wx:key="id"
-          ></van-tab>
-          <!-- <view slot="nav-right" wx:if="{{ profs.length > 4 }}" class="home__more u-flex">
-            <image src="/assets/image/more.png" />
-          </view>-->
+          <van-tab title="{{ item.name }}" wx:for="{{ item.modules }}" wx:key="id"></van-tab>
+          <view slot="nav-right" class="home__more u-flex" wx:if="{{item.modules.length}}">
+            <image src="/assets/image/more_a.png" bindtap="handleClick" />
+          </view>
         </van-tabs>
 
         <view class="home__scroll">
@@ -53,13 +49,30 @@
             data-ind="{{ index }}"
           >
             <view class="list-inner" slot="inner">
-              <list-item
-                wx:for="{{ item.list }}"
-                wx:key="index"
-                mode="{{ item }}"
-              ></list-item>
+              <list-item wx:for="{{ item.list }}" wx:key="index" mode="{{ item }}"></list-item>
             </view>
           </scroll>
+          <view class="home__scroll__layer" wx:if="{{item.show}}">
+            <view class="home__scroll__layer__content">
+              <view
+                class="home__more u-flex"
+                bindtap="handleClick"
+                style="float:right; clear: both;"
+                align="center"
+              >
+                <image src="/assets/image/more.png" class="active" align="right" />
+              </view>
+              <text
+                class="home__scroll__layer__content__block {{item.active==ind?'active':''}}"
+                wx:for="{{ item.modules }}"
+                bindtap="handleTabsChange"
+                data-i="{{ind}}"
+                wx:key="id"
+                wx:for-item="i"
+                wx:for-index="ind"
+              >{{i.name}}</text>
+            </view>
+          </view>
         </view>
       </view>
     </van-tab>

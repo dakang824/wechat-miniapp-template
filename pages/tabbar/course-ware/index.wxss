@@ -1,5 +1,34 @@
 .home__scroll {
   height: calc(100vh - 88rpx);
+  position: relative;
+}
+
+.home__scroll__layer {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.home__scroll__layer__content {
+  background-color: #fff;
+  padding: 25rpx;
+  font-size: 14px;
+  color: #646566;
+}
+
+.home__scroll__layer__content__block {
+  padding: 20rpx 16rpx;
+  line-height: 50rpx;
+  top: -8rpx;
+  position: relative;
+}
+
+.home__scroll__layer__content__block.active {
+  color: #1cbc9a;
 }
 
 .home__tab__active {
@@ -12,6 +41,12 @@
 }
 
 .home__more image {
+  border-left: 2rpx solid #646566;
+  padding-left: 30rpx;
   width: 34rpx;
   height: 34rpx;
+}
+
+.home__more image.active {
+  border-color: #1cbc9a;
 }

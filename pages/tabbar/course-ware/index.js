@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-05 22:43:08
- * @LastEditTime: 2021-02-21 16:39:36
+ * @LastEditTime: 2021-03-10 23:39:36
  */
 import { Router, app } from "../../page";
 Router({
@@ -84,6 +84,8 @@ Router({
     this.setData({
       [`navs[${active}].list`]: [...currentList, ...list],
       [`navs[${active}].queryData.page_no`]: queryData.page_no + 1,
+      [`navs[${active}].show`]: false,
+      [`navs[${active}].active`]: navs[active].active || 0,
       [`navs[${active}].scroll.pagination`]: {
         page: queryData.page_no + 1,
         totalPage: length / queryData.page_size,
@@ -135,5 +137,16 @@ Router({
         this.fetchData();
       }
     );
+  },
+  handleClick(e) {
+    console.log(e);
+    const { navs, active } = this.data;
+    this.setData({
+      [`navs[${active}].show`]: !navs[active].show,
+    });
+  },
+  handleTabsChange(e) {
+    const { i } = e.currentTarget.dataset;
+    this.handleChangeProfs({ detail: { index: i } });
   },
 });
