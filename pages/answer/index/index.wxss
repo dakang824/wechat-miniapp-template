@@ -46,7 +46,7 @@
 
 .answer__swipe-item__ul__li .icon_right {
   position: absolute !important;
-  right: 40rpx;
+  right: 25rpx;
 }
 
 .answer__swipe-item__ul__li.error {

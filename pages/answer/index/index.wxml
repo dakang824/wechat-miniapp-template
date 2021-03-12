@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-25 22:37:12
+ * @LastEditTime: 2021-03-12 20:58:47
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -41,7 +41,7 @@
               data-ind="{{index}}"
               bindtap="handleSelect"
             >
-              <view class="u-flex u-col-center" style="flex: 1;">
+              <view class="u-flex u-col-center" style="max-width: 602rpx;">
                 <van-checkbox
                   value="{{utils.includes(item.res,it.name)}}"
                   wx:if="{{item.type===2}}"
