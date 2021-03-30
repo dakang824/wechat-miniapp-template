@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-01-17 16:10:32
+ * @LastEditTime: 2021-03-30 22:35:30
 -->
 <wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-block">
@@ -14,7 +14,7 @@
     <block wx:for="{{mode}}" wx:key="index">
       <view wx:if="{{showJump}}" class="profile-block__cell">
         <view class="u-flex u-row-between">
-          <view class="profile-block__cell__title">{{item.name}}</view>
+          <view class="profile-block__cell__title">{{item.name?item.name:''}}</view>
           <van-icon name="arrow" color="#999" bindtap="handleJump" data-i='{{index}}'></van-icon>
         </view>
         <view class="profile-block__cell__tag">
@@ -23,7 +23,7 @@
         </view>
       </view>
 
-      <view class="profile-block__info">
+      <view class="profile-block__info"  wx:if='{{item.intro||item.perfor}}'>
         <text space="emsp" decode>{{item.intro}}</text>
         <view wx:if='{{item.perfor}}'>
           <text space="emsp" decode>{{item.perfor}}</text>

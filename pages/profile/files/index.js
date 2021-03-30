@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-01-17 16:23:43
+ * @LastEditTime: 2021-03-30 22:46:35
  */
 import { Router, app } from "../../page";
 Router({
@@ -32,6 +32,7 @@ Router({
     );
   },
   handleAddInfo(e) {
+    console.log(e);
     this.goJump(1, "title=个人介绍");
   },
   handleAddProject() {

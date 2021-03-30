@@ -1,16 +1,16 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-var component_1 = require('../common/component');
-var touch_1 = require('../mixins/touch');
-var utils_1 = require('../common/utils');
-var validator_1 = require('../common/validator');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var component_1 = require("../common/component");
+var touch_1 = require("../mixins/touch");
+var utils_1 = require("../common/utils");
+var validator_1 = require("../common/validator");
 component_1.VantComponent({
   mixins: [touch_1.touch],
-  classes: ['nav-class', 'tab-class', 'tab-active-class', 'line-class'],
+  classes: ["nav-class", "tab-class", "tab-active-class", "line-class"],
   relation: {
-    name: 'tab',
-    type: 'descendant',
-    current: 'tabs',
+    name: "tab",
+    type: "descendant",
+    current: "tabs",
     linked: function (target) {
       target.index = this.children.length - 1;
       this.updateTabs();
@@ -30,6 +30,7 @@ component_1.VantComponent({
     titleActiveColor: String,
     titleInactiveColor: String,
     color: String,
+    navRight: Boolean,
     animated: {
       type: Boolean,
       observer: function () {
@@ -42,7 +43,7 @@ component_1.VantComponent({
     lineWidth: {
       type: [String, Number],
       value: 40,
-      observer: 'resize',
+      observer: "resize",
     },
     lineHeight: {
       type: [String, Number],
@@ -59,7 +60,7 @@ component_1.VantComponent({
     },
     type: {
       type: String,
-      value: 'line',
+      value: "line",
     },
     ellipsis: {
       type: Boolean,
@@ -105,7 +106,7 @@ component_1.VantComponent({
     utils_1.requestAnimationFrame(function () {
       _this.setData({
         container: function () {
-          return _this.createSelectorQuery().select('.van-tabs');
+          return _this.createSelectorQuery().select(".van-tabs");
         },
       });
       _this.resize(true);
@@ -144,11 +145,11 @@ component_1.VantComponent({
       var index = event.currentTarget.dataset.index;
       var child = this.children[index];
       if (child.data.disabled) {
-        this.trigger('disabled', child);
+        this.trigger("disabled", child);
       } else {
         this.setCurrentIndex(index);
         utils_1.nextTick(function () {
-          _this.trigger('click');
+          _this.trigger("click");
         });
       }
     },
@@ -192,9 +193,9 @@ component_1.VantComponent({
       utils_1.nextTick(function () {
         _this.resize();
         _this.scrollIntoView();
-        _this.trigger('input');
+        _this.trigger("input");
         if (shouldEmitChange) {
-          _this.trigger('change');
+          _this.trigger("change");
         }
       });
     },
@@ -209,15 +210,15 @@ component_1.VantComponent({
       if (skipTransition === void 0) {
         skipTransition = false;
       }
-      if (this.data.type !== 'line') {
+      if (this.data.type !== "line") {
         return;
       }
       var _a = this.data,
         currentIndex = _a.currentIndex,
         ellipsis = _a.ellipsis;
       Promise.all([
-        utils_1.getAllRect(this, '.van-tab'),
-        utils_1.getRect(this, '.van-tabs__line'),
+        utils_1.getAllRect(this, ".van-tab"),
+        utils_1.getRect(this, ".van-tabs__line"),
       ]).then(function (_a) {
         var _b = _a[0],
           rects = _b === void 0 ? [] : _b,
@@ -249,8 +250,8 @@ component_1.VantComponent({
         return;
       }
       Promise.all([
-        utils_1.getAllRect(this, '.van-tab'),
-        utils_1.getRect(this, '.van-tabs__nav'),
+        utils_1.getAllRect(this, ".van-tab"),
+        utils_1.getRect(this, ".van-tabs__nav"),
       ]).then(function (_a) {
         var tabRects = _a[0],
           navRect = _a[1];
@@ -266,7 +267,7 @@ component_1.VantComponent({
       });
     },
     onTouchScroll: function (event) {
-      this.$emit('scroll', event.detail);
+      this.$emit("scroll", event.detail);
     },
     onTouchStart: function (event) {
       if (!this.data.swipeable) return;
@@ -284,7 +285,7 @@ component_1.VantComponent({
         deltaX = _a.deltaX,
         offsetX = _a.offsetX;
       var minSwipeDistance = 50;
-      if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
+      if (direction === "horizontal" && offsetX >= minSwipeDistance) {
         var index = this.getAvaiableTab(deltaX);
         if (index !== -1) {
           this.setCurrentIndex(index);

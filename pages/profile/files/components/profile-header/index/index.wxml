@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的档案头部用户信息
  * @Date: 2021-01-09 19:14:02
- * @LastEditTime: 2021-03-08 22:35:03
+ * @LastEditTime: 2021-03-30 22:39:18
 -->
 <wxs src="../../../../../../wxs/utils.wxs" module="utils" />
 <view class="profile-header u-flex">
@@ -10,10 +10,11 @@
     <van-image width="120rpx" height="120rpx" src="{{utils.baseUrl(mode.icon)}}" round />
   </view>
   <view class="profile-header__info">
-    <view class="profile-header__info__name">{{mode.name}}</view>
+    <view class="profile-header__info__name">{{mode.name?mode.name:''}}</view>
     <view class="profile-header__info__job">
-      <text>{{mode.department}}</text>
-      <text>{{mode.position}}</text>
+      <text>{{mode.department?mode.department:''}}</text>
+      <text>{{mode.position?mode.position:''}}</text>
     </view>
   </view>
+  <van-icon name="edit" color="#1CBC9A" bindtap="handleJump"></van-icon>
 </view>

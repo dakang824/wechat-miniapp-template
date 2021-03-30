@@ -32,6 +32,8 @@
           line-height="0"
           bind:change="handleChangeProfs"
           active="{{ item.active }}"
+          wx:if="{{item.modules.length}}"
+          nav-right
         >
           <van-tab title="{{ item.name }}" wx:for="{{ item.modules }}" wx:key="id"></van-tab>
           <view slot="nav-right" class="home__more u-flex" wx:if="{{item.modules.length}}">

@@ -2,10 +2,10 @@
  * @Author: yukang 1172248038@qq.com
  * @Description: 我的档案
  * @Date: 2021-01-09 17:44:24
- * @LastEditTime: 2021-03-01 19:17:17
+ * @LastEditTime: 2021-03-30 22:47:08
 -->
 <container class="files" is-gray>
-  <profile-header mode="{{resume}}" />
+  <profile-header mode="{{resume}}" bind:click="handleAddInfo"/>
   <profile-block mode="{{info}}" show-jump="{{false}}" title="个人介绍" bind:click="handleAddInfo" />
   <profile-block
     mode="{{resume.projects}}"

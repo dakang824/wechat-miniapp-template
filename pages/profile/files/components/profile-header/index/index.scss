@@ -4,6 +4,7 @@
   padding: $padding-md;
   &__info {
     margin-left: $padding-md;
+    flex: 1;
     &__name {
       font-size: 36rpx;
       font-weight: bold;

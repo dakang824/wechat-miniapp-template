@@ -26,7 +26,7 @@ var slice = function (val, end, start = 0) {
 };
 
 var baseUrl = function (val) {
-  return "http://47.101.210.167:9999/" + val + "?id=" + Math.random();
+  return "https://shangsong.shquyi.net/" + val + "?id=" + Math.random();
 };
 
 function formatTime(t) {

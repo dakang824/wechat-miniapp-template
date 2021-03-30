@@ -7,7 +7,7 @@
 const globalData = {
   isLogin: false,
   token: "",
-  baseURL: "http://47.101.210.167:9999/",
+  baseURL: "https://shangsong.shquyi.net/",
   fileUpload: "service/common/fileUpload",
   user: {
     isLecturer: 0,

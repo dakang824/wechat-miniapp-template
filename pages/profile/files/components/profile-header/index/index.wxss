@@ -5,6 +5,9 @@
 
 .profile-header__info {
   margin-left: 30rpx;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .profile-header__info__name {

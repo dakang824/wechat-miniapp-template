@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:用户登录
  * @Date: 2021-01-05 21:27:27
- * @LastEditTime: 2021-02-04 22:16:05
+ * @LastEditTime: 2021-03-30 21:56:39
  */
 import { Router, app } from "../page";
 Router(
@@ -48,12 +48,25 @@ Router(
 
         const {
           data: { userinfo },
+          code,
+          msg,
         } = await app.$api.bindAccount({
           account,
           pwd: app.$utils.sha1(pwd),
           sys_id: app.$store.sys_id,
         });
 
+        if (code === 0) {
+          app.$utils.Dialog.alert({
+            title: "温馨提示",
+            message: msg,
+          }).then(() => {
+            this.setData({
+              loading: false,
+            });
+          });
+          return;
+        }
         app.$store.user.userInfo = userinfo;
 
         app.$store.isLogin = true;
