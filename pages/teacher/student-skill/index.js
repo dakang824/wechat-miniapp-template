@@ -4,7 +4,10 @@
  * @Date: 2021-01-09 17:44:24
  * @LastEditTime: 2021-02-24 23:29:31
  */
-import { Router, app } from "../../page";
+import {
+  Router,
+  app
+} from "../../page";
 Router({
   data: {
     prof: [],
@@ -48,13 +51,19 @@ Router({
       other &&
       wx.setNavigationBarTitle({
         title: app.$store.other.name,
-      })
-        ? app.$store.other
-        : app.$store.user.userInfo;
+      }) ?
+      app.$store.other :
+      app.$store.user.userInfo;
 
-    const { prof_group_id: group_id, name, id } = val;
     const {
-      data: { profs },
+      prof_group_id: group_id,
+      name,
+      id
+    } = val;
+    const {
+      data: {
+        profs
+      },
     } = await app.$api.getMyProfessionForSkill({
       user_id: id,
       group_id,
@@ -90,33 +99,37 @@ Router({
   async getData(prof_id) {
     const {
       data: {
-        SkilTree: { list },
+        SkilTree: {
+          list
+        },
       },
     } = await app.$api.querySkillTreeScore({
       ...this.data.postData,
       prof_id,
     });
 
-    const data = this.processingData(list);
-    const map = data.reduce((a, b) => {
-      const prof_name = this.data.professionsKeyVal[b.prof_id];
-      a[prof_name] = a[prof_name] || [];
-      a[prof_name].push(b);
-      return a;
-    }, {});
 
-    const result = Object.values(map).map((item) => {
-      return {
-        name: this.data.professionsKeyVal[item[0].prof_id],
-        children: item,
-        id: 1,
-        prof_id: item[0].prof_id,
-      };
-    });
+    const data = this.processingData(list);
+    // const map = data.reduce((a, b) => {
+    //   const prof_name = this.data.professionsKeyVal[b.prof_id];
+    //   a[prof_name] = a[prof_name] || [];
+    //   a[prof_name].push(b);
+    //   return a;
+    // }, {});
+
+    // const result = Object.values(map).map((item) => {
+    //   return {
+    //     name: this.data.professionsKeyVal[item[0].prof_id],
+    //     children: item,
+    //     id: 1,
+    //     prof_id: item[0].prof_id,
+    //   };
+    // });
+
 
     this.setData({
       currentIndex: prof_id,
-      dataTree: result,
+      dataTree: data,
       roles: app.$store.user.userInfo.roles,
     });
   },
@@ -144,7 +157,9 @@ Router({
     this.getData(this.data.currentIndex);
   },
   async handlePass(e) {
-    const { score } = e.detail;
+    const {
+      score
+    } = e.detail;
     if (!score.length) {
       app.$utils.Notify({
         type: "danger",
@@ -152,14 +167,18 @@ Router({
       });
       return;
     }
-    const { data } = await app.$api.auditSkillTreeScore({
+    const {
+      data
+    } = await app.$api.auditSkillTreeScore({
       score_id: score[0].id,
       res: 1,
     });
     this.getData(this.data.currentIndex);
   },
   async handleNoPass(e) {
-    const { score } = e.currentTarget.dataset.i;
+    const {
+      score
+    } = e.currentTarget.dataset.i;
     if (!score.length) {
       app.$utils.Notify({
         type: "danger",
@@ -167,7 +186,9 @@ Router({
       });
       return;
     }
-    const { data } = await app.$api.auditSkillTreeScore({
+    const {
+      data
+    } = await app.$api.auditSkillTreeScore({
       score_id: score[0].id,
       res: 2,
     });

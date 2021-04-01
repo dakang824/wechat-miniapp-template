@@ -6,17 +6,16 @@
 }
 
 .tree-item {
-  height: 45px;
-  line-height: 45px;
+  line-height: 76rpx;
   display: flex;
-  /* padding-left: 15px; */
 }
 
 .tree-item-onOff {
-  width: 30px;
+  /* width: 30px; */
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 8rpx;
 }
 
 .tree-item-onOff image {
@@ -37,7 +36,8 @@
 .tree-item-name {
   width: calc(100% - 40px);
   display: flex;
-  /* padding-left: 3px; */
+  padding-left: 3px;
+
 }
 
 .name {

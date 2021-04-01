@@ -5,30 +5,20 @@
  * @LastEditTime: 2021-02-19 21:59:47
 -->
 <van-notify id="van-notify" />
-<container class="skill"> 
-  <van-search value="{{ keyWorld }}" placeholder="请输入搜索关键词" bind:search="onSearch" bind:clear='onClear'/>
+<container class="skill">
+  <van-search value="{{ keyWorld }}" placeholder="请输入搜索关键词" bind:search="onSearch" bind:clear='onClear' />
   <van-dropdown-menu active-color="{{$themeColor}}">
-    <van-dropdown-item
-      value="{{ postData.prof_id }}"
-      options="{{ prof }}"
-      bind:change="handleChange"
-    />
+    <van-dropdown-item value="{{ postData.prof_id }}" options="{{ prof }}" bind:change="handleChange" />
   </van-dropdown-menu>
   <block wx:if='{{dataTree.length}}'>
-    <van-panel custom-class='panel'  wx:for='{{dataTree}}' wx:key="index">
+    <van-panel custom-class='panel' wx:for='{{dataTree}}' wx:key="index">
       <!-- <view slot="footer" class="header" wx:if='{{roles==2}}'>
         <van-button size="small" type="warning" bind:click='handleNoPass' data-i='{{item}}'>不通过</van-button>
         <van-button size="small" custom-class="btn" color="{{$themeColor}}"  bind:click='handlePass' data-i='{{item}}'>通过</van-button>
       </view> -->
       <view class="container">
-        <tree
-          dataTree="{{ dataTree }}"
-          selectKey="{{ selectKey }}"
-          operation="{{ roles == 2 }}"
-          isSelectLastNode
-          isOpenAll
-          bind:click="handlePass"
-        ></tree>
+        <tree dataTree="{{ dataTree }}" selectKey="{{ selectKey }}" operation="{{ roles == 2 }}" isSelectLastNode
+          isOpenAll bind:click="handlePass"></tree>
       </view>
     </van-panel>
   </block>
