@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:开始考试
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-03-12 20:58:47
+ * @LastEditTime: 2021-04-04 22:57:52
 -->
 <wxs src="../../../wxs/utils.wxs" module="utils" />
 <van-notify id="van-notify" />
@@ -54,7 +54,8 @@
                   checked-color="{{$themeColor}}"
                   custom-class="answer__swipe-item__checkbox"
                 ></van-checkbox>
-                {{it.name}}
+                <!-- {{it.name}} -->
+                {{orderNum[idx]}}
                 {{it.content}}
               </view>
 

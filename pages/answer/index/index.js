@@ -2,7 +2,7 @@
  * @Author: yukang 1172248038@qq.com
  * @Description:做题
  * @Date: 2021-01-08 18:19:16
- * @LastEditTime: 2021-02-25 23:33:39
+ * @LastEditTime: 2021-04-04 23:00:36
  */
 import { Router, app } from "../../page";
 Router(
@@ -17,6 +17,35 @@ Router(
       timeData: {},
       doTime: null,
       swiperCurrent: 0,
+
+      orderNum: [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ],
     },
     onLoad(options) {
       const params = JSON.parse(options.params);
@@ -52,6 +81,12 @@ Router(
             });
           } else {
             const list = data.ques.map((item) => item.que);
+
+            // 答案随机
+            // list.map((item) => {
+            //   item.queOptions = item.queOptions.sort(() => Math.random() - 0.5);
+            // });
+
             this.handlingData(list, list.length);
             this.setData({
               code: data.code,
