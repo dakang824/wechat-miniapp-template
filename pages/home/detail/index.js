@@ -15,13 +15,18 @@ Router({
     this.setData(options);
     this.fetchData();
   },
-  onShow() {},
+
   async fetchData() {
     const {
       data: { article, collect },
-    } = await app.$api.getArticleDetail({ id: this.data.id });
+    } = await app.$api.getArticleDetail({
+      id: this.data.id,
+    });
 
-    this.setData({ article, collect });
+    this.setData({
+      article,
+      collect,
+    });
   },
   async handleCollect() {
     const { collect } = this.data;
@@ -29,6 +34,8 @@ Router({
       id: this.data.id,
       status: collect ? 0 : 1,
     });
-    this.setData({ collect: !collect });
+    this.setData({
+      collect: !collect,
+    });
   },
 });
