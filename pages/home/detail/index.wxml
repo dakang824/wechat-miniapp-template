@@ -14,7 +14,7 @@
   <view class="detail__content">
     <block wx:for="{{article.articleContent}}" wx:key="index">
       <van-image width="100%" fit="widthFix" src="{{utils.baseUrl(item.path)}}"  use-loading-slot
-        wx:show='{{item.type===1}}'>
+        wx:if='{{item.type===1}}'>
         <van-loading slot="loading" type="spinner" size="20" vertical />
       </van-image>
       <video wx:if='{{item.type===2}}' src="{{utils.baseUrl(item.path)}}" style="width: 100%;" />
