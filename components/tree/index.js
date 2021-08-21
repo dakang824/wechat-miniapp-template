@@ -57,7 +57,6 @@ Comp({
       });
     },
     handleClick(e) {
-      console.log(e.currentTarget.dataset.item.score);
       this.triggerEvent(
         "click",
         { score: e.currentTarget.dataset.item.score },

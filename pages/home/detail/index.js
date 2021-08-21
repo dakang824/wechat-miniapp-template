@@ -4,7 +4,10 @@
  * @Date: 2021-01-09 17:44:24
  * @LastEditTime: 2021-01-16 16:24:28
  */
-import { Router, app } from "../../page";
+import {
+  Router,
+  app
+} from "../../page";
 Router({
   data: {
     id: "",
@@ -15,10 +18,15 @@ Router({
     this.setData(options);
     this.fetchData();
   },
-
+  onReady() { },
+  onUnload() { },
+  onHide() { },
   async fetchData() {
     const {
-      data: { article, collect },
+      data: {
+        article,
+        collect
+      },
     } = await app.$api.getArticleDetail({
       id: this.data.id,
     });
@@ -29,7 +37,9 @@ Router({
     });
   },
   async handleCollect() {
-    const { collect } = this.data;
+    const {
+      collect
+    } = this.data;
     const res = await app.$api.collectArticle({
       id: this.data.id,
       status: collect ? 0 : 1,

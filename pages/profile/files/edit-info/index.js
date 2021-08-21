@@ -26,9 +26,9 @@ Router({
       type,
       index = null
     } = options,
-    info = app.$store.other, {
-      baseURL
-    } = app.$store;
+      info = app.$store.other, {
+        baseURL
+      } = app.$store;
 
     this.setData({
       info,
@@ -37,17 +37,17 @@ Router({
     const form = this.initData(type),
       uploader = form.find((item) => item.type === "icon"),
       key =
-      type == 4 ? "certs" : type == 5 ? "honors" : type == 6 ? "thesis" : "";
+        type == 4 ? "certs" : type == 5 ? "honors" : type == 6 ? "thesis" : "";
     const fileList = uploader ?
       type == 1 ?
-      [{
-        url: baseURL + info.icon
-      }] :
-      (type == 4 || type == 5 || type == 6) && index !== null ?
-      [{
-        url: baseURL + info[key][index].pic_path,
-      }, ] :
-      "" :
+        [{
+          url: baseURL + info.icon
+        }] :
+        (type == 4 || type == 5 || type == 6) && index !== null ?
+          [{
+            url: baseURL + info[key][index].pic_path,
+          },] :
+          "" :
       [];
 
     this.setData({
@@ -58,40 +58,42 @@ Router({
       }),
     });
   },
+  onReady() { },
+  onHide() { },
   initData(type) {
     let info = app.$store.other,
       form;
     if (type == 1) {
       form = [{
-          type: "text",
-          value: "name",
-          title: "简历名称",
-          val: info.name,
-        },
-        {
-          type: "text",
-          value: "department",
-          title: "部门",
-          val: info.department,
-        },
-        {
-          type: "text",
-          value: "position",
-          title: "职位",
-          val: info.position,
-        },
-        {
-          type: "textarea",
-          value: "summary",
-          title: "个人介绍",
-          val: info.summary,
-        },
-        {
-          type: "icon",
-          value: "icon",
-          title: "简历头像",
-          maxCount: 1,
-        },
+        type: "text",
+        value: "name",
+        title: "简历名称",
+        val: info.name,
+      },
+      {
+        type: "text",
+        value: "department",
+        title: "部门",
+        val: info.department,
+      },
+      {
+        type: "text",
+        value: "position",
+        title: "职位",
+        val: info.position,
+      },
+      {
+        type: "textarea",
+        value: "summary",
+        title: "个人介绍",
+        val: info.summary,
+      },
+      {
+        type: "icon",
+        value: "icon",
+        title: "简历头像",
+        maxCount: 1,
+      },
       ];
     } else if (type == 2) {
       const current = info.projects[this.data.index] || {
@@ -104,41 +106,41 @@ Router({
         perfor: "",
       };
       form = [{
-          type: "text",
-          value: "name",
-          title: "项目名称",
-          val: current.name,
-        },
-        {
-          type: "text",
-          value: "roles",
-          title: "角色",
-          val: current.roles,
-        },
-        {
-          type: "time",
-          value: "start_time",
-          title: "开始时间",
-          val: current.start_time,
-        },
-        {
-          type: "time",
-          value: "end_time",
-          title: "结束时间",
-          val: current.end_time,
-        },
-        {
-          type: "textarea",
-          value: "intro",
-          title: "项目描述",
-          val: current.intro,
-        },
-        {
-          type: "textarea",
-          value: "perfor",
-          title: "项目业绩",
-          val: current.perfor,
-        },
+        type: "text",
+        value: "name",
+        title: "项目名称",
+        val: current.name,
+      },
+      {
+        type: "text",
+        value: "roles",
+        title: "角色",
+        val: current.roles,
+      },
+      {
+        type: "time",
+        value: "start_time",
+        title: "开始时间",
+        val: current.start_time,
+      },
+      {
+        type: "time",
+        value: "end_time",
+        title: "结束时间",
+        val: current.end_time,
+      },
+      {
+        type: "textarea",
+        value: "intro",
+        title: "项目描述",
+        val: current.intro,
+      },
+      {
+        type: "textarea",
+        value: "perfor",
+        title: "项目业绩",
+        val: current.perfor,
+      },
       ];
     } else if (type == 3) {
       const current = info.edus[this.data.index] || {
@@ -150,35 +152,35 @@ Router({
         perfor: "",
       };
       form = [{
-          type: "text",
-          value: "name",
-          title: "学校名称",
-          val: current.name,
-        },
-        {
-          type: "text",
-          value: "roles",
-          title: "角色",
-          val: current.roles,
-        },
-        {
-          type: "time",
-          value: "start_time",
-          title: "开始时间",
-          val: current.start_time,
-        },
-        {
-          type: "time",
-          value: "end_time",
-          title: "结束时间",
-          val: current.end_time,
-        },
-        {
-          type: "textarea",
-          value: "perfor",
-          title: "荣誉成绩",
-          val: current.perfor,
-        },
+        type: "text",
+        value: "name",
+        title: "学校名称",
+        val: current.name,
+      },
+      {
+        type: "text",
+        value: "roles",
+        title: "角色",
+        val: current.roles,
+      },
+      {
+        type: "time",
+        value: "start_time",
+        title: "开始时间",
+        val: current.start_time,
+      },
+      {
+        type: "time",
+        value: "end_time",
+        title: "结束时间",
+        val: current.end_time,
+      },
+      {
+        type: "textarea",
+        value: "perfor",
+        title: "荣誉成绩",
+        val: current.perfor,
+      },
       ];
     } else if (type == 4) {
       const current = info.certs[this.data.index] || {
@@ -188,24 +190,24 @@ Router({
         pic_path: "",
       };
       form = [{
-          type: "text",
-          value: "name",
-          title: "学校名称",
-          val: current.name,
-        },
-        {
-          type: "time",
-          value: "time",
-          title: "获取时间",
-          val: current.time,
-        },
-        {
-          type: "icon",
-          value: "pic_path",
-          title: "上传图片",
-          val: current.pic_path,
-          maxCount: 1,
-        },
+        type: "text",
+        value: "name",
+        title: "学校名称",
+        val: current.name,
+      },
+      {
+        type: "time",
+        value: "time",
+        title: "获取时间",
+        val: current.time,
+      },
+      {
+        type: "icon",
+        value: "pic_path",
+        title: "上传图片",
+        val: current.pic_path,
+        maxCount: 1,
+      },
       ];
     } else if (type == 5) {
       const current = info.honors[this.data.index] || {
@@ -214,18 +216,18 @@ Router({
         pic_path: "",
       };
       form = [{
-          type: "text",
-          value: "name",
-          title: "证书名称",
-          val: current.name,
-        },
-        {
-          type: "icon",
-          value: "pic_path",
-          title: "上传图片",
-          val: current.pic_path,
-          maxCount: 1,
-        },
+        type: "text",
+        value: "name",
+        title: "证书名称",
+        val: current.name,
+      },
+      {
+        type: "icon",
+        value: "pic_path",
+        title: "上传图片",
+        val: current.pic_path,
+        maxCount: 1,
+      },
       ];
     } else if (type == 6) {
       const current = info.thesis[this.data.index] || {
@@ -234,18 +236,18 @@ Router({
         pic_path: "",
       };
       form = [{
-          type: "text",
-          value: "name",
-          title: "论文名称",
-          val: current.name,
-        },
-        {
-          type: "icon",
-          value: "pic_path",
-          title: "上传图片",
-          val: current.pic_path,
-          maxCount: 1,
-        },
+        type: "text",
+        value: "name",
+        title: "论文名称",
+        val: current.name,
+      },
+      {
+        type: "icon",
+        value: "pic_path",
+        title: "上传图片",
+        val: current.pic_path,
+        maxCount: 1,
+      },
       ];
     }
     return form;
@@ -277,9 +279,9 @@ Router({
       pages = getCurrentPages(),
       prepage = pages[pages.length - 2];
     app.$utils.Dialog.confirm({
-        title: "温馨提示",
-        message: `确定是否删除该${title}?`,
-      })
+      title: "温馨提示",
+      message: `确定是否删除该${title}?`,
+    })
       .then(async () => {
         if (type == 2) {
           //删除项目经历
@@ -311,7 +313,7 @@ Router({
         await prepage.fetchData();
         app.$router.back();
       })
-      .catch(() => {});
+      .catch(() => { });
   },
   async handleSave() {
     const {
@@ -409,7 +411,7 @@ Router({
       ind: e.currentTarget.dataset.ind
     });
   },
-  onShow() {},
+  onShow() { },
   onUnload() {
     app.$store.other = {}
   }

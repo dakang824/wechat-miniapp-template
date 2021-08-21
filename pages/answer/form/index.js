@@ -22,6 +22,8 @@ Router(
         params: JSON.parse(options.params),
       });
     },
+    onReady() { },
+    onUnload() { },
     _checkData() {
       const { judge_count, radio_count, check_count, time } = this.data;
       if (
@@ -63,7 +65,7 @@ Router(
             app.$utils.Dialog.alert({
               title: "输入验证",
               message: `${item.name}:请输入正整数`,
-            }).then(() => {});
+            }).then(() => { });
             return;
           }
         }
@@ -119,8 +121,8 @@ Router(
         })
       );
     },
-    onShow() {},
-    onHide() {},
+    onShow() { },
+    onHide() { },
   },
   false
 );

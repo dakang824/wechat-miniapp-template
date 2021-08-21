@@ -37,9 +37,12 @@ Router({
     await this.fetchDataNavs();
     await this.fetchData();
   },
+  onHide() { },
+  onUnload() { },
   onShow() {
     wx.showTabBar();
   },
+  onReady() { },
   async fetchDataNavs() {
     const { prof_group_id: group_id } = app.$store.user.userInfo;
     const {
@@ -74,10 +77,10 @@ Router({
     queryData.prof_id = navs[active].id;
 
     const {
-        data: {
-          articles: { list, total: length },
-        },
-      } = await app.$api.findArticle(queryData),
+      data: {
+        articles: { list, total: length },
+      },
+    } = await app.$api.findArticle(queryData),
       limit = list.length,
       end = limit === queryData.page_size;
 
@@ -139,7 +142,6 @@ Router({
     );
   },
   handleClick(e) {
-    console.log(e);
     const { navs, active } = this.data;
     this.setData({
       [`navs[${active}].show`]: !navs[active].show,

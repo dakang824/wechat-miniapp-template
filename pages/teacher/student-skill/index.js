@@ -49,11 +49,11 @@ Router({
 
     const val =
       other &&
-      wx.setNavigationBarTitle({
-        title: app.$store.other.name,
-      }) ?
-      app.$store.other :
-      app.$store.user.userInfo;
+        wx.setNavigationBarTitle({
+          title: app.$store.other.name,
+        }) ?
+        app.$store.other :
+        app.$store.user.userInfo;
 
     const {
       prof_group_id: group_id,
@@ -88,6 +88,8 @@ Router({
     });
     this.getData(prof[0].value);
   },
+  onHide() { },
+  onReady() { },
   processingData(data) {
     return data.map((item) => {
       item.label = item.name;
@@ -197,5 +199,5 @@ Router({
   onUnload() {
     app.$store.other = {};
   },
-  onShow() {},
+  onShow() { },
 });

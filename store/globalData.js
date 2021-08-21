@@ -9,6 +9,13 @@ const globalData = {
   token: "",
   baseURL: "https://shangsong.shquyi.net/",
   fileUpload: "service/common/fileUpload",
+  useInfo: {
+    pages: [],//用户操作页面信息
+    systemInfo: {},//用户手机信息
+    appStartTime: 0,//app开始时间
+    appEndTime: 0,//app结束时间
+    scene: null,//场景值
+  },
   user: {
     isLecturer: 0,
     userInfo: {

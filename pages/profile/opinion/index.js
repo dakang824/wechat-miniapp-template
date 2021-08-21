@@ -10,8 +10,11 @@ Router(
     data: {
       value: "",
     },
-    onLoad(options) {},
-    onShow() {},
+    onLoad(options) { },
+    onShow() { },
+    onReady() { },
+    onHide() { },
+    onUnload() { },
     handleInputChange(e) {
       this.setData({
         value: e.detail.value,

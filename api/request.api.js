@@ -28,7 +28,6 @@ request.interceptors.request.use(
       : "";
 
     //返回的是和wx.request相关的参数
-    // console.log(config);
     wx.showNavigationBarLoading();
     wx.showLoading({
       title: "加载内容",
@@ -44,7 +43,6 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   function (config) {
-    // console.log(config);
     wx.hideLoading();
     wx.hideNavigationBarLoading();
     return config.data || config;

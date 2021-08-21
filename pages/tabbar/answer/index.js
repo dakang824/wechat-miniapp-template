@@ -59,6 +59,9 @@ Router({
   async onLoad(options) {
     await this.fetchDataNavs();
   },
+  onReady() { },
+  onHide() { },
+  onUnload() { },
   onShow() {
     wx.showTabBar();
   },
@@ -86,8 +89,7 @@ Router({
     });
 
     app.$router.nav(
-      `/pages/answer/${
-        current.api === "getZiCeQues" ? "form" : "index"
+      `/pages/answer/${current.api === "getZiCeQues" ? "form" : "index"
       }/index?params=`,
       params
     );

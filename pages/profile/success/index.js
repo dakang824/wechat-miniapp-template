@@ -35,6 +35,9 @@ Router({
   onLoad(options) {
     this.fetchData();
   },
+  onReady() { },
+  onHide() { },
+  onUnload() { },
   onChange(e) {
     this.setData({
       current: e.detail.index,
@@ -83,5 +86,5 @@ Router({
     });
   },
 
-  onShow() {},
+  onShow() { },
 });

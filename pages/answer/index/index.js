@@ -56,7 +56,10 @@ Router(
 
       this.fetchData();
     },
-    onShow() {},
+    onReady() { },
+    onUnload() { },
+    onHide() { },
+    onShow() { },
     async fetchData() {
       const { end, params } = this.data,
         { api, ...rest } = params;
@@ -126,10 +129,10 @@ Router(
       if (api === "getZiCeQues") {
         //自测练习
         let {
-            params: {
-              tests: { judge_score, check_score, radio_score },
-            },
-          } = this.data,
+          params: {
+            tests: { judge_score, check_score, radio_score },
+          },
+        } = this.data,
           right_count = 0,
           score = 0,
           wrong_count = 0;
@@ -140,8 +143,8 @@ Router(
               curr.type === 2
                 ? check_score
                 : curr.type === 1
-                ? radio_score
-                : judge_score
+                  ? radio_score
+                  : judge_score
             );
           } else {
             ++wrong_count;
@@ -170,12 +173,12 @@ Router(
         timeData: { days, hours, minutes, seconds, milliseconds },
       } = this.data;
       const useMilliseconds =
-          time -
-          (days * 1 * 24 * 60 * 60 * 1000 +
-            hours * 60 * 60 * 1000 +
-            minutes * 60 * 1000 +
-            seconds * 1000 +
-            milliseconds),
+        time -
+        (days * 1 * 24 * 60 * 60 * 1000 +
+          hours * 60 * 60 * 1000 +
+          minutes * 60 * 1000 +
+          seconds * 1000 +
+          milliseconds),
         Hours = parseInt(useMilliseconds / 1000 / 60 / 60),
         Minutes = parseInt(useMilliseconds / 1000 / 60 - Hours * 60 * 60),
         Seconds = parseInt(useMilliseconds / 1000 - Minutes * 60);
@@ -183,9 +186,8 @@ Router(
       app.$utils.Dialog.alert({
         title: "得分结果",
         confirmButtonText: "我知道了",
-        message: `用时:${Hours}时${Minutes}分${Seconds}秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${
-          score || 0
-        }分,\n正确率:${((right_count / list.length) * 100).toFixed(2)}%`,
+        message: `用时:${Hours}时${Minutes}分${Seconds}秒\n正确:${right_count}个,\n错误:${wrong_count}个,\n得分:${score || 0
+          }分,\n正确率:${((right_count / list.length) * 100).toFixed(2)}%`,
       }).then(() => {
         app.$router.back();
       });
@@ -255,8 +257,8 @@ Router(
           list[ind].type === 1
             ? radio_score
             : list[ind].type === 2
-            ? check_score
-            : judge_score;
+              ? check_score
+              : judge_score;
         api = "commitTestQueResult";
         const nowDate = timeData.minutes * 60 + timeData.seconds;
         t = (doTime || time / 1000) - nowDate;
@@ -382,7 +384,6 @@ Router(
         [`list[${arr[0]}].collect`]: !list[arr[0]].collect,
       });
     },
-    onUnload() {},
   },
   false
 );

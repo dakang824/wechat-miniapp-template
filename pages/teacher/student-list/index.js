@@ -103,7 +103,9 @@ Router({
     wx.hideHomeButton();
     this.getData();
   },
-
+  onReady() { },
+  onHide() { },
+  onUnload() { },
   async getData(postData = {}) {
     const {
       data: {

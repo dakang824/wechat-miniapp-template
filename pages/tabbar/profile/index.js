@@ -36,7 +36,10 @@ Router(
         },
       ],
     },
-    async onLoad(options) {},
+    async onLoad(options) { },
+    onReady() { },
+    onHide() { },
+    onUnload() { },
     onShow() {
       this.setData({
         userInfo: app.$store.user.userInfo,

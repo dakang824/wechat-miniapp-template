@@ -18,6 +18,9 @@ Router({
   onLoad(options) {
     this.fetchData();
   },
+  onReady() { },
+  onUnload() { },
+  onHide() { },
   async reset() {
     this.setData({
       list: [],
@@ -55,5 +58,5 @@ Router({
     });
   },
 
-  onShow() {},
+  onShow() { },
 });

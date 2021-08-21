@@ -31,7 +31,10 @@ Router({
       },
     });
   },
-  onShow() {},
+  onReady() { },
+  onShow() { },
+  onHide() { },
+  onUnload() { },
   handleClick() {
     wx.previewImage({
       urls: [this.data.qr_path],

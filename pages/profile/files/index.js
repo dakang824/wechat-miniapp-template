@@ -13,6 +13,9 @@ Router({
   onLoad(options) {
     this.fetchData();
   },
+  onReady() { },
+  onUnload() { },
+  onHide() { },
   async fetchData() {
     const {
       data: { resume },
@@ -26,13 +29,11 @@ Router({
   goJump(type, str) {
     app.$store.other = this.data.resume;
     app.$router.nav(
-      `/pages/profile/files/edit-info/index?type=${
-        type + (str ? "&" + str : "")
+      `/pages/profile/files/edit-info/index?type=${type + (str ? "&" + str : "")
       }`
     );
   },
   handleAddInfo(e) {
-    console.log(e);
     this.goJump(1, "title=个人介绍");
   },
   handleAddProject() {
@@ -65,5 +66,5 @@ Router({
   handleUpdateResumeThesis(e) {
     this.goJump(6, `index=${e.detail}&title=发布论文`);
   },
-  onShow() {},
+  onShow() { },
 });

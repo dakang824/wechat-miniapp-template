@@ -50,6 +50,48 @@ const Router = (pageObj, share = true) => {
     };
   }
 
+  // 页面已经准备好
+  if (pageObj.onReady) {
+    let _page = pageObj.onReady;
+    pageObj.onReady = function () {
+      const {
+        route,
+        __displayReporter: {
+          showReferpagepath,
+          pageReadyTime: startTime
+        }
+      } = this
+      app.$store.useInfo.pages.push({
+        route,
+        showReferpagepath,
+        startTime
+      })
+      console.log('收集用户数据', app.$store.useInfo)
+      _page.call(this);
+    }
+  }
+
+  // 页面隐藏
+  if (pageObj.onHide) {
+    let _page = pageObj.onHide;
+    pageObj.onHide = function () {
+      const currPage = app.$store.useInfo.pages.find(item => item.route === this.route)
+      currPage.endTime = new Date().getTime()
+      _page.call(this);
+    }
+  }
+
+  // 页面销毁
+  if (pageObj.onUnload) {
+    let _page = pageObj.onUnload;
+    pageObj.onUnload = function () {
+      const currPage = app.$store.useInfo.pages.find(item => item.route === this.route && !item.endTime)
+      currPage.endTime = new Date().getTime()
+      _page.call(this);
+    }
+  }
+
+
   //常用参数和配置信息
   if (pageObj.onShow) {
     let _page = pageObj.onShow;
@@ -72,7 +114,7 @@ const Router = (pageObj, share = true) => {
   //转发-默认打开，判断转发触发主体
   //全局转发监听，因需求不同，需个人定义
   if (share) {
-    pageObj.onShareAppMessage = function (res) {};
+    pageObj.onShareAppMessage = function (res) { };
     let _page = pageObj.onShareAppMessage;
     pageObj.onShareAppMessage = function (res) {
       //判断是否通过点击按钮分享
@@ -82,8 +124,7 @@ const Router = (pageObj, share = true) => {
       } else return initShare;
       _page.call(this);
     };
-  } else {
-  }
+  } else { }
 
   return Page(pageObj);
 };
