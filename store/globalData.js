@@ -12,7 +12,7 @@ const globalData = {
   useInfo: {
     pages: [],//用户操作页面信息
     systemInfo: {},//用户手机信息
-    appStartTime: 0,//app开始时间
+    appStartTime: new Date().getTime(),//app开始时间
     appEndTime: 0,//app结束时间
     scene: null,//场景值
   },

@@ -16,12 +16,22 @@ App({
   $router: new Router(),
   $api,
   $utils,
-  async onLaunch() {
+  async onLaunch(e) {
     wx.hideTabBar();
     wx.removeStorageSync("store");
     promisifyAll(); // 初始化所有wx.api为promise结构;
     init(globalData).then((store) => {
       this.$store = store;
     });
+  },
+  async onHide() {
+    const { scene } = await wx.getLaunchOptionsSync()
+    const { useInfo } = this.$store
+    useInfo.systemInfo = await wx.getSystemInfo()
+    useInfo.scene = scene
+    useInfo.appEndTime = new Date().getTime()
+    useInfo.userId = this.$store.user.userInfo.id
+    // await app.$api.bindAccount({});
+    console.log(this.$store.useInfo)
   },
 });

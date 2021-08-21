@@ -1,4 +1,4 @@
-export default function intercept(api){
+export default function intercept(api) {
   //包装成Promise返回
   api.method = function ({ url, data, method, api = 'request' }) {
     //为了方便用户传值

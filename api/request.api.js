@@ -8,6 +8,7 @@ import Api from "../config/axios/request";
 import { globalData } from "../store/globalData";
 
 let api = Api();
+const hiddenLoading = []
 let request = api.create({
   url: globalData.baseURL, //默认的接口后缀
   method: "get", //默认的HTTP 请求方法
@@ -28,11 +29,13 @@ request.interceptors.request.use(
       : "";
 
     //返回的是和wx.request相关的参数
-    wx.showNavigationBarLoading();
-    wx.showLoading({
-      title: "加载内容",
-      mask: true,
-    });
+    if (!hiddenLoading.find(item => item === config.url.slice(globalData.baseURL.length - 1))) {
+      wx.showNavigationBarLoading();
+      wx.showLoading({
+        title: "加载内容",
+        mask: true,
+      });
+    }
     return config;
   },
   function (error) {

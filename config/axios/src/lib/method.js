@@ -1,4 +1,4 @@
-export default function method(api){
+export default function method(api) {
   //所有request支持method
   const config = [
     'get',

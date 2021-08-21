@@ -61,11 +61,18 @@ const Router = (pageObj, share = true) => {
           pageReadyTime: startTime
         }
       } = this
-      app.$store.useInfo.pages.push({
+
+      const obj = {
         route,
         showReferpagepath,
         startTime
-      })
+      }
+
+      if (route === 'pages/home/detail/index') {
+        obj.article_id = this.options.id
+      }
+
+      app.$store.useInfo.pages.push(obj)
       console.log('收集用户数据', app.$store.useInfo)
       _page.call(this);
     }
