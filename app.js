@@ -26,12 +26,15 @@ App({
   },
   async onHide() {
     const { scene } = await wx.getLaunchOptionsSync()
-    const { useInfo } = this.$store
+    let { useInfo } = this.$utils.deepClone(this.$store)
+    console.log(useInfo)
     useInfo.systemInfo = await wx.getSystemInfo()
     useInfo.scene = scene
     useInfo.appEndTime = new Date().getTime()
     useInfo.userId = this.$store.user.userInfo.id
-    const res = await this.$api.addPageViewRecord(this.$store.useInfo);
-    console.log(res, this.$store.useInfo)
+    useInfo.pages = JSON.stringify(useInfo.pages)
+    useInfo.systemInfo = JSON.stringify(useInfo.systemInfo)
+    //上传浏览信息
+    await this.$api.addPageViewRecord(useInfo);
   },
 });

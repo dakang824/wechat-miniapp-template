@@ -8,7 +8,7 @@ import Api from "../config/axios/request";
 import { globalData } from "../store/globalData";
 
 let api = Api();
-const hiddenLoading = []
+const hiddenLoading = ['/service/plat/admin/addPageViewRecord']
 let request = api.create({
   url: globalData.baseURL, //默认的接口后缀
   method: "get", //默认的HTTP 请求方法

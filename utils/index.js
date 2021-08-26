@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import sha1 from "sha1";
 import Login from "./login";
 import QRCode from "./weapp-qrcode";
+import deepClone from "./deep-clone";
 module.exports = {
   Dialog,
   Notify,
@@ -19,4 +20,5 @@ module.exports = {
   QRCode,
   sha1,
   Login,
+  deepClone
 };
