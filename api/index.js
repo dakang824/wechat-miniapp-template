@@ -225,3 +225,8 @@ export const getMyProfessionForSkill = (data) => {
 export const addFeedBack = (data) => {
   return request.post("/service/front/addFeedBack", data);
 };
+
+// 添加页面浏览记录
+export const addPageViewRecord = (data) => {
+  return request.post("/service/plat/admin/addPageViewRecord", data);
+};

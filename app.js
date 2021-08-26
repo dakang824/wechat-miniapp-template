@@ -31,7 +31,7 @@ App({
     useInfo.scene = scene
     useInfo.appEndTime = new Date().getTime()
     useInfo.userId = this.$store.user.userInfo.id
-    // await app.$api.bindAccount({});
-    console.log(this.$store.useInfo)
+    const res = await this.$api.addPageViewRecord(this.$store.useInfo);
+    console.log(res, this.$store.useInfo)
   },
 });
