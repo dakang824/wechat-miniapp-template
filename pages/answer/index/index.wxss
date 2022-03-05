@@ -60,7 +60,6 @@
 }
 
 .answer__swipe-item__ul .btn {
-  width: 150rpx;
   margin-top: 30rpx;
 }
 
@@ -101,4 +100,8 @@
 .answer__swipe-item__footer .wrong {
   margin-left: 40rpx;
   color: #ff665b;
+}
+
+.hidden{
+  visibility:hidden
 }

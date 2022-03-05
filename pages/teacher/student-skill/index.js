@@ -127,8 +127,7 @@ Router({
     //     prof_id: item[0].prof_id,
     //   };
     // });
-
-
+    console.log(data)
     this.setData({
       currentIndex: prof_id,
       dataTree: data,

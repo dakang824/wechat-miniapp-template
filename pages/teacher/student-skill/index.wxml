@@ -17,7 +17,7 @@
         <van-button size="small" custom-class="btn" color="{{$themeColor}}"  bind:click='handlePass' data-i='{{item}}'>通过</van-button>
       </view> -->
       <view class="container">
-        <tree dataTree="{{ dataTree }}" selectKey="{{ selectKey }}" operation="{{ roles == 2 }}" isSelectLastNode
+        <tree dataTree="{{ [item] }}" selectKey="{{ selectKey }}" operation="{{ roles == 2 }}" isSelectLastNode
           isOpenAll bind:click="handlePass"></tree>
       </view>
     </van-panel>

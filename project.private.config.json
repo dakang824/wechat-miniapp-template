@@ -1,54 +1,5 @@
 {
-  "description": "项目配置文件",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": true,
-    "coverView": true,
-    "nodeModules": true,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "enableEngineNative": false,
-    "bundle": false,
-    "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.14.1",
-  "appid": "wxb2e4c9db04332159",
-  "projectname": "学习平台",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -100,6 +51,25 @@
         {
           "name": "pages/teacher/student-list/index",
           "pathName": "pages/teacher/student-list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/student-skill/index",
+          "pathName": "pages/teacher/student-skill/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/student-skill/index",
+          "pathName": "pages/teacher/student-skill/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/student-skill/index",
+          "pathName": "pages/teacher/student-skill/index",
+          "query": "",
           "scene": null
         }
       ]

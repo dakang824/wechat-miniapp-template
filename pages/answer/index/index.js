@@ -17,7 +17,8 @@ Router(
       timeData: {},
       doTime: null,
       swiperCurrent: 0,
-
+      right_count: 0,
+      wrong_count: 0,
       orderNum: [
         "A",
         "B",
@@ -52,6 +53,7 @@ Router(
       this.setData({
         params,
         time: params.time ? params.time * 60 * 1000 : null,
+        isShow: params.api !== 'getTests' && params.api !== 'getZiCeQues'
       });
 
       this.fetchData();
@@ -235,15 +237,33 @@ Router(
         return a + key_val[b];
       }, 0);
 
-      this.setData({
-        [`list[${ind}].result`]: result,
-        [`list[${ind}].right`]: result === right,
-      });
+      if (list[ind].result === null) {
+        this.setData({
+          [`list[${ind}].result`]: result,
+          [`list[${ind}].right`]: result === right,
+        });
 
-      this.sendResult({
-        ind,
-        right: result === right,
-      });
+        this.sendResult({
+          ind,
+          right: result === right,
+        });
+
+        if (result === right) {
+          this.setData({
+            right_count: this.data.right_count + 1,
+          })
+        } else {
+          this.setData({
+            wrong_count: this.data.wrong_count + 1,
+          })
+        }
+      }
+
+
+
+      if (!this.data.isShow) {
+        this.handleNext();
+      }
     },
     async sendResult({ ind, right }) {
       const { params, code, tests, timeData, doTime, time, list } = this.data;
